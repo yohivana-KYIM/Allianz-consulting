@@ -149,8 +149,11 @@ export default function SiteFooter({ variant }: SiteFooterProps) {
         </div>
 
         <div className="mt-8 overflow-hidden">
-          <div className="translate-y-[15%] whitespace-nowrap font-sora text-[clamp(40px,11.5vw,158px)] font-bold leading-[0.86] tracking-[-0.055em] text-white/[0.08]">
-            Allianz Consulting<span className="text-ac-gold/45">.</span>
+          <div
+            className="translate-y-[15%] whitespace-nowrap font-sora text-[clamp(40px,11.5vw,158px)] font-bold leading-[0.86] tracking-[-0.055em] text-white/[0.18]"
+            style={{ WebkitTextStroke: "1px rgba(255,255,255,0.3)" }}
+          >
+            Allianz Consulting<span className="text-ac-gold/70">.</span>
           </div>
         </div>
       </div>
