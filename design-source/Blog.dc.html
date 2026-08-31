@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css" />
+<script src="./image-slot.js"></script>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #ffffff; color: #14131F; font-family: Manrope, system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: #464195; text-decoration: none; }
+  a:hover { color: #C9A227; }
+  input, button, select { font-family: inherit; }
+  @keyframes acUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
+  @keyframes acRule { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  .ac-in { animation: acUp .6s cubic-bezier(.16,1,.3,1) both; }
+  .ac-eye > span:first-child { transform-origin: left center; animation: acRule .7s cubic-bezier(.16,1,.3,1) both .15s; }
+  a, button { transition: background .28s ease, color .28s ease, transform .3s cubic-bezier(.16,1,.3,1), border-color .28s ease, box-shadow .3s ease; }
+  .ac-card { transition: transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s ease, border-color .3s ease; }
+  .ac-card:hover { transform: translateY(-6px); box-shadow: 0 22px 48px rgba(20,19,31,.12); border-color: #464195; }
+  .ac-desk { display: none !important; }
+  .ac-mob { display: flex !important; }
+  .ac-feat { grid-template-columns: 1fr; }
+  @media (min-width: 1000px) {
+    .ac-desk { display: flex !important; }
+    .ac-mob { display: none !important; }
+    .ac-feat { grid-template-columns: 1.15fr .85fr; }
+    .ac-side { grid-template-columns: 1fr 300px !important; }
+  }
+</style>
+</helmet>
+
+<header style="position: sticky; top: 0; z-index: 60; background: rgba(255,255,255,.94); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(20,19,31,.07);">
+  <div style="max-width: 1240px; margin: 0 auto; padding: 11px 20px; display: flex; align-items: center; gap: 22px;">
+    <a href="Cabinet AC.dc.html" style="display: flex; align-items: center; gap: 11px; color: #14131F;">
+      <img src="assets/logo-ac.png" alt="Allianz Consulting Sarl" style="height: 42px; width: auto;" />
+      <span style="font-family: Sora, sans-serif; font-weight: 700; font-size: 15.5px; letter-spacing: -.02em; white-space: nowrap;">Allianz <span style="color: #464195;">Consulting</span></span>
+    </a>
+    <nav class="ac-desk" style="gap: 21px; margin-left: 8px; font-size: 14.5px; font-weight: 600;">
+      <a href="Cabinet AC.dc.html" style="color: rgba(20,19,31,.72);" style-hover="color: #464195;">Accueil</a>
+      <a href="A propos.dc.html" style="color: rgba(20,19,31,.72);" style-hover="color: #464195;">À propos</a>
+      <a href="Services.dc.html" style="color: rgba(20,19,31,.72);" style-hover="color: #464195;">Services</a>
+      <a href="Equipe.dc.html" style="color: rgba(20,19,31,.72);" style-hover="color: #464195;">Équipe</a>
+      <a href="Blog.dc.html" style="color: #464195;">Blog</a>
+      <a href="Cabinet AC.dc.html#contact" style="color: rgba(20,19,31,.72);" style-hover="color: #464195;">Contact</a>
+    </nav>
+    <div style="flex: 1;"></div>
+    <a href="Cabinet AC.dc.html#contact" style="background: #464195; color: #fff; font-weight: 700; font-size: 14.5px; padding: 11px 20px; border-radius: 8px; white-space: nowrap;" style-hover="background: #C9A227;">Rendez-vous</a>
+    <button onClick="{{ toggleMenu }}" aria-label="Menu" class="ac-mob" style="background: transparent; border: 1px solid rgba(20,19,31,.14); color: #14131F; width: 40px; height: 40px; border-radius: 8px; cursor: pointer; align-items: center; justify-content: center;"><i class="ti ti-menu-2" style="font-size: 20px;"></i></button>
+  </div>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="border-top: 1px solid rgba(20,19,31,.08); padding: 14px 20px 20px; display: grid; gap: 13px; background: #fff;">
+      <a href="Cabinet AC.dc.html" style="color: #14131F; font-weight: 600;">Accueil</a>
+      <a href="A propos.dc.html" style="color: #14131F; font-weight: 600;">À propos</a>
+      <a href="Services.dc.html" style="color: #14131F; font-weight: 600;">Services</a>
+      <a href="Equipe.dc.html" style="color: #14131F; font-weight: 600;">Équipe</a>
+      <a href="Blog.dc.html" style="color: #464195; font-weight: 700;">Blog</a>
+      <a href="Cabinet AC.dc.html#contact" style="color: #14131F; font-weight: 600;">Contact</a>
+    </div>
+  </sc-if>
+</header>
+
+<section style="position: relative; overflow: hidden; background: #14131F; margin: 10px; border-radius: 22px; padding: 62px 22px 58px;">
+  <div style="position: absolute; inset: 0; pointer-events: none; background: radial-gradient(56% 100% at 2% 0%, rgba(70,65,149,.85), transparent 62%), radial-gradient(50% 90% at 98% 6%, rgba(201,162,39,.42), transparent 62%);"></div>
+  <div class="ac-in" style="position: relative; max-width: 860px; margin: 0 auto; text-align: center; color: #fff; display: grid; gap: 18px;">
+    <div class="ac-eye" style="display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 11.5px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #E3C766;">
+      <span style="width: 26px; height: 2px; background: currentColor;"></span>Blog<span style="width: 26px; height: 2px; background: currentColor;"></span>
+    </div>
+    <h1 style="font-family: Sora, sans-serif; font-weight: 700; font-size: clamp(30px, 5.4vw, 56px); line-height: 1.04; letter-spacing: -.035em; margin: 0; text-wrap: balance;">Veille fiscale, sociale et douanière</h1>
+    <p style="font-size: clamp(15.5px, 1.8vw, 18px); line-height: 1.6; color: rgba(255,255,255,.72); max-width: 620px; margin: 0 auto;">Les échéances, réformes et décisions qui touchent directement les TPE, PME et entreprises importatrices. Écrit par les consultants du cabinet.</p>
+  </div>
+</section>
+
+<main style="max-width: 1240px; margin: 0 auto; padding: 40px 20px 70px;">
+  <a href="{{ featured.href }}" class="ac-card ac-feat" style="display: grid; border: 1px solid rgba(20,19,31,.09); border-radius: 20px; overflow: hidden; color: #14131F; margin-bottom: 34px;">
+    <div style="position: relative; min-height: 300px;">
+      <image-slot id="ac-blog-feat" shape="rect" fit="cover" placeholder="Visuel de l'article à la une — plan large d'un bureau de travail ou d'une réunion, teintes indigo/or (1400×900)"></image-slot>
+    </div>
+    <div style="padding: 34px; display: grid; gap: 14px; align-content: center;">
+      <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+        <span style="background: #C9A227; color: #14131F; font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 5px 11px; border-radius: 6px;">À la une</span>
+        <span style="background: rgba(70,65,149,.09); color: #464195; font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 5px 10px; border-radius: 6px;">{{ featured.tag }}</span>
+        <span style="font-size: 12.5px; color: rgba(20,19,31,.5);">{{ featured.date }} · {{ featured.read }}</span>
+      </div>
+      <h2 style="font-family: Sora, sans-serif; font-size: clamp(21px, 2.6vw, 30px); font-weight: 700; margin: 0; letter-spacing: -.03em; line-height: 1.2;">{{ featured.title }}</h2>
+      <p style="margin: 0; font-size: 15.5px; line-height: 1.65; color: rgba(20,19,31,.65);">{{ featured.excerpt }}</p>
+      <span style="display: flex; align-items: center; gap: 8px; font-size: 14.5px; font-weight: 700; color: #464195;">Lire l'article <i class="ti ti-arrow-right" style="font-size: 17px;"></i></span>
+    </div>
+  </a>
+
+  <div class="ac-side" style="display: grid; grid-template-columns: 1fr; gap: 34px; align-items: start;">
+    <div style="display: grid; gap: 22px; min-width: 0;">
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
+        <sc-for list="{{ tags }}" as="t" hint-placeholder-count="6">
+          <button onClick="{{ t.pick }}" style="{{ t.style }}">{{ t.label }}</button>
+        </sc-for>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 18px;">
+        <sc-for list="{{ posts }}" as="p" hint-placeholder-count="6">
+          <a href="{{ p.href }}" class="ac-card" style="background: #fff; border: 1px solid rgba(20,19,31,.08); border-radius: 16px; overflow: hidden; display: grid; align-content: start; color: #14131F;">
+            <div style="position: relative; height: 190px;">
+              <image-slot id="{{ p.slot }}" shape="rect" fit="cover" placeholder="{{ p.hint }}"></image-slot>
+            </div>
+            <div style="padding: 20px; display: grid; gap: 9px;">
+              <div style="display: flex; align-items: center; gap: 9px; flex-wrap: wrap;">
+                <span style="background: rgba(70,65,149,.09); color: #464195; font-size: 10.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 5px 9px; border-radius: 6px;">{{ p.tag }}</span>
+                <span style="font-size: 12px; color: rgba(20,19,31,.5);">{{ p.date }} · {{ p.read }}</span>
+              </div>
+              <h3 style="font-family: Sora, sans-serif; font-size: 17.5px; font-weight: 700; margin: 0; letter-spacing: -.02em; line-height: 1.3;">{{ p.title }}</h3>
+              <p style="margin: 0; font-size: 14px; line-height: 1.6; color: rgba(20,19,31,.62);">{{ p.excerpt }}</p>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+
+      <sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+        <div style="border: 1px dashed rgba(20,19,31,.18); border-radius: 16px; padding: 40px; text-align: center; color: rgba(20,19,31,.55); font-size: 15px;">Aucun article dans cette rubrique pour le moment.</div>
+      </sc-if>
+
+      <button style="justify-self: center; border: 1px solid rgba(70,65,149,.24); background: #fff; color: #464195; font-weight: 700; font-size: 14.5px; padding: 14px 28px; border-radius: 9px; cursor: pointer; display: flex; align-items: center; gap: 9px;" style-hover="background: #464195; color: #fff;">Charger plus d'articles <i class="ti ti-chevron-down" style="font-size: 17px;"></i></button>
+    </div>
+
+    <aside style="display: grid; gap: 14px; align-content: start;">
+      <div style="background: #14131F; color: #fff; border-radius: 18px; padding: 24px; display: grid; gap: 14px;">
+        <h3 style="font-family: Sora, sans-serif; font-size: 16.5px; font-weight: 700; margin: 0;">Lettre de veille</h3>
+        <p style="margin: 0; font-size: 14px; line-height: 1.6; color: rgba(255,255,255,.62);">Les échéances fiscales et sociales du mois, dans votre boîte mail. Sans publicité.</p>
+        <input placeholder="votre@entreprise.com" style="border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.06); color: #fff; border-radius: 9px; padding: 12px 13px; font-size: 14.5px; outline: none;" style-focus="border-color: #C9A227;" />
+        <button style="background: #C9A227; color: #14131F; border: none; font-weight: 800; font-size: 14.5px; padding: 13px; border-radius: 9px; cursor: pointer;" style-hover="background: #E3C766;">M'abonner</button>
+      </div>
+      <div style="background: #F7F7FA; border: 1px solid rgba(20,19,31,.07); border-radius: 18px; padding: 24px; display: grid; gap: 12px;">
+        <h3 style="font-family: Sora, sans-serif; font-size: 16.5px; font-weight: 700; margin: 0;">Nos services</h3>
+        <sc-for list="{{ services }}" as="s" hint-placeholder-count="8">
+          <a href="{{ s.href }}" style="display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; color: rgba(20,19,31,.72);" style-hover="color: #464195;">
+            <i class="ti {{ s.icon }}" style="font-size: 17px; color: #464195; flex-shrink: 0;"></i> {{ s.label }}
+          </a>
+        </sc-for>
+      </div>
+      <div style="background: #F7F7FA; border: 1px solid rgba(20,19,31,.07); border-radius: 18px; padding: 24px; display: grid; gap: 12px;">
+        <h3 style="font-family: Sora, sans-serif; font-size: 16.5px; font-weight: 700; margin: 0;">Un cas à nous soumettre ?</h3>
+        <p style="margin: 0; font-size: 14px; line-height: 1.6; color: rgba(20,19,31,.62);">Le premier diagnostic est offert, sans engagement.</p>
+        <a href="Cabinet AC.dc.html#contact" style="background: #464195; color: #fff; font-weight: 700; font-size: 14.5px; padding: 13px; border-radius: 9px; text-align: center;" style-hover="background: #C9A227; color: #14131F;">Prendre rendez-vous</a>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer style="background: #14131F; color: rgba(255,255,255,.55); margin: 10px; border-radius: 20px; padding: 26px; display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between; align-items: center; font-size: 13.5px;">
+  <span>© 2026 Allianz Consulting Sarl · RCCM RC/DLA/2021/B/3203</span>
+  <a href="Cabinet AC.dc.html" style="color: #fff; font-weight: 700;" style-hover="color: #C9A227;">← Retour à l'accueil</a>
+</footer>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440}}">
+const POSTS = [
+  { slug: 'calendrier-fiscal', tag: 'Fiscalité', date: '18 août 2026', read: '5 min', title: 'Calendrier fiscal : les échéances à ne pas manquer ce trimestre', excerpt: 'Déclarations, acomptes et obligations déclaratives : la liste des dates qui exposent votre entreprise à des pénalités.', hint: 'Calendrier annoté et documents fiscaux sur un bureau (800×500)' },
+  { slug: 'business-plan-banque', tag: 'Financement', date: '04 août 2026', read: '7 min', title: 'Ce que votre banque lit vraiment dans un business plan', excerpt: 'Les quatre pages qui décident de l’accord, et les erreurs de prévisionnel qui font échouer un dossier solide.', hint: 'Dossier de financement ouvert avec graphiques, stylo et calculatrice (800×500)' },
+  { slug: 'classement-tarifaire', tag: 'Douane', date: '21 juillet 2026', read: '6 min', title: 'Classement tarifaire : l’erreur qui coûte le plus cher à l’importation', excerpt: 'Une position tarifaire mal choisie se paie en droits, en amendes et en immobilisation de marchandises.', hint: 'Conteneurs et documents de dédouanement au port (800×500)' },
+  { slug: 'controle-fiscal', tag: 'Fiscalité', date: '09 juillet 2026', read: '8 min', title: 'Contrôle fiscal : les six réflexes des trois premiers jours', excerpt: 'Ce que vous devez rassembler, ce que vous n’êtes pas obligé de fournir, et à quel moment appeler votre conseil.', hint: 'Deux personnes examinant des registres comptables (800×500)' },
+  { slug: 'contrats-travail', tag: 'RH', date: '27 juin 2026', read: '5 min', title: 'Contrats de travail : les clauses qui protègent réellement l’employeur', excerpt: 'Période d’essai, mobilité, confidentialité : rédiger utile plutôt que copier un modèle générique.', hint: 'Signature d’un contrat de travail, gros plan sur les mains (800×500)' },
+  { slug: 'tableau-de-bord', tag: 'Gestion', date: '12 juin 2026', read: '6 min', title: 'Construire un tableau de bord qu’un dirigeant lit vraiment', excerpt: 'Cinq indicateurs suffisent pour piloter une TPE. Les vingt autres font perdre du temps.', hint: 'Écran affichant un tableau de bord de gestion, ambiance bureau (800×500)' },
+  { slug: 'creation-entreprise', tag: 'Création', date: '30 mai 2026', read: '7 min', title: 'Créer sa société : choisir la forme juridique sans se piéger', excerpt: 'SARL, SA, entreprise individuelle : l’impact réel du choix sur la fiscalité, la responsabilité et le financement.', hint: 'Jeune entrepreneur devant des documents d’immatriculation (800×500)' },
+  { slug: 'tresorerie', tag: 'Gestion', date: '15 mai 2026', read: '6 min', title: 'Trésorerie : sortir du pilotage à vue en quatre semaines', excerpt: 'Un budget de trésorerie glissant, tenu chaque semaine, évite la majorité des crises de liquidité.', hint: 'Graphique de flux de trésorerie sur écran et carnet (800×500)' }
+];
+
+const SERVICES = [
+  { label: 'Fiscalité', icon: 'ti-receipt-tax', slug: 'fiscalite' },
+  { label: 'Comptabilité', icon: 'ti-calculator', slug: 'comptabilite' },
+  { label: 'Management', icon: 'ti-target-arrow', slug: 'management' },
+  { label: 'Ingénierie financière', icon: 'ti-chart-arrows-vertical', slug: 'ingenierie-financiere' },
+  { label: 'Audit', icon: 'ti-shield-check', slug: 'audit' },
+  { label: 'Douane & transit', icon: 'ti-ship', slug: 'douane-transit' },
+  { label: 'Ressources humaines', icon: 'ti-users', slug: 'ressources-humaines' },
+  { label: 'Création d’entreprise', icon: 'ti-building-store', slug: 'creation-entreprise' }
+];
+
+class Component extends DCLogic {
+  state = { menuOpen: false, tag: 'Tous' };
+  renderVals() {
+    const st = this.state;
+    const tagList = ['Tous', 'Fiscalité', 'Comptabilité', 'Financement', 'Douane', 'RH', 'Gestion', 'Création'];
+    const visible = POSTS.filter(p => st.tag === 'Tous' || p.tag === st.tag);
+    return {
+      menuOpen: st.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      featured: Object.assign({}, POSTS[0], { href: 'Blog.dc.html#' + POSTS[0].slug }),
+      tags: tagList.map(label => ({
+        label,
+        pick: () => this.setState({ tag: label }),
+        style: 'cursor:pointer;font-size:13px;font-weight:700;padding:9px 16px;border-radius:999px;transition:.25s;background:' +
+          (st.tag === label ? '#464195' : '#fff') + ';color:' + (st.tag === label ? '#fff' : '#14131F') +
+          ';border:1px solid ' + (st.tag === label ? '#464195' : 'rgba(20,19,31,.14)') + ';'
+      })),
+      posts: visible.map(p => Object.assign({}, p, { slot: 'ac-blog-' + p.slug, href: 'Blog.dc.html#' + p.slug })),
+      empty: visible.length === 0,
+      services: SERVICES.map(s => ({ label: s.label, icon: s.icon, href: 'Services.dc.html#' + s.slug }))
+    };
+  }
+}
+</script>
+</body>
+</html>

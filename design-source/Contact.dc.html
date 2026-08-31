@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;600;700;800&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css" />
+<script src="./image-slot.js"></script>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #F8F9FA; color: #111111; font-family: Mulish, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #008751; text-decoration: none; }
+  a:hover { color: #FFD700; }
+  input, button, select, textarea { font-family: inherit; }
+  @keyframes afjUp { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+  .afj-in { animation: afjUp .6s cubic-bezier(.16,1,.3,1) both; }
+  .afj-cols { display: grid; grid-template-columns: 1fr; gap: 24px; }
+  .afj-2 { display: grid; grid-template-columns: 1fr; gap: 12px; }
+  .afj-desk { display: none !important; }
+  @media (min-width: 900px) {
+    .afj-cols { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .afj-2 { grid-template-columns: 1fr 1fr; }
+    .afj-desk { display: flex !important; }
+    .afj-banner { height: 380px !important; }
+  }
+</style>
+</helmet>
+
+<header style="position: sticky; top: 0; z-index: 40; background: rgba(255,255,255,.93); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(17,17,17,.07);">
+  <div style="max-width: 1180px; margin: 0 auto; padding: 12px 20px; display: flex; align-items: center; gap: 18px;">
+    <a href="Africa First Junior.dc.html" style="display: flex; align-items: center; gap: 10px; color: #111111;">
+      <img src="assets/logo.png" alt="Africa First Junior" style="width: 42px; height: 42px; border-radius: 10px; object-fit: cover;" />
+      <span style="font-family: Bitter, serif; font-weight: 800; font-size: 16px; line-height: 1.05;">Africa First<br /><span style="color: #008751;">Junior</span></span>
+    </a>
+    <nav class="afj-desk" style="gap: 24px; margin-left: 16px; font-size: 15px; font-weight: 600;">
+      <a href="Africa First Junior.dc.html#tirage" style="color: rgba(17,17,17,.75);" style-hover="color: #008751;">Le tirage</a>
+      <a href="Africa First Junior.dc.html#partenaires" style="color: rgba(17,17,17,.75);" style-hover="color: #008751;">Partenaires</a>
+      <a href="Contact.dc.html" style="color: #008751;">Contact</a>
+    </nav>
+    <div style="flex: 1;"></div>
+    <a href="Connexion.dc.html" class="afj-desk" style="color: rgba(17,17,17,.7); font-weight: 600; font-size: 15px;" style-hover="color: #008751;">Connexion</a>
+    <a href="Souscrire.dc.html" style="background: #008751; color: #fff; font-weight: 700; font-size: 14.5px; padding: 11px 22px; border-radius: 999px;" style-hover="background: #FFD700; color: #111;">Souscrire</a>
+  </div>
+</header>
+
+<section class="afj-banner" style="position: relative; margin: 10px; border-radius: 26px; overflow: hidden; height: 300px;">
+  <image-slot id="afj-contact-banner" style="color: rgba(255,255,255,.82)" shape="rect" fit="cover" placeholder="Déposez la bannière (créateurs africains en tournage — 2000×760)"></image-slot>
+  <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(17,17,17,.92) 0%, rgba(17,17,17,.7) 45%, rgba(0,135,81,.35) 100%); pointer-events: none;"></div>
+  <div class="afj-in" style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; padding: 30px 26px; pointer-events: none;">
+    <div style="max-width: 660px;">
+      <div style="display: inline-flex; align-items: center; gap: 9px; padding: 7px 15px; border: 1px solid rgba(255,255,255,.3); border-radius: 999px; font-size: 11.5px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #fff;">
+        <i class="ti ti-headset" style="font-size: 15px; color: #FFD700;"></i> Nous sommes là pour vous
+      </div>
+      <h1 style="font-family: Bitter, serif; font-weight: 800; font-size: clamp(30px, 5.2vw, 56px); line-height: 1.04; letter-spacing: -.025em; margin: 16px 0 0; color: #fff;">
+        Parlons de votre
+        <span style="display: inline-block; background: #008751; padding: 0 11px; border-radius: 9px; transform: rotate(-1.5deg);">participation</span>
+      </h1>
+      <p style="margin: 14px 0 0; font-size: 17px; line-height: 1.6; color: rgba(255,255,255,.78); max-width: 520px;">Souscription, paiement Mobile Money, partenariat ou presse — notre équipe répond en moins de 24 h.</p>
+    </div>
+  </div>
+</section>
+
+<main style="max-width: 1180px; margin: 0 auto; padding: 34px 20px 20px;">
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin-bottom: 34px;">
+    <sc-for list="{{ cards }}" as="c" hint-placeholder-count="4">
+      <div style="background: #fff; border: 1px solid rgba(17,17,17,.08); border-radius: 18px; padding: 22px; display: grid; gap: 8px; transition: transform .45s cubic-bezier(.16,1,.3,1), box-shadow .45s ease, border-color .3s ease;" style-hover="transform: translateY(-5px); box-shadow: 0 20px 44px rgba(17,17,17,.1); border-color: #008751;">
+        <span style="width: 42px; height: 42px; border-radius: 12px; background: rgba(0,135,81,.09); color: #008751; display: flex; align-items: center; justify-content: center;"><i class="ti {{ c.icon }}" style="font-size: 21px;"></i></span>
+        <b style="font-family: Bitter, serif; font-size: 16px;">{{ c.title }}</b>
+        <span style="font-size: 14.5px; color: rgba(17,17,17,.62); line-height: 1.5;">{{ c.value }}</span>
+      </div>
+    </sc-for>
+  </div>
+
+  <div class="afj-cols">
+    <div style="background: #fff; border: 1px solid rgba(17,17,17,.08); border-radius: 22px; padding: 28px; box-shadow: 0 20px 50px rgba(17,17,17,.05);">
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div class="afj-in" style="display: grid; gap: 15px; text-align: center; padding: 26px 0;">
+          <span style="width: 66px; height: 66px; border-radius: 50%; background: rgba(0,135,81,.12); color: #008751; display: flex; align-items: center; justify-content: center; margin: 0 auto;"><i class="ti ti-check" style="font-size: 30px;"></i></span>
+          <h2 style="font-family: Bitter, serif; font-size: 22px; font-weight: 800; margin: 0;">Message envoyé</h2>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: rgba(17,17,17,.65);">Merci ! Notre équipe vous répond sous 24 h à l'adresse indiquée.</p>
+          <button onClick="{{ reset }}" style="background: transparent; border: none; color: #008751; font-weight: 700; font-size: 14.5px; cursor: pointer;">Écrire un autre message</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <div style="display: grid; gap: 14px;">
+          <h2 style="font-family: Bitter, serif; font-size: 21px; font-weight: 800; margin: 0;">Écrivez-nous</h2>
+          <div class="afj-2">
+            <label style="display: grid; gap: 6px; font-size: 13px; font-weight: 700; color: rgba(17,17,17,.68);">Nom complet
+              <input placeholder="Votre nom" style="{{ inputStyle }}" style-focus="border-color: #008751;" />
+            </label>
+            <label style="display: grid; gap: 6px; font-size: 13px; font-weight: 700; color: rgba(17,17,17,.68);">Adresse e-mail
+              <input placeholder="vous@exemple.com" style="{{ inputStyle }}" style-focus="border-color: #008751;" />
+            </label>
+          </div>
+          <div class="afj-2">
+            <label style="display: grid; gap: 6px; font-size: 13px; font-weight: 700; color: rgba(17,17,17,.68);">Téléphone
+              <input placeholder="+237 6 90 00 00 00" style="{{ inputStyle }}" style-focus="border-color: #008751;" />
+            </label>
+            <label style="display: grid; gap: 6px; font-size: 13px; font-weight: 700; color: rgba(17,17,17,.68);">Référence du ticket (optionnel)
+              <input placeholder="AFJ-2026-…" style="{{ inputStyle }}" style-focus="border-color: #008751;" />
+            </label>
+          </div>
+          <div style="display: grid; gap: 8px;">
+            <span style="font-size: 13px; font-weight: 700; color: rgba(17,17,17,.68);">Sujet</span>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+              <sc-for list="{{ topics }}" as="t" hint-placeholder-count="5">
+                <button onClick="{{ t.pick }}" style="{{ t.style }}">{{ t.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+          <label style="display: grid; gap: 6px; font-size: 13px; font-weight: 700; color: rgba(17,17,17,.68);">Message
+            <textarea rows="6" placeholder="Décrivez votre demande…" style="border: 1px solid rgba(17,17,17,.16); border-radius: 11px; padding: 12px 13px; font-size: 15px; outline: none; resize: vertical; background: #fff;" style-focus="border-color: #008751;"></textarea>
+          </label>
+          <button onClick="{{ send }}" style="background: #008751; color: #fff; border: none; font-weight: 800; font-size: 15.5px; padding: 15px; border-radius: 999px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 9px;" style-hover="background: #00A162;">
+            <i class="ti ti-send" style="font-size: 18px;"></i> Envoyer le message
+          </button>
+          <p style="margin: 0; text-align: center; font-size: 12.5px; color: rgba(17,17,17,.5);">Nous ne demandons jamais votre code Mobile Money par e-mail.</p>
+        </div>
+      </sc-if>
+    </div>
+
+    <div style="display: grid; gap: 14px; align-content: start;">
+      <div style="position: relative; border-radius: 20px; overflow: hidden; min-height: 220px;">
+        <image-slot id="afj-contact-map" shape="rect" fit="cover" placeholder="Déposez la carte / photo du bureau (Douala) — 900×620"></image-slot>
+      </div>
+      <div style="background: #111111; color: #fff; border-radius: 20px; padding: 24px; display: grid; gap: 14px;">
+        <h3 style="font-family: Bitter, serif; font-size: 17px; font-weight: 800; margin: 0;">Horaires du support</h3>
+        <div style="display: grid; gap: 9px; font-size: 14.5px;">
+          <div style="display: flex; justify-content: space-between;"><span style="color: rgba(255,255,255,.6);">Lundi – vendredi</span><b>08 h – 19 h</b></div>
+          <div style="display: flex; justify-content: space-between;"><span style="color: rgba(255,255,255,.6);">Samedi</span><b>09 h – 15 h</b></div>
+          <div style="display: flex; justify-content: space-between;"><span style="color: rgba(255,255,255,.6);">Dimanche</span><b style="color: #FFD700;">Fermé</b></div>
+        </div>
+        <div style="height: 1px; background: rgba(255,255,255,.12);"></div>
+        <div style="display: flex; gap: 10px;">
+          <a href="#" aria-label="TikTok" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; color: #fff;" style-hover="background: #008751;"><i class="ti ti-brand-tiktok" style="font-size: 18px;"></i></a>
+          <a href="#" aria-label="Instagram" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; color: #fff;" style-hover="background: #008751;"><i class="ti ti-brand-instagram" style="font-size: 18px;"></i></a>
+          <a href="#" aria-label="YouTube" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; color: #fff;" style-hover="background: #008751;"><i class="ti ti-brand-youtube" style="font-size: 18px;"></i></a>
+          <a href="#" aria-label="WhatsApp" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; color: #fff;" style-hover="background: #008751;"><i class="ti ti-brand-whatsapp" style="font-size: 18px;"></i></a>
+        </div>
+      </div>
+      <div style="background: #fff; border: 1px solid rgba(17,17,17,.08); border-radius: 20px; padding: 24px; display: grid; gap: 12px;">
+        <h3 style="font-family: Bitter, serif; font-size: 17px; font-weight: 800; margin: 0;">Questions fréquentes</h3>
+        <sc-for list="{{ faq }}" as="q" hint-placeholder-count="4">
+          <div style="border-bottom: 1px solid rgba(17,17,17,.07); padding-bottom: 11px;">
+            <b style="font-size: 14.5px; display: block;">{{ q.q }}</b>
+            <span style="font-size: 13.5px; line-height: 1.55; color: rgba(17,17,17,.6);">{{ q.a }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</main>
+
+<section style="max-width: 1180px; margin: 0 auto; padding: 20px;">
+  <div style="background: #111111; color: #fff; border-radius: 24px; padding: 34px; display: grid; gap: 18px; justify-items: center; text-align: center;">
+    <h2 style="font-family: Bitter, serif; font-size: clamp(22px, 3vw, 32px); font-weight: 800; margin: 0;">Prêt à tenter votre chance ?</h2>
+    <p style="margin: 0; font-size: 15.5px; color: rgba(255,255,255,.65); max-width: 520px;">Un ticket à 1 000 XAF, une chance de gagner le voyage à Dubaï.</p>
+    <a href="Souscrire.dc.html" style="background: #FFD700; color: #111; font-weight: 800; padding: 15px 30px; border-radius: 999px;" style-hover="background: #fff;">Souscrire maintenant</a>
+  </div>
+</section>
+
+<footer style="background: #111111; color: rgba(255,255,255,.55); margin: 10px; border-radius: 22px; padding: 26px; display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between; font-size: 13.5px;">
+  <span>© 2026 Africa First Junior. Tous droits réservés.</span>
+  <a href="Africa First Junior.dc.html" style="color: #fff; font-weight: 700;" style-hover="color: #FFD700;">← Retour à l'accueil</a>
+</footer>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440}}">
+class Component extends DCLogic {
+  state = { topic: 'Ma souscription', sent: false };
+  renderVals() {
+    const list = ['Ma souscription', 'Paiement Mobile Money', 'Résultat du tirage', 'Partenariat', 'Presse'];
+    return {
+      inputStyle: 'border:1px solid rgba(17,17,17,.16);border-radius:11px;padding:12px 13px;font-size:15px;outline:none;background:#fff;width:100%;',
+      cards: [
+        { icon: 'ti-mail', title: 'E-mail', value: 'contact@africafirstjunior.com' },
+        { icon: 'ti-phone', title: 'Téléphone', value: '+237 6 90 00 00 00' },
+        { icon: 'ti-brand-whatsapp', title: 'WhatsApp', value: 'Support 7j/7 · réponse rapide' },
+        { icon: 'ti-map-pin', title: 'Bureaux', value: 'Douala · Abidjan · Dakar' }
+      ],
+      topics: list.map(label => ({
+        label,
+        pick: () => this.setState({ topic: label }),
+        style: 'cursor:pointer;font-size:13px;font-weight:700;padding:9px 15px;border-radius:999px;transition:.25s;background:' +
+          (this.state.topic === label ? '#008751' : '#fff') + ';color:' + (this.state.topic === label ? '#fff' : '#111') +
+          ';border:1px solid ' + (this.state.topic === label ? '#008751' : 'rgba(17,17,17,.14)') + ';'
+      })),
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      send: () => this.setState({ sent: true }),
+      reset: () => this.setState({ sent: false }),
+      faq: [
+        { q: 'Mon paiement est passé mais rien reçu ?', a: 'Vérifiez vos spams puis votre statut dans l’espace souscripteur. Sinon écrivez-nous avec votre numéro.' },
+        { q: 'Puis-je souscrire plusieurs fois ?', a: 'Oui, chaque ticket de 1 000 XAF ajoute une chance supplémentaire.' },
+        { q: 'Comment sont choisis les gagnants ?', a: 'Tirage aléatoire certifié parmi les souscriptions au paiement validé, journalisé et horodaté.' },
+        { q: 'Puis-je changer ma période de voyage ?', a: 'Oui, depuis votre espace souscripteur jusqu’à la date du tirage.' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

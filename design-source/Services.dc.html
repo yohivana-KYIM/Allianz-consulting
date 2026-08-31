@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css" />
+<script src="./image-slot.js"></script>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #ffffff; color: #14131F; font-family: Manrope, system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: #464195; text-decoration: none; }
+  a:hover { color: #C9A227; }
+  input, button, select, textarea { font-family: inherit; }
+  @keyframes acUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
+  @keyframes acRule { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  .ac-in { animation: acUp .6s cubic-bezier(.16,1,.3,1) both; }
+  .ac-eye > span:first-child { transform-origin: left center; animation: acRule .7s cubic-bezier(.16,1,.3,1) both .15s; }
+  a, button { transition: background .28s ease, color .28s ease, transform .3s cubic-bezier(.16,1,.3,1), border-color .28s ease, box-shadow .3s ease; }
+  .ac-card { transition: transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s ease, border-color .3s ease; }
+  .ac-card:hover { transform: translateY(-5px); box-shadow: 0 20px 44px rgba(20,19,31,.11); border-color: #464195; }
+  .ac-desk { display: none !important; }
+  .ac-mob { display: flex !important; }
+  .ac-shell { grid-template-columns: 1fr; }
+  .ac-2 { grid-template-columns: 1fr; }
+  @media (min-width: 1000px) {
+    .ac-desk { display: flex !important; }
+    .ac-mob { display: none !important; }
+    .ac-shell { grid-template-columns: 268px 1fr; }
+    .ac-2 { grid-template-columns: 1fr 1fr; }
+    .ac-sticky { position: sticky; top: 84px; }
+  }
+</style>
+</helmet>
+
+<header style="position: sticky; top: 0; z-index: 60; background: rgba(255,255,255,.94); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(20,19,31,.07);">
+  <div style="max-width: 1240px; margin: 0 auto; padding: 11px 20px; display: flex; align-items: center; gap: 22px;">
+    <a href="Cabinet AC.dc.html" style="display: flex; align-items: center; gap: 11px; color: #14131F;">
+      <img src="assets/logo-ac.png" alt="Allianz Consulting Sarl" style="height: 42px; width: auto;" />
+      <span style="font-family: Sora, sans-serif; font-weight: 700; font-size: 15.5px; letter-spacing: -.02em; white-space: nowrap;">Allianz <span style="color: #464195;">Consulting</span></span>
+    </a>
+    <nav class="ac-desk" style="gap: 21px; margin-left: 8px; font-size: 14.5px; font-weight: 600;">
+      <a href="Cabinet AC.dc.html" style="color: rgba(20,19,31,.72);" style-hover="color: #464195;">Accueil</a>
+      <a href="A propos.dc.html" style="color: rgba(20,19,31,.72);" style-hover="color: #464195;">À propos</a>
+      <a href="Services.dc.html" style="color: #464195;">Services</a>
+      <a href="Equipe.dc.html" style="color: rgba(20,19,31,.72);" style-hover="color: #464195;">Équipe</a>
+      <a href="Blog.dc.html" style="color: rgba(20,19,31,.72);" style-hover="color: #464195;">Blog</a>
+      <a href="Cabinet AC.dc.html#contact" style="color: rgba(20,19,31,.72);" style-hover="color: #464195;">Contact</a>
+    </nav>
+    <div style="flex: 1;"></div>
+    <a href="Cabinet AC.dc.html#contact" style="background: #464195; color: #fff; font-weight: 700; font-size: 14.5px; padding: 11px 20px; border-radius: 8px; white-space: nowrap;" style-hover="background: #C9A227;">Rendez-vous</a>
+    <button onClick="{{ toggleMenu }}" aria-label="Menu" class="ac-mob" style="background: transparent; border: 1px solid rgba(20,19,31,.14); color: #14131F; width: 40px; height: 40px; border-radius: 8px; cursor: pointer; align-items: center; justify-content: center;"><i class="ti ti-menu-2" style="font-size: 20px;"></i></button>
+  </div>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="border-top: 1px solid rgba(20,19,31,.08); padding: 14px 20px 20px; display: grid; gap: 13px; background: #fff;">
+      <a href="Cabinet AC.dc.html" style="color: #14131F; font-weight: 600;">Accueil</a>
+      <a href="A propos.dc.html" style="color: #14131F; font-weight: 600;">À propos</a>
+      <a href="Services.dc.html" style="color: #464195; font-weight: 700;">Services</a>
+      <a href="Equipe.dc.html" style="color: #14131F; font-weight: 600;">Équipe</a>
+      <a href="Blog.dc.html" style="color: #14131F; font-weight: 600;">Blog</a>
+      <a href="Cabinet AC.dc.html#contact" style="color: #14131F; font-weight: 600;">Contact</a>
+    </div>
+  </sc-if>
+</header>
+
+<section style="position: relative; overflow: hidden; background: #14131F; margin: 10px; border-radius: 22px; padding: 56px 22px;">
+  <div style="position: absolute; inset: 0;">
+    <image-slot id="ac-svc-banner" style="color: rgba(255,255,255,.8)" shape="rect" fit="cover" placeholder="Bannière — plan large de bureaux du cabinet ou réunion de travail, centre dégagé (2400×760)"></image-slot>
+  </div>
+  <div style="position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen; background: radial-gradient(56% 100% at 2% 0%, rgba(70,65,149,.62), transparent 62%), radial-gradient(50% 90% at 98% 6%, rgba(201,162,39,.32), transparent 62%);"></div>
+  <div style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(20,19,31,.84) 0%, rgba(20,19,31,.94) 100%);"></div>
+  <div style="position: absolute; inset: 0; pointer-events: none; background: radial-gradient(70% 70% at 50% 50%, rgba(20,19,31,.55), transparent 72%);"></div>
+  <div class="ac-in" style="position: relative; max-width: 900px; margin: 0 auto; text-align: center; color: #fff; display: grid; gap: 16px;">
+    <div class="ac-eye" style="display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 11.5px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #E3C766;">
+      <span style="width: 26px; height: 2px; background: currentColor;"></span>Services<span style="width: 26px; height: 2px; background: currentColor;"></span>
+    </div>
+    <h1 style="font-family: Sora, sans-serif; font-weight: 700; font-size: clamp(28px, 5vw, 52px); line-height: 1.05; letter-spacing: -.035em; margin: 0; text-wrap: balance;">{{ svc.title }}</h1>
+    <p style="font-size: clamp(15.5px, 1.8vw, 18px); line-height: 1.6; color: rgba(255,255,255,.74); max-width: 640px; margin: 0 auto;">{{ svc.intro }}</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 8px;">
+      <a href="Cabinet AC.dc.html#contact" style="background: #C9A227; color: #14131F; font-weight: 800; font-size: 15px; padding: 14px 26px; border-radius: 8px;" style-hover="background: #E3C766;">Demander un diagnostic</a>
+      <a href="#prestations" style="border: 1px solid rgba(255,255,255,.26); color: #fff; font-weight: 700; font-size: 15px; padding: 14px 24px; border-radius: 8px;" style-hover="border-color: #E3C766; color: #E3C766;">Voir les prestations</a>
+    </div>
+  </div>
+</section>
+
+<main class="ac-shell" style="max-width: 1240px; margin: 0 auto; padding: 40px 20px 70px; display: grid; gap: 34px; align-items: start;">
+  <aside class="ac-sticky" style="display: grid; gap: 8px; align-content: start;">
+    <div style="font-size: 11.5px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: rgba(20,19,31,.45); padding: 0 4px 6px;">Nos 8 services</div>
+    <sc-for list="{{ nav }}" as="n" hint-placeholder-count="8">
+      <button onClick="{{ n.go }}" style="{{ n.style }}">
+        <i class="ti {{ n.icon }}" style="font-size: 19px; flex-shrink: 0;"></i>
+        <span style="flex: 1; text-align: left;">{{ n.label }}</span>
+        <sc-if value="{{ n.active }}" hint-placeholder-val="{{ false }}">
+          <i class="ti ti-arrow-right" style="font-size: 16px;"></i>
+        </sc-if>
+      </button>
+    </sc-for>
+    <a href="Cabinet AC.dc.html#contact" style="margin-top: 10px; background: #14131F; color: #fff; font-weight: 700; font-size: 14.5px; padding: 14px; border-radius: 10px; text-align: center;" style-hover="background: #464195;">Parler à un consultant</a>
+  </aside>
+
+  <div style="display: grid; gap: 22px; min-width: 0;">
+    <div class="ac-2" style="display: grid; gap: 20px; align-items: start;">
+      <div style="display: grid; gap: 16px;">
+        <div class="ac-eye" style="display: flex; align-items: center; gap: 12px; font-size: 11.5px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #464195;"><span style="width: 26px; height: 2px; background: currentColor;"></span>{{ svc.num }} — {{ svc.label }}</div>
+        <h2 style="font-family: Sora, sans-serif; font-weight: 700; font-size: clamp(22px, 3vw, 32px); margin: 0; letter-spacing: -.03em; line-height: 1.15; text-wrap: balance;">{{ svc.h2 }}</h2>
+        <p style="margin: 0; font-size: 16px; line-height: 1.7; color: rgba(20,19,31,.7);">{{ svc.body }}</p>
+        <sc-if value="{{ svc.hasNote }}" hint-placeholder-val="{{ false }}">
+          <p style="margin: 0; font-size: 13.5px; line-height: 1.65; color: rgba(20,19,31,.58); border-left: 2px solid #C9A227; padding-left: 14px;">{{ svc.note }}</p>
+        </sc-if>
+      </div>
+      <div style="position: relative; border-radius: 18px; overflow: hidden; min-height: 300px; border: 1px solid rgba(20,19,31,.08);">
+        <image-slot id="{{ svc.slot }}" shape="rect" fit="cover" placeholder="{{ svc.imgHint }}"></image-slot>
+      </div>
+    </div>
+
+    <div id="prestations" style="background: #F7F7FA; border: 1px solid rgba(20,19,31,.07); border-radius: 20px; padding: 30px;">
+      <h3 style="font-family: Sora, sans-serif; font-size: 19px; font-weight: 700; margin: 0 0 4px; letter-spacing: -.02em;">Prestations couvertes</h3>
+      <p style="margin: 0 0 20px; font-size: 14.5px; color: rgba(20,19,31,.6);">{{ svc.count }} prestations prises en charge par le cabinet sur ce domaine.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 11px 24px;">
+        <sc-for list="{{ svc.items }}" as="it" hint-placeholder-count="12">
+          <div style="display: flex; gap: 10px; align-items: flex-start; font-size: 14.5px; line-height: 1.5; color: rgba(20,19,31,.78);">
+            <i class="ti ti-check" style="color: #C9A227; font-size: 17px; flex-shrink: 0; margin-top: 2px;"></i> {{ it }}
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div class="ac-2" style="display: grid; gap: 16px;">
+      <div style="background: #fff; border: 1px solid rgba(20,19,31,.09); border-radius: 18px; padding: 26px; display: grid; gap: 14px; align-content: start;">
+        <h3 style="font-family: Sora, sans-serif; font-size: 17.5px; font-weight: 700; margin: 0; letter-spacing: -.02em;">Comment nous intervenons</h3>
+        <sc-for list="{{ process }}" as="p" hint-placeholder-count="4">
+          <div style="display: flex; gap: 14px; align-items: flex-start;">
+            <span style="font-family: Sora, sans-serif; font-size: 13px; font-weight: 700; color: #464195; background: rgba(70,65,149,.09); width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">{{ p.num }}</span>
+            <span style="display: grid; gap: 2px;">
+              <b style="font-size: 15px; font-weight: 700;">{{ p.title }}</b>
+              <span style="font-size: 14px; line-height: 1.6; color: rgba(20,19,31,.63);">{{ p.desc }}</span>
+            </span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="background: #14131F; color: #fff; border-radius: 18px; padding: 26px; display: grid; gap: 16px; align-content: start;">
+        <h3 style="font-family: Sora, sans-serif; font-size: 17.5px; font-weight: 700; margin: 0; letter-spacing: -.02em;">Ce que vous obtenez</h3>
+        <sc-for list="{{ svc.outcomes }}" as="o" hint-placeholder-count="3">
+          <div style="display: flex; gap: 11px; align-items: flex-start; font-size: 14.5px; line-height: 1.6; color: rgba(255,255,255,.8);">
+            <i class="ti ti-circle-check-filled" style="color: #C9A227; font-size: 18px; flex-shrink: 0; margin-top: 1px;"></i> {{ o }}
+          </div>
+        </sc-for>
+        <div style="height: 1px; background: rgba(255,255,255,.12);"></div>
+        <a href="Cabinet AC.dc.html#contact" style="background: #C9A227; color: #14131F; font-weight: 800; font-size: 15px; padding: 14px; border-radius: 9px; text-align: center;" style-hover="background: #fff;">Demander un devis</a>
+      </div>
+    </div>
+
+    <div style="display: grid; gap: 16px;">
+      <h3 style="font-family: Sora, sans-serif; font-size: 19px; font-weight: 700; margin: 0; letter-spacing: -.02em;">Autres services</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px;">
+        <sc-for list="{{ others }}" as="o" hint-placeholder-count="3">
+          <button onClick="{{ o.go }}" class="ac-card" style="background: #fff; border: 1px solid rgba(20,19,31,.09); border-radius: 16px; padding: 22px; display: grid; gap: 9px; text-align: left; cursor: pointer; align-content: start;">
+            <span style="width: 42px; height: 42px; border-radius: 11px; background: #F7F7FA; color: #464195; display: flex; align-items: center; justify-content: center;"><i class="ti {{ o.icon }}" style="font-size: 21px;"></i></span>
+            <b style="font-family: Sora, sans-serif; font-size: 16px; font-weight: 700; letter-spacing: -.02em;">{{ o.label }}</b>
+            <span style="font-size: 13.5px; line-height: 1.55; color: rgba(20,19,31,.62);">{{ o.intro }}</span>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer style="background: #14131F; color: rgba(255,255,255,.55); margin: 10px; border-radius: 20px; padding: 26px; display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between; align-items: center; font-size: 13.5px;">
+  <span>© 2026 Allianz Consulting Sarl · RCCM RC/DLA/2021/B/3203</span>
+  <a href="Cabinet AC.dc.html" style="color: #fff; font-weight: 700;" style-hover="color: #C9A227;">← Retour à l'accueil</a>
+</footer>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440}}">
+const SERVICES = [
+  {
+    slug: 'fiscalite', num: '01', label: 'Fiscalité', icon: 'ti-receipt-tax',
+    title: 'Fiscalité', h2: 'Vos obligations fiscales tenues, vos risques identifiés avant l’administration',
+    intro: 'Diagnostic, déclarations, contrôles et optimisation dans le strict respect de la législation.',
+    body: 'Nous prenons en charge l’intégralité du cycle fiscal : identification du régime applicable, calcul des impôts et taxes, dépôt des déclarations, suivi sur les plateformes de l’administration et assistance en cas de contrôle. Chaque dossier commence par un diagnostic qui cartographie vos risques et les régularisations à engager.',
+    imgHint: 'Photo — consultant expliquant une liasse fiscale à un dirigeant, documents et écran visibles (900×760)',
+    outcomes: ['Un calendrier fiscal tenu, sans pénalité de retard', 'Une cartographie écrite de vos risques fiscaux', 'Une assistance immédiate en cas de contrôle'],
+    items: ['Diagnostic de la situation fiscale', 'Identification du régime fiscal applicable', 'Conseil et assistance fiscale', 'Élaboration et suivi des déclarations fiscales', 'Calcul des impôts et taxes', 'Assistance lors des contrôles fiscaux', 'Analyse des risques fiscaux', 'Régularisation des situations fiscales', 'Optimisation fiscale conforme à la loi', 'Suivi des obligations sur les plateformes de l’administration', 'Demandes et réclamations fiscales', 'Veille fiscale']
+  },
+  {
+    slug: 'comptabilite', num: '02', label: 'Comptabilité', icon: 'ti-calculator',
+    title: 'Comptabilité', h2: 'Une comptabilité tenue, lisible et prête à être auditée',
+    intro: 'Tenue, clôture et analyse de vos comptes, en formule complète, mensuelle, trimestrielle ou ponctuelle.',
+    body: 'Saisie, classement, rapprochements bancaires, suivi clients et fournisseurs, trésorerie, états financiers : nous tenons votre comptabilité et nous la rendons exploitable. L’analyse des comptes et la mise en place de procédures évitent que la clôture devienne un chantier annuel.',
+    note: 'Quatre formules d’accompagnement : comptabilité complète, mensuelle, trimestrielle ou assistance ponctuelle selon vos besoins.',
+    imgHint: 'Photo — pièces comptables classées, écran de logiciel comptable, mains en train de saisir (900×760)',
+    outcomes: ['Des comptes à jour chaque mois, pas seulement à la clôture', 'Des états financiers conformes et exploitables', 'Des procédures écrites que vos équipes peuvent suivre'],
+    items: ['Tenue de la comptabilité', 'Saisie et classement des pièces comptables', 'Enregistrement des opérations', 'Rapprochements bancaires', 'Suivi des comptes clients et fournisseurs', 'Suivi de la trésorerie', 'Établissement des états financiers', 'Préparation des déclarations comptables', 'Analyse des comptes', 'Mise en place de procédures comptables', 'Assistance à la clôture des comptes', 'Conseil en organisation comptable']
+  },
+  {
+    slug: 'management', num: '03', label: 'Management', icon: 'ti-target-arrow',
+    title: 'Management & conseil en gestion', h2: 'Organiser, mesurer, décider — avec des chiffres et non des impressions',
+    intro: 'Organisation, pilotage et prise de décision : nous outillons les dirigeants.',
+    body: 'Diagnostic organisationnel, procédures internes, tableaux de bord, contrôle de gestion, budgets, analyse des coûts et de la rentabilité. Nous intervenons aussi sur les phases sensibles : restructuration, réorganisation des services, redéfinition de la stratégie.',
+    imgHint: 'Photo — atelier de travail sur tableau blanc avec un dirigeant et un consultant (900×760)',
+    outcomes: ['Un tableau de bord de cinq indicateurs réellement suivis', 'Des procédures internes écrites et appliquées', 'Une lecture chiffrée de la rentabilité par activité'],
+    items: ['Diagnostic organisationnel', 'Conseil en management', 'Mise en place de procédures internes', 'Organisation des services', 'Élaboration de tableaux de bord', 'Contrôle de gestion', 'Gestion budgétaire', 'Élaboration et suivi des budgets', 'Analyse des coûts', 'Analyse de la rentabilité', 'Accompagnement à la restructuration', 'Conseil en stratégie', 'Indicateurs de performance', 'Aide à la décision']
+  },
+  {
+    slug: 'ingenierie-financiere', num: '04', label: 'Ingénierie financière', icon: 'ti-chart-arrows-vertical',
+    title: 'Ingénierie financière', h2: 'Des dossiers que les banques et les investisseurs acceptent de lire',
+    intro: 'Business plans, financements et prévisions pour sécuriser vos projets d’investissement.',
+    body: 'Analyse et diagnostic financier, business plan, plan de financement, études de rentabilité, prévisions, budget de trésorerie et besoin en fonds de roulement. Nous structurons le dossier, nous en défendons les hypothèses et nous vous accompagnons jusqu’à la décision de financement.',
+    imgHint: 'Photo — présentation d’un plan de financement, graphiques imprimés et ordinateur (900×760)',
+    outcomes: ['Un business plan défendable, hypothèses documentées', 'Un budget de trésorerie glissant', 'Un dossier bancaire complet et présenté'],
+    items: ['Analyse financière', 'Diagnostic financier', 'Élaboration de plans de financement', 'Recherche et structuration de financements', 'Élaboration de business plans', 'Études de rentabilité des projets', 'Prévisions financières', 'Budgets de trésorerie', 'Analyse du besoin en fonds de roulement', 'Conseil en investissement', 'Évaluation financière des projets', 'Dossiers banques et investisseurs', 'Restructuration financière']
+  },
+  {
+    slug: 'audit', num: '05', label: 'Audit', icon: 'ti-shield-check',
+    title: 'Audit', h2: 'Identifier les risques et les anomalies, puis suivre les corrections',
+    intro: 'Audit comptable, financier, fiscal, organisationnel et interne, avec suivi des recommandations.',
+    body: 'Nos missions d’audit visent un objectif simple : révéler les insuffisances avant qu’elles ne deviennent des litiges. Contrôle des procédures, évaluation des risques, vérification de la conformité, analyse des anomalies, puis un plan de recommandations dont nous suivons la mise en œuvre.',
+    note: 'Les missions d’audit sont réalisées dans la limite des qualifications, autorisations et dispositions réglementaires applicables.',
+    imgHint: 'Photo — deux auditeurs examinant des registres et un écran, ambiance sobre (900×760)',
+    outcomes: ['Un rapport d’audit hiérarchisé par niveau de risque', 'Un plan de correction avec responsables et échéances', 'Un point de suivi de la mise en œuvre'],
+    items: ['Audit comptable', 'Audit financier', 'Audit fiscal', 'Audit organisationnel', 'Audit interne', 'Contrôle des procédures', 'Évaluation des risques', 'Vérification de la conformité des opérations', 'Analyse des anomalies', 'Recommandations d’amélioration', 'Suivi de la mise en œuvre des recommandations']
+  },
+  {
+    slug: 'douane-transit', num: '06', label: 'Douane & transit', icon: 'ti-ship',
+    title: 'Douane & transit', h2: 'Vos marchandises circulent, vos dossiers passent',
+    intro: 'Import, export, dédouanement : vos opérations de commerce extérieur sans blocage.',
+    body: 'Nous accompagnons vos opérations d’importation et d’exportation : réglementation douanière, préparation des dossiers, procédures de dédouanement, droits et taxes, classement tarifaire et suivi des marchandises. Une position tarifaire mal choisie coûte cher — nous la vérifions avant l’expédition.',
+    note: 'Les opérations exigeant une qualité professionnelle ou une autorisation spécifique sont réalisées conformément à la réglementation en vigueur.',
+    imgHint: 'Photo — conteneurs au port de Douala ou documents de transit sur un bureau (900×760)',
+    outcomes: ['Un classement tarifaire vérifié avant expédition', 'Des dossiers douaniers complets du premier coup', 'Un suivi de vos marchandises et formalités'],
+    items: ['Assistance import et export', 'Conseil en réglementation douanière', 'Préparation des dossiers douaniers', 'Procédures de dédouanement', 'Conseil sur les droits et taxes à l’importation', 'Classement tarifaire', 'Suivi des opérations de transit', 'Conseil sur les documents internationaux', 'Assistance auprès des intervenants', 'Suivi des marchandises et formalités']
+  },
+  {
+    slug: 'ressources-humaines', num: '07', label: 'Ressources humaines', icon: 'ti-users',
+    title: 'Ressources humaines', h2: 'Des contrats solides et une gestion du personnel conforme',
+    intro: 'Contrats, dossiers du personnel, recrutement et politiques RH conformes au droit du travail.',
+    body: 'Rédaction des contrats de travail, gestion administrative et dossiers du personnel, fiches de poste, assistance au recrutement, évaluation des performances, conseil en formation et en droit du travail. Nous intervenons aussi en prévention et en gestion des conflits professionnels.',
+    imgHint: 'Photo — entretien de recrutement ou signature de contrat, deux personnes en bureau (900×760)',
+    outcomes: ['Des contrats adaptés à votre activité, pas des modèles génériques', 'Des dossiers du personnel complets et à jour', 'Un cadre RH écrit : fiches de poste et procédures'],
+    items: ['Élaboration des contrats de travail', 'Gestion administrative du personnel', 'Dossiers du personnel', 'Conseil et assistance au recrutement', 'Élaboration des fiches de poste', 'Organisation du personnel', 'Évaluation des performances', 'Conseil en formation', 'Élaboration des politiques RH', 'Gestion des conflits professionnels', 'Conseil en droit du travail', 'Procédures internes']
+  },
+  {
+    slug: 'creation-entreprise', num: '08', label: 'Création d’entreprise', icon: 'ti-building-store',
+    title: 'Création d’entreprise', h2: 'De l’idée à l’immatriculation, puis les premiers mois',
+    intro: 'Étude du projet, forme juridique, business plan, formalités et accompagnement post-création.',
+    body: 'Nous étudions votre projet, identifions la forme juridique et le régime fiscal appropriés, produisons le business plan et le plan de financement, préparons les documents administratifs et vous accompagnons jusqu’à l’immatriculation. Puis nous mettons en place votre comptabilité et vos procédures.',
+    note: 'Un service d’accompagnement post-création permet au nouvel entrepreneur d’être suivi durant ses premiers mois d’activité.',
+    imgHint: 'Photo — jeune entrepreneur recevant ses documents d’immatriculation, poignée de main (900×760)',
+    outcomes: ['Une structure juridique et fiscale choisie en connaissance', 'Un dossier de création complet et déposé', 'Une comptabilité opérationnelle dès le premier mois'],
+    items: ['Étude du projet', 'Choix de la forme juridique', 'Conseil sur le régime fiscal', 'Élaboration du business plan', 'Plan de financement', 'Préparation des documents administratifs', 'Assistance aux formalités de création', 'Accompagnement à l’immatriculation', 'Conseil sur les obligations fiscales et sociales', 'Mise en place de la comptabilité', 'Procédures administratives', 'Accompagnement après création']
+  }
+];
+
+class Component extends DCLogic {
+  state = { menuOpen: false, i: 0 };
+
+  componentDidMount() {
+    const h = (typeof location !== 'undefined' ? location.hash : '').replace('#', '');
+    const idx = SERVICES.findIndex(s => s.slug === h);
+    if (idx > -1) this.setState({ i: idx });
+    this._onHash = () => {
+      const k = SERVICES.findIndex(s => s.slug === location.hash.replace('#', ''));
+      if (k > -1) this.setState({ i: k, menuOpen: false });
+    };
+    window.addEventListener('hashchange', this._onHash);
+  }
+  componentWillUnmount() { if (this._onHash) window.removeEventListener('hashchange', this._onHash); }
+
+  pick(i) {
+    return () => {
+      this.setState({ i, menuOpen: false });
+      if (typeof history !== 'undefined') history.replaceState(null, '', '#' + SERVICES[i].slug);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+  }
+
+  renderVals() {
+    const i = this.state.i, s = SERVICES[i];
+    return {
+      menuOpen: this.state.menuOpen,
+      toggleMenu: () => this.setState(m => ({ menuOpen: !m.menuOpen })),
+      svc: {
+        num: s.num, label: s.label, title: s.title, h2: s.h2, intro: s.intro, body: s.body,
+        note: s.note || '', hasNote: !!s.note, items: s.items, count: s.items.length,
+        outcomes: s.outcomes, slot: 'ac-svc-' + s.slug, imgHint: s.imgHint
+      },
+      nav: SERVICES.map((d, k) => ({
+        label: d.label, icon: d.icon, active: k === i, go: this.pick(k),
+        style: 'display:flex;align-items:center;gap:12px;width:100%;border:1px solid ' + (k === i ? '#464195' : 'rgba(20,19,31,.09)') +
+          ';background:' + (k === i ? '#464195' : '#fff') + ';color:' + (k === i ? '#fff' : '#14131F') +
+          ';border-radius:10px;padding:13px 14px;font-size:14.5px;font-weight:600;cursor:pointer;transition:.28s;'
+      })),
+      others: SERVICES.filter((d, k) => k !== i).slice(0, 3).map(d => ({
+        label: d.label, icon: d.icon, intro: d.intro,
+        go: this.pick(SERVICES.findIndex(x => x.slug === d.slug))
+      })),
+      process: [
+        { num: '1', title: 'Diagnostic', desc: 'Nous auditons votre situation sur ce domaine et chiffrons l’écart avec vos obligations.' },
+        { num: '2', title: 'Plan d’action', desc: 'Priorités, calendrier et périmètre d’intervention validés avec vous par écrit.' },
+        { num: '3', title: 'Exécution', desc: 'Le consultant dédié traite les dossiers et vous rend compte à chaque étape.' },
+        { num: '4', title: 'Suivi', desc: 'Point périodique, veille réglementaire et ajustement de la formule si votre activité change.' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

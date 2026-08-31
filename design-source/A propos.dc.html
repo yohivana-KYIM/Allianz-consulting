@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css" />
+<script src="./image-slot.js"></script>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #ffffff; color: #14131F; font-family: Manrope, system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: #464195; text-decoration: none; }
+  a:hover { color: #C9A227; }
+  input, button, select, textarea { font-family: inherit; }
+  @keyframes acUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
+  @keyframes acRule { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  .ac-in { animation: acUp .6s cubic-bezier(.16,1,.3,1) both; }
+  .ac-eye > span:first-child { transform-origin: left center; animation: acRule .7s cubic-bezier(.16,1,.3,1) both .15s; }
+  a, button { transition: background .28s ease, color .28s ease, transform .3s cubic-bezier(.16,1,.3,1), border-color .28s ease, box-shadow .3s ease; }
+  .ac-card { transition: transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s ease, border-color .3s ease; }
+  .ac-card:hover { transform: translateY(-5px); box-shadow: 0 20px 44px rgba(20,19,31,.11); border-color: #464195; }
+  .ac-desk { display: none !important; }
+  .ac-mob { display: flex !important; }
+  .ac-2 { grid-template-columns: 1fr; }
+  .ac-2b { grid-template-columns: 1fr; }
+  @media (min-width: 1000px) {
+    .ac-desk { display: flex !important; }
+    .ac-mob { display: none !important; }
+    .ac-2 { grid-template-columns: 1.05fr .95fr; gap: 54px !important; }
+    .ac-2b { grid-template-columns: .95fr 1.05fr; gap: 54px !important; }
+  }
+</style>
+</helmet>
+
+<header style="position: sticky; top: 0; z-index: 60; background: rgba(255,255,255,.94); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(20,19,31,.07);">
+  <div style="max-width: 1240px; margin: 0 auto; padding: 11px 20px; display: flex; align-items: center; gap: 22px;">
+    <a href="Cabinet AC.dc.html" style="display: flex; align-items: center; gap: 11px; color: #14131F;">
+      <img src="assets/logo-ac.png" alt="Allianz Consulting Sarl" style="height: 42px; width: auto;" />
+      <span style="font-family: Sora, sans-serif; font-weight: 700; font-size: 15.5px; letter-spacing: -.02em; white-space: nowrap;">Allianz <span style="color: #464195;">Consulting</span></span>
+    </a>
+    <nav class="ac-desk" style="gap: 21px; margin-left: 8px; font-size: 14.5px; font-weight: 600;">
+      <a href="Cabinet AC.dc.html" style="color: rgba(20,19,31,.72);" style-hover="color: #464195;">Accueil</a>
+      <a href="A propos.dc.html" style="color: #464195;">À propos</a>
+      <a href="Services.dc.html" style="color: rgba(20,19,31,.72);" style-hover="color: #464195;">Services</a>
+      <a href="Equipe.dc.html" style="color: rgba(20,19,31,.72);" style-hover="color: #464195;">Équipe</a>
+      <a href="Blog.dc.html" style="color: rgba(20,19,31,.72);" style-hover="color: #464195;">Blog</a>
+      <a href="Cabinet AC.dc.html#contact" style="color: rgba(20,19,31,.72);" style-hover="color: #464195;">Contact</a>
+    </nav>
+    <div style="flex: 1;"></div>
+    <a href="Cabinet AC.dc.html#contact" style="background: #464195; color: #fff; font-weight: 700; font-size: 14.5px; padding: 11px 20px; border-radius: 8px; white-space: nowrap;" style-hover="background: #C9A227;">Rendez-vous</a>
+    <button onClick="{{ toggleMenu }}" aria-label="Menu" class="ac-mob" style="background: transparent; border: 1px solid rgba(20,19,31,.14); color: #14131F; width: 40px; height: 40px; border-radius: 8px; cursor: pointer; align-items: center; justify-content: center;"><i class="ti ti-menu-2" style="font-size: 20px;"></i></button>
+  </div>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="border-top: 1px solid rgba(20,19,31,.08); padding: 14px 20px 20px; display: grid; gap: 13px; background: #fff;">
+      <a href="Cabinet AC.dc.html" style="color: #14131F; font-weight: 600;">Accueil</a>
+      <a href="A propos.dc.html" style="color: #464195; font-weight: 700;">À propos</a>
+      <a href="Services.dc.html" style="color: #14131F; font-weight: 600;">Services</a>
+      <a href="Equipe.dc.html" style="color: #14131F; font-weight: 600;">Équipe</a>
+      <a href="Blog.dc.html" style="color: #14131F; font-weight: 600;">Blog</a>
+      <a href="Cabinet AC.dc.html#contact" style="color: #14131F; font-weight: 600;">Contact</a>
+    </div>
+  </sc-if>
+</header>
+
+<section style="position: relative; overflow: hidden; background: #14131F; margin: 10px; border-radius: 22px; padding: 56px 22px;">
+  <div style="position: absolute; inset: 0;">
+    <image-slot id="ac-about-banner" style="color: rgba(255,255,255,.8)" shape="rect" fit="cover" placeholder="Bannière — façade ou salle de réunion du cabinet à Akwa, plan large en fin de journée, centre dégagé (2400×760)"></image-slot>
+  </div>
+  <div style="position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen; background: radial-gradient(56% 100% at 2% 0%, rgba(70,65,149,.62), transparent 62%), radial-gradient(50% 90% at 98% 6%, rgba(201,162,39,.32), transparent 62%);"></div>
+  <div style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(20,19,31,.84) 0%, rgba(20,19,31,.94) 100%);"></div>
+  <div style="position: absolute; inset: 0; pointer-events: none; background: radial-gradient(70% 70% at 50% 50%, rgba(20,19,31,.55), transparent 72%);"></div>
+  <div class="ac-in" style="position: relative; max-width: 880px; margin: 0 auto; text-align: center; color: #fff; display: grid; gap: 16px;">
+    <div class="ac-eye" style="display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 11.5px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #E3C766;">
+      <span style="width: 26px; height: 2px; background: currentColor;"></span>À propos<span style="width: 26px; height: 2px; background: currentColor;"></span>
+    </div>
+    <h1 style="font-family: Sora, sans-serif; font-weight: 700; font-size: clamp(28px, 5vw, 52px); line-height: 1.05; letter-spacing: -.035em; margin: 0; text-wrap: balance;">Un partenaire stratégique, pas un prestataire de plus</h1>
+    <p style="font-size: clamp(15.5px, 1.8vw, 18px); line-height: 1.6; color: rgba(255,255,255,.74); max-width: 640px; margin: 0 auto;">Allianz Consulting Sarl accompagne entreprises, entrepreneurs, commerçants, associations et particuliers dans leurs démarches administratives, comptables, fiscales, financières et managériales.</p>
+  </div>
+</section>
+
+<main style="max-width: 1240px; margin: 0 auto; padding: 44px 20px 70px; display: grid; gap: 48px;">
+  <div class="ac-2" style="display: grid; gap: 34px; align-items: center;">
+    <div style="display: grid; gap: 18px;">
+      <div class="ac-eye" style="display: flex; align-items: center; gap: 12px; font-size: 11.5px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #464195;"><span style="width: 26px; height: 2px; background: currentColor;"></span>01 — Contexte</div>
+      <h2 style="font-family: Sora, sans-serif; font-weight: 700; font-size: clamp(24px, 3.4vw, 38px); line-height: 1.1; letter-spacing: -.035em; margin: 0; text-wrap: balance;">La complexité réglementaire n'est pas votre métier</h2>
+      <p style="font-size: 16px; line-height: 1.75; color: rgba(20,19,31,.72); margin: 0;">Dans un environnement caractérisé par la complexité des obligations fiscales, comptables, douanières, sociales et administratives, les entreprises ont besoin d'un accompagnement permanent — adapté à leur taille et à leur secteur d'activité, pas d'une intervention ponctuelle et générique.</p>
+      <p style="font-size: 16px; line-height: 1.75; color: rgba(20,19,31,.72); margin: 0;">Le cabinet fournit des prestations professionnelles qui permettent à ses clients de mieux gérer leurs activités, de respecter leurs obligations légales et fiscales, d'améliorer leurs performances et de sécuriser leurs décisions — de la création de l'entreprise jusqu'à son développement.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 6px;">
+        <sc-for list="{{ figures }}" as="f" hint-placeholder-count="3">
+          <div style="border: 1px solid rgba(20,19,31,.09); border-radius: 14px; padding: 18px;">
+            <div style="font-family: Sora, sans-serif; font-size: 26px; font-weight: 700; color: #464195; letter-spacing: -.03em;">{{ f.value }}</div>
+            <div style="font-size: 13px; line-height: 1.5; color: rgba(20,19,31,.6); margin-top: 3px;">{{ f.label }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="position: relative; border-radius: 20px; overflow: hidden; min-height: 460px; border: 1px solid rgba(20,19,31,.08);">
+      <image-slot id="ac-about-1" shape="rect" fit="cover" placeholder="Photo — dirigeant et consultant en entretien autour de documents, lumière naturelle, cadrage vertical (900×1100)"></image-slot>
+    </div>
+  </div>
+
+  <div style="background: #F7F7FA; border: 1px solid rgba(20,19,31,.07); border-radius: 22px; padding: 40px 30px; display: grid; gap: 30px;">
+    <div style="display: grid; gap: 16px; max-width: 660px;">
+      <div class="ac-eye" style="display: flex; align-items: center; gap: 12px; font-size: 11.5px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #464195;"><span style="width: 26px; height: 2px; background: currentColor;"></span>02 — Objectifs</div>
+      <h2 style="font-family: Sora, sans-serif; font-weight: 700; font-size: clamp(22px, 3vw, 32px); line-height: 1.14; letter-spacing: -.035em; margin: 0; text-wrap: balance;">Un accompagnement global, dix engagements précis</h2>
+      <p style="font-size: 15.5px; line-height: 1.7; color: rgba(20,19,31,.68); margin: 0;">Offrir aux entreprises et aux entrepreneurs un accompagnement complet en fiscalité, comptabilité, gestion, finance, audit, ressources humaines, douane et transit.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px 26px;">
+      <sc-for list="{{ objectives }}" as="o" hint-placeholder-count="10">
+        <div style="display: flex; gap: 13px; align-items: flex-start;">
+          <span style="font-family: Sora, sans-serif; font-size: 12px; font-weight: 700; color: #464195; background: rgba(70,65,149,.1); width: 26px; height: 26px; border-radius: 7px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">{{ o.n }}</span>
+          <span style="font-size: 14.5px; line-height: 1.55; color: rgba(20,19,31,.78); padding-top: 3px;">{{ o.text }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div class="ac-2b" style="display: grid; gap: 34px; align-items: center;">
+    <div style="position: relative; border-radius: 20px; overflow: hidden; min-height: 440px; border: 1px solid rgba(20,19,31,.08);">
+      <image-slot id="ac-about-2" shape="rect" fit="cover" placeholder="Photo — équipe du cabinet au travail, dossiers et écrans, ambiance sérieuse et lumineuse (900×1100)"></image-slot>
+    </div>
+    <div style="display: grid; gap: 18px;">
+      <div class="ac-eye" style="display: flex; align-items: center; gap: 12px; font-size: 11.5px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #464195;"><span style="width: 26px; height: 2px; background: currentColor;"></span>03 — Nos engagements</div>
+      <h2 style="font-family: Sora, sans-serif; font-weight: 700; font-size: clamp(24px, 3.4vw, 38px); line-height: 1.1; letter-spacing: -.035em; margin: 0; text-wrap: balance;">Ce sur quoi vous pouvez nous juger</h2>
+      <div style="display: grid; gap: 12px;">
+        <sc-for list="{{ values }}" as="v" hint-placeholder-count="4">
+          <div style="border: 1px solid rgba(20,19,31,.09); border-radius: 14px; padding: 18px 20px; display: flex; gap: 14px; align-items: flex-start;">
+            <i class="ti {{ v.icon }}" style="font-size: 22px; color: #464195; flex-shrink: 0; margin-top: 1px;"></i>
+            <span style="display: grid; gap: 3px;">
+              <b style="font-family: Sora, sans-serif; font-size: 15.5px; font-weight: 700;">{{ v.title }}</b>
+              <span style="font-size: 14px; line-height: 1.6; color: rgba(20,19,31,.65);">{{ v.desc }}</span>
+            </span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: grid; gap: 24px;">
+    <div style="display: grid; gap: 16px; max-width: 640px;">
+      <div class="ac-eye" style="display: flex; align-items: center; gap: 12px; font-size: 11.5px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #464195;"><span style="width: 26px; height: 2px; background: currentColor;"></span>04 — Clientèle</div>
+      <h2 style="font-family: Sora, sans-serif; font-weight: 700; font-size: clamp(22px, 3vw, 32px); margin: 0; letter-spacing: -.035em; text-wrap: balance;">À qui nous nous adressons</h2>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 9px;">
+      <sc-for list="{{ clients }}" as="c" hint-placeholder-count="11">
+        <span style="border: 1px solid rgba(20,19,31,.12); background: #fff; border-radius: 999px; padding: 10px 18px; font-size: 14px; font-weight: 600; color: rgba(20,19,31,.78);" style-hover="border-color: #464195; color: #464195;">{{ c }}</span>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="display: grid; gap: 24px;">
+    <div style="display: grid; gap: 16px; max-width: 640px;">
+      <div class="ac-eye" style="display: flex; align-items: center; gap: 12px; font-size: 11.5px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #464195;"><span style="width: 26px; height: 2px; background: currentColor;"></span>05 — Domaines</div>
+      <h2 style="font-family: Sora, sans-serif; font-weight: 700; font-size: clamp(22px, 3vw, 32px); margin: 0; letter-spacing: -.035em; text-wrap: balance;">Huit domaines d'intervention</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px;">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="8">
+        <a href="{{ s.href }}" class="ac-card" style="background: #fff; border: 1px solid rgba(20,19,31,.09); border-radius: 16px; padding: 22px; display: grid; gap: 9px; align-content: start; color: #14131F;">
+          <span style="width: 42px; height: 42px; border-radius: 11px; background: #F7F7FA; color: #464195; display: flex; align-items: center; justify-content: center;"><i class="ti {{ s.icon }}" style="font-size: 21px;"></i></span>
+          <b style="font-family: Sora, sans-serif; font-size: 16px; font-weight: 700; letter-spacing: -.02em;">{{ s.label }}</b>
+          <span style="display: flex; align-items: center; gap: 7px; font-size: 13.5px; font-weight: 700; color: #464195;">Voir le détail <i class="ti ti-arrow-right" style="font-size: 15px;"></i></span>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="background: #14131F; color: #fff; border-radius: 22px; padding: 46px 30px; display: grid; gap: 20px; justify-items: center; text-align: center;">
+    <h2 style="font-family: Sora, sans-serif; font-size: clamp(22px, 3vw, 32px); font-weight: 700; margin: 0; letter-spacing: -.035em; text-wrap: balance;">Le premier diagnostic est offert</h2>
+    <p style="margin: 0; font-size: 15.5px; line-height: 1.65; color: rgba(255,255,255,.66); max-width: 540px;">Décrivez votre situation : nous revenons sous 48 h avec une lecture claire de vos obligations et des priorités à traiter.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+      <a href="Cabinet AC.dc.html#contact" style="background: #C9A227; color: #14131F; font-weight: 800; font-size: 15px; padding: 14px 28px; border-radius: 8px;" style-hover="background: #fff;">Demander un diagnostic</a>
+      <a href="tel:+237691538495" style="border: 1px solid rgba(255,255,255,.26); color: #fff; font-weight: 700; font-size: 15px; padding: 14px 26px; border-radius: 8px; display: flex; align-items: center; gap: 9px;" style-hover="border-color: #E3C766; color: #E3C766;"><i class="ti ti-phone" style="font-size: 17px;"></i> 691 53 84 95</a>
+    </div>
+  </div>
+</main>
+
+<footer style="background: #14131F; color: rgba(255,255,255,.55); margin: 10px; border-radius: 20px; padding: 26px; display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between; align-items: center; font-size: 13.5px;">
+  <span>© 2026 Allianz Consulting Sarl · RCCM RC/DLA/2021/B/3203 · NIU M062116251729J</span>
+  <a href="Cabinet AC.dc.html" style="color: #fff; font-weight: 700;" style-hover="color: #C9A227;">← Retour à l'accueil</a>
+</footer>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440}}">
+class Component extends DCLogic {
+  state = { menuOpen: false };
+  renderVals() {
+    return {
+      menuOpen: this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      figures: [
+        { value: '8', label: 'domaines d’intervention réunis' },
+        { value: '120', label: 'prestations couvertes' },
+        { value: '48 h', label: 'pour le premier diagnostic' }
+      ],
+      objectives: [
+        'Accompagner les entreprises dans leur gestion comptable et fiscale',
+        'Assurer le respect des obligations fiscales et administratives',
+        'Conseiller les entreprises dans leurs décisions financières',
+        'Réaliser des missions d’audit et de contrôle selon les habilitations requises',
+        'Accompagner les opérations d’importation et d’exportation',
+        'Conseiller les dirigeants en matière de management et d’organisation',
+        'Assister les entreprises dans la gestion de leurs ressources humaines',
+        'Accompagner la création et la formalisation des entreprises',
+        'Améliorer la rentabilité et la performance des entreprises clientes',
+        'Proposer des solutions adaptées aux difficultés rencontrées'
+      ].map((text, i) => ({ n: String(i + 1), text })),
+      values: [
+        { icon: 'ti-scale', title: 'Rigueur réglementaire', desc: 'Chaque recommandation s’inscrit dans le cadre légal en vigueur. Aucune zone grise.' },
+        { icon: 'ti-eye', title: 'Lisibilité', desc: 'Des restitutions écrites, chiffrées et compréhensibles par un dirigeant non financier.' },
+        { icon: 'ti-hand-stop', title: 'Engagement de suivi', desc: 'Les recommandations sont suivies dans le temps, pas livrées puis abandonnées.' },
+        { icon: 'ti-lock', title: 'Confidentialité', desc: 'Vos documents restent internes au cabinet. Aucune sous-traitance sans votre accord.' }
+      ],
+      clients: ['Entrepreneurs et porteurs de projets', 'TPE', 'PME', 'Sociétés commerciales', 'Commerçants', 'Professions libérales', 'Associations et organisations', 'Investisseurs', 'Entreprises importatrices et exportatrices', 'Entreprises nouvellement créées', 'Développement ou restructuration'],
+      services: [
+        { label: 'Fiscalité', icon: 'ti-receipt-tax', slug: 'fiscalite' },
+        { label: 'Comptabilité', icon: 'ti-calculator', slug: 'comptabilite' },
+        { label: 'Management', icon: 'ti-target-arrow', slug: 'management' },
+        { label: 'Ingénierie financière', icon: 'ti-chart-arrows-vertical', slug: 'ingenierie-financiere' },
+        { label: 'Audit', icon: 'ti-shield-check', slug: 'audit' },
+        { label: 'Douane & transit', icon: 'ti-ship', slug: 'douane-transit' },
+        { label: 'Ressources humaines', icon: 'ti-users', slug: 'ressources-humaines' },
+        { label: 'Création d’entreprise', icon: 'ti-building-store', slug: 'creation-entreprise' }
+      ].map(s => ({ label: s.label, icon: s.icon, href: 'Services.dc.html#' + s.slug }))
+    };
+  }
+}
+</script>
+</body>
+</html>

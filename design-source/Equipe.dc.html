@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css" />
+<script src="./image-slot.js"></script>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #ffffff; color: #14131F; font-family: Manrope, system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: #464195; text-decoration: none; }
+  a:hover { color: #C9A227; }
+  input, button, select, textarea { font-family: inherit; }
+  @keyframes acUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
+  @keyframes acRule { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  .ac-in { animation: acUp .6s cubic-bezier(.16,1,.3,1) both; }
+  .ac-eye > span:first-child { transform-origin: left center; animation: acRule .7s cubic-bezier(.16,1,.3,1) both .15s; }
+  a, button { transition: background .28s ease, color .28s ease, transform .3s cubic-bezier(.16,1,.3,1), border-color .28s ease, box-shadow .3s ease; }
+  .ac-card { transition: transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s ease, border-color .3s ease; }
+  .ac-card:hover { transform: translateY(-6px); box-shadow: 0 22px 48px rgba(20,19,31,.12); border-color: #464195; }
+  .ac-desk { display: none !important; }
+  .ac-mob { display: flex !important; }
+  .ac-2 { grid-template-columns: 1fr; }
+  @media (min-width: 1000px) {
+    .ac-desk { display: flex !important; }
+    .ac-mob { display: none !important; }
+    .ac-2 { grid-template-columns: 1fr 1fr; gap: 54px !important; }
+  }
+</style>
+</helmet>
+
+<header style="position: sticky; top: 0; z-index: 60; background: rgba(255,255,255,.94); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(20,19,31,.07);">
+  <div style="max-width: 1240px; margin: 0 auto; padding: 11px 20px; display: flex; align-items: center; gap: 22px;">
+    <a href="Cabinet AC.dc.html" style="display: flex; align-items: center; gap: 11px; color: #14131F;">
+      <img src="assets/logo-ac.png" alt="Allianz Consulting Sarl" style="height: 42px; width: auto;" />
+      <span style="font-family: Sora, sans-serif; font-weight: 700; font-size: 15.5px; letter-spacing: -.02em; white-space: nowrap;">Allianz <span style="color: #464195;">Consulting</span></span>
+    </a>
+    <nav class="ac-desk" style="gap: 21px; margin-left: 8px; font-size: 14.5px; font-weight: 600;">
+      <a href="Cabinet AC.dc.html" style="color: rgba(20,19,31,.72);" style-hover="color: #464195;">Accueil</a>
+      <a href="A propos.dc.html" style="color: rgba(20,19,31,.72);" style-hover="color: #464195;">À propos</a>
+      <a href="Services.dc.html" style="color: rgba(20,19,31,.72);" style-hover="color: #464195;">Services</a>
+      <a href="Equipe.dc.html" style="color: #464195;">Équipe</a>
+      <a href="Blog.dc.html" style="color: rgba(20,19,31,.72);" style-hover="color: #464195;">Blog</a>
+      <a href="Cabinet AC.dc.html#contact" style="color: rgba(20,19,31,.72);" style-hover="color: #464195;">Contact</a>
+    </nav>
+    <div style="flex: 1;"></div>
+    <a href="Cabinet AC.dc.html#contact" style="background: #464195; color: #fff; font-weight: 700; font-size: 14.5px; padding: 11px 20px; border-radius: 8px; white-space: nowrap;" style-hover="background: #C9A227;">Rendez-vous</a>
+    <button onClick="{{ toggleMenu }}" aria-label="Menu" class="ac-mob" style="background: transparent; border: 1px solid rgba(20,19,31,.14); color: #14131F; width: 40px; height: 40px; border-radius: 8px; cursor: pointer; align-items: center; justify-content: center;"><i class="ti ti-menu-2" style="font-size: 20px;"></i></button>
+  </div>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="border-top: 1px solid rgba(20,19,31,.08); padding: 14px 20px 20px; display: grid; gap: 13px; background: #fff;">
+      <a href="Cabinet AC.dc.html" style="color: #14131F; font-weight: 600;">Accueil</a>
+      <a href="A propos.dc.html" style="color: #14131F; font-weight: 600;">À propos</a>
+      <a href="Services.dc.html" style="color: #14131F; font-weight: 600;">Services</a>
+      <a href="Equipe.dc.html" style="color: #464195; font-weight: 700;">Équipe</a>
+      <a href="Blog.dc.html" style="color: #14131F; font-weight: 600;">Blog</a>
+      <a href="Cabinet AC.dc.html#contact" style="color: #14131F; font-weight: 600;">Contact</a>
+    </div>
+  </sc-if>
+</header>
+
+<section style="position: relative; overflow: hidden; background: #14131F; margin: 10px; border-radius: 22px; padding: 56px 22px;">
+  <div style="position: absolute; inset: 0;">
+    <image-slot id="ac-team-banner" style="color: rgba(255,255,255,.8)" shape="rect" fit="cover" placeholder="Bannière — photo de groupe de l'équipe du cabinet en salle de réunion, plan large, centre dégagé (2400×760)"></image-slot>
+  </div>
+  <div style="position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen; background: radial-gradient(56% 100% at 2% 0%, rgba(70,65,149,.62), transparent 62%), radial-gradient(50% 90% at 98% 6%, rgba(201,162,39,.32), transparent 62%);"></div>
+  <div style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(20,19,31,.84) 0%, rgba(20,19,31,.94) 100%);"></div>
+  <div style="position: absolute; inset: 0; pointer-events: none; background: radial-gradient(70% 70% at 50% 50%, rgba(20,19,31,.55), transparent 72%);"></div>
+  <div class="ac-in" style="position: relative; max-width: 880px; margin: 0 auto; text-align: center; color: #fff; display: grid; gap: 16px;">
+    <div class="ac-eye" style="display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 11.5px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #E3C766;">
+      <span style="width: 26px; height: 2px; background: currentColor;"></span>Équipe<span style="width: 26px; height: 2px; background: currentColor;"></span>
+    </div>
+    <h1 style="font-family: Sora, sans-serif; font-weight: 700; font-size: clamp(28px, 5vw, 52px); line-height: 1.05; letter-spacing: -.035em; margin: 0; text-wrap: balance;">Les consultants qui suivront votre dossier</h1>
+    <p style="font-size: clamp(15.5px, 1.8vw, 18px); line-height: 1.6; color: rgba(255,255,255,.74); max-width: 620px; margin: 0 auto;">Un interlocuteur unique par mission, épaulé par les spécialistes du cabinet. Vous savez toujours qui appeler.</p>
+  </div>
+</section>
+
+<main style="max-width: 1240px; margin: 0 auto; padding: 44px 20px 70px; display: grid; gap: 40px;">
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px;">
+    <sc-for list="{{ team }}" as="t" hint-placeholder-count="6">
+      <div class="ac-card" style="background: #fff; border: 1px solid rgba(20,19,31,.09); border-radius: 18px; overflow: hidden; display: grid; align-content: start;">
+        <div style="position: relative; height: 280px;">
+          <image-slot id="{{ t.slot }}" shape="rect" fit="cover" placeholder="{{ t.hint }}"></image-slot>
+        </div>
+        <div style="padding: 22px; display: grid; gap: 8px;">
+          <b style="font-family: Sora, sans-serif; font-size: 17px; font-weight: 700; letter-spacing: -.02em;">{{ t.name }}</b>
+          <span style="font-size: 13px; font-weight: 700; color: #464195;">{{ t.role }}</span>
+          <span style="font-size: 13.5px; line-height: 1.6; color: rgba(20,19,31,.62);">{{ t.desc }}</span>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px;">
+            <sc-for list="{{ t.skills }}" as="sk" hint-placeholder-count="2">
+              <span style="background: #F7F7FA; border: 1px solid rgba(20,19,31,.08); border-radius: 999px; padding: 5px 11px; font-size: 11.5px; font-weight: 700; color: rgba(20,19,31,.65);">{{ sk }}</span>
+            </sc-for>
+          </div>
+          <div style="display: flex; gap: 8px; margin-top: 8px;">
+            <a href="#" aria-label="LinkedIn" style="width: 32px; height: 32px; border-radius: 8px; background: #F7F7FA; display: flex; align-items: center; justify-content: center; color: #464195;" style-hover="background: #464195; color: #fff;"><i class="ti ti-brand-linkedin" style="font-size: 16px;"></i></a>
+            <a href="mailto:allianzconsulting@yahoo.com" aria-label="E-mail" style="width: 32px; height: 32px; border-radius: 8px; background: #F7F7FA; display: flex; align-items: center; justify-content: center; color: #464195;" style-hover="background: #464195; color: #fff;"><i class="ti ti-mail" style="font-size: 16px;"></i></a>
+            <a href="tel:+237691538495" aria-label="Téléphone" style="width: 32px; height: 32px; border-radius: 8px; background: #F7F7FA; display: flex; align-items: center; justify-content: center; color: #464195;" style-hover="background: #464195; color: #fff;"><i class="ti ti-phone" style="font-size: 16px;"></i></a>
+          </div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+
+  <div class="ac-2" style="display: grid; gap: 34px; align-items: center;">
+    <div style="display: grid; gap: 18px;">
+      <div class="ac-eye" style="display: flex; align-items: center; gap: 12px; font-size: 11.5px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #464195;"><span style="width: 26px; height: 2px; background: currentColor;"></span>Notre manière de travailler</div>
+      <h2 style="font-family: Sora, sans-serif; font-weight: 700; font-size: clamp(24px, 3.4vw, 38px); line-height: 1.1; letter-spacing: -.035em; margin: 0; text-wrap: balance;">Un consultant dédié, jamais un standard téléphonique</h2>
+      <p style="font-size: 16px; line-height: 1.7; color: rgba(20,19,31,.7); margin: 0;">Chaque dossier est confié à un consultant qui en porte la responsabilité de bout en bout. Il mobilise les autres expertises du cabinet quand le dossier l'exige — fiscalité, douane, RH — sans que vous ayez à réexpliquer votre situation à chaque interlocuteur.</p>
+      <div style="display: grid; gap: 12px;">
+        <sc-for list="{{ principles }}" as="p" hint-placeholder-count="3">
+          <div style="background: #F7F7FA; border: 1px solid rgba(20,19,31,.07); border-radius: 14px; padding: 17px 19px; display: flex; gap: 14px; align-items: flex-start;">
+            <i class="ti {{ p.icon }}" style="font-size: 21px; color: #464195; flex-shrink: 0; margin-top: 1px;"></i>
+            <span style="display: grid; gap: 3px;">
+              <b style="font-family: Sora, sans-serif; font-size: 15.5px; font-weight: 700;">{{ p.title }}</b>
+              <span style="font-size: 14px; line-height: 1.6; color: rgba(20,19,31,.65);">{{ p.desc }}</span>
+            </span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="position: relative; border-radius: 20px; overflow: hidden; min-height: 440px; border: 1px solid rgba(20,19,31,.08);">
+      <image-slot id="ac-team-work" shape="rect" fit="cover" placeholder="Photo — réunion de travail interne du cabinet, dossiers ouverts et tableau, lumière naturelle (900×1100)"></image-slot>
+    </div>
+  </div>
+
+  <div style="background: #14131F; color: #fff; border-radius: 22px; padding: 46px 30px; display: grid; gap: 20px; justify-items: center; text-align: center;">
+    <h2 style="font-family: Sora, sans-serif; font-size: clamp(22px, 3vw, 32px); font-weight: 700; margin: 0; letter-spacing: -.035em; text-wrap: balance;">Vous cherchez à renforcer votre équipe financière ?</h2>
+    <p style="margin: 0; font-size: 15.5px; line-height: 1.65; color: rgba(255,255,255,.66); max-width: 540px;">Le cabinet recrute des profils en comptabilité, fiscalité et douane. Envoyez votre candidature spontanée.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+      <a href="mailto:allianzconsulting@yahoo.com" style="background: #C9A227; color: #14131F; font-weight: 800; font-size: 15px; padding: 14px 28px; border-radius: 8px;" style-hover="background: #fff;">Candidature spontanée</a>
+      <a href="Cabinet AC.dc.html#contact" style="border: 1px solid rgba(255,255,255,.26); color: #fff; font-weight: 700; font-size: 15px; padding: 14px 26px; border-radius: 8px;" style-hover="border-color: #E3C766; color: #E3C766;">Nous contacter</a>
+    </div>
+  </div>
+</main>
+
+<footer style="background: #14131F; color: rgba(255,255,255,.55); margin: 10px; border-radius: 20px; padding: 26px; display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between; align-items: center; font-size: 13.5px;">
+  <span>© 2026 Allianz Consulting Sarl · RCCM RC/DLA/2021/B/3203</span>
+  <a href="Cabinet AC.dc.html" style="color: #fff; font-weight: 700;" style-hover="color: #C9A227;">← Retour à l'accueil</a>
+</footer>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440}}">
+class Component extends DCLogic {
+  state = { menuOpen: false };
+  renderVals() {
+    return {
+      menuOpen: this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      team: [
+        { slot: 'ac-eq-1', name: 'Expert-comptable associé', role: 'Comptabilité & audit', desc: 'Supervise la tenue comptable, les clôtures et les missions d’audit du cabinet.', skills: ['États financiers', 'Audit interne', 'Procédures'], hint: 'Portrait professionnel — homme ou femme en tenue de bureau, fond neutre clair, regard caméra (600×760)' },
+        { slot: 'ac-eq-2', name: 'Conseil fiscal', role: 'Fiscalité & contentieux', desc: 'Déclarations, contrôles fiscaux, régularisations et veille réglementaire.', skills: ['Contrôle fiscal', 'Régularisation', 'Veille'], hint: 'Portrait professionnel — même cadrage et même fond que les autres membres (600×760)' },
+        { slot: 'ac-eq-3', name: 'Analyste financier', role: 'Ingénierie financière', desc: 'Business plans, plans de financement et dossiers bancaires.', skills: ['Business plan', 'Trésorerie', 'Financement'], hint: 'Portrait professionnel — même cadrage et même fond que les autres membres (600×760)' },
+        { slot: 'ac-eq-4', name: 'Consultant douane & transit', role: 'Commerce extérieur', desc: 'Dédouanement, classement tarifaire et suivi des opérations de transit.', skills: ['Dédouanement', 'Tarif douanier', 'Import/export'], hint: 'Portrait professionnel — même cadrage et même fond que les autres membres (600×760)' },
+        { slot: 'ac-eq-5', name: 'Responsable RH', role: 'Ressources humaines', desc: 'Contrats, dossiers du personnel, recrutement et politiques internes.', skills: ['Contrats', 'Recrutement', 'Droit du travail'], hint: 'Portrait professionnel — même cadrage et même fond que les autres membres (600×760)' },
+        { slot: 'ac-eq-6', name: 'Chargée de clientèle', role: 'Relation client & formalités', desc: 'Point d’entrée du cabinet : formalités de création et suivi des dossiers.', skills: ['Formalités', 'Immatriculation', 'Suivi'], hint: 'Portrait professionnel — même cadrage et même fond que les autres membres (600×760)' }
+      ],
+      principles: [
+        { icon: 'ti-user-check', title: 'Un responsable identifié', desc: 'Son nom, son numéro et son adresse figurent sur votre lettre de mission.' },
+        { icon: 'ti-messages', title: 'Restitution écrite', desc: 'Chaque intervention se conclut par une note claire, chiffrée et archivée.' },
+        { icon: 'ti-lock', title: 'Confidentialité', desc: 'Vos documents restent internes au cabinet. Aucune sous-traitance sans votre accord.' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

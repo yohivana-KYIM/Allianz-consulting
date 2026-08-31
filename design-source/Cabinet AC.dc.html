@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css" />
+<script src="./image-slot.js"></script>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #ffffff; color: #14131F; font-family: Manrope, system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: #464195; text-decoration: none; }
+  a:hover { color: #C9A227; }
+  input, select, textarea, button { font-family: inherit; }
+  @keyframes acUp { from { opacity: 0; transform: translateY(38px); } to { opacity: 1; transform: none; } }
+  @keyframes acScale { from { opacity: 0; transform: scale(.92); } to { opacity: 1; transform: none; } }
+  @keyframes acGlow { 0%,100% { opacity: .38; transform: scale(1); } 50% { opacity: .62; transform: scale(1.14); } }
+  @keyframes acMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes acWord { from { opacity: 0; transform: translateY(.55em) rotate(2.5deg); } to { opacity: 1; transform: none; } }
+  @keyframes acRule { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @keyframes acPop { 0% { opacity: 0; transform: translateY(18px) scale(.94); } 100% { opacity: 1; transform: none; } }
+  @keyframes acTyping { 0%,60%,100% { transform: translateY(0); opacity: .4; } 30% { transform: translateY(-4px); opacity: 1; } }
+  @keyframes acRing { 0% { box-shadow: 0 0 0 0 rgba(70,65,149,.5); } 100% { box-shadow: 0 0 0 18px rgba(70,65,149,0); } }
+  .ac-rise { animation: acUp .7s cubic-bezier(.16,1,.3,1) both; }
+  [data-ac-reveal] { opacity: 0; transform: translateY(42px); transition: opacity .9s cubic-bezier(.16,1,.3,1), transform 1s cubic-bezier(.16,1,.3,1), filter .9s ease; filter: blur(6px); will-change: opacity, transform; }
+  [data-ac-reveal="scale"] { transform: scale(.94) translateY(26px); }
+  [data-ac-reveal="left"] { transform: translateX(-46px); }
+  [data-ac-reveal="right"] { transform: translateX(46px); }
+  [data-ac-reveal].ac-on { opacity: 1; transform: none; filter: none; }
+  [data-ac-lift] { transition: transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1), border-color .35s ease; }
+  [data-ac-lift]:hover { transform: translateY(-6px); box-shadow: 0 22px 48px rgba(20,19,31,.12); }
+  a, button { transition: background .28s ease, color .28s ease, transform .28s cubic-bezier(.16,1,.3,1), box-shadow .28s ease, border-color .28s ease; }
+  button:active { transform: scale(.97); }
+  [data-ac-mag] { will-change: transform; }
+  .ac-marquee:hover > div { animation-play-state: paused; }
+  .ac-eye > span:first-child { transform-origin: left center; animation: acRule .7s cubic-bezier(.16,1,.3,1) both; animation-delay: .15s; }
+  .ac-eye > span:last-child:not(:first-child) { transform-origin: right center; animation: acRule .7s cubic-bezier(.16,1,.3,1) both; animation-delay: .15s; }
+  body[data-ac-motion="sobre"] [data-ac-reveal] { transform: translateY(14px); filter: none; transition-duration: .55s, .6s, .3s; }
+  body[data-ac-motion="sobre"] [data-ac-reveal="left"] { transform: translateX(-16px); }
+  body[data-ac-motion="sobre"] [data-ac-reveal="right"] { transform: translateX(16px); }
+  body[data-ac-motion="sobre"] [data-ac-reveal="scale"] { transform: scale(.985); }
+  body[data-ac-motion="cine"] [data-ac-reveal] { transform: translateY(74px); filter: blur(11px); transition-duration: 1.15s, 1.25s, 1.15s; }
+  body[data-ac-motion="cine"] [data-ac-reveal="left"] { transform: translateX(-86px) translateY(20px); }
+  body[data-ac-motion="cine"] [data-ac-reveal="right"] { transform: translateX(86px) translateY(20px); }
+  body[data-ac-motion="cine"] [data-ac-reveal="scale"] { transform: scale(.88) translateY(46px); }
+  body[data-ac-motion="sobre"] [data-ac-reveal].ac-on,
+  body[data-ac-motion="cine"] [data-ac-reveal].ac-on { transform: none; filter: none; }
+  @media (prefers-reduced-motion: reduce) {
+    [data-ac-reveal] { opacity: 1 !important; transform: none !important; filter: none !important; }
+    .ac-rise { animation: none !important; }
+  }
+  .ac-desk { display: none !important; }
+  .ac-tel { display: none !important; }
+  .ac-mob { display: flex !important; }
+  .ac-cta-short { font-size: 0 !important; padding: 11px 14px !important; }
+  .ac-cta-short::before { content: "Rendez-vous"; font-size: 14.5px; }
+  .ac-drawer { max-height: calc(100vh - 68px); overflow-y: auto; overscroll-behavior: contain; }
+  @media (min-width: 640px) {
+    .ac-cta-short { font-size: 14.5px !important; padding: 11px 22px !important; }
+    .ac-cta-short::before { content: none; }
+  }
+  @media (min-width: 1120px) {
+    .ac-desk { display: flex !important; }
+    .ac-mob { display: none !important; }
+  }
+  @media (min-width: 1340px) {
+    .ac-tel { display: flex !important; }
+  }
+  @media (min-width: 960px) {
+    .ac-2col { grid-template-columns: 1fr 1fr !important; gap: 60px !important; }
+    .ac-2col-mid { grid-template-columns: .95fr 1.05fr !important; gap: 58px !important; }
+    .ac-row-auto { grid-template-columns: 1fr auto !important; }
+    .ac-foot { grid-template-columns: 1.5fr 1fr 1fr 1fr !important; }
+    .ac-hero-card { grid-template-columns: 1.15fr .85fr !important; }
+  }
+</style>
+</helmet>
+
+<header style="position: sticky; top: 0; z-index: 60; background: rgba(255,255,255,.93); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(20,19,31,.07);">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 11px 20px; display: flex; align-items: center; gap: 22px;">
+    <a href="#accueil" style="display: flex; align-items: center; gap: 11px; color: #14131F;">
+      <img src="assets/logo-ac.png" alt="Allianz Consulting Sarl" style="height: 44px; width: auto; display: block;" />
+      <span style="font-family: Sora, sans-serif; font-weight: 700; font-size: 16px; letter-spacing: -.02em; white-space: nowrap;">Allianz <span style="color: #464195;">Consulting</span> <span style="font-size: 11px; font-weight: 600; color: rgba(20,19,31,.45);">Sarl</span></span>
+    </a>
+    <nav class="ac-desk" style="gap: 24px; margin-left: 12px; font-size: 14.5px; font-weight: 600;">
+      <a href="#accueil" style="color: rgba(20,19,31,.72);" style-hover="color: #464195;">Accueil</a>
+      <a href="A propos.dc.html" style="color: rgba(20,19,31,.72);" style-hover="color: #464195;">À propos</a>
+      <span style="position: relative; display: flex; align-items: center;">
+        <button onClick="{{ toggleServices }}" style="{{ servicesBtnStyle }}">Services <i class="ti ti-chevron-down" style="{{ servicesChevStyle }}"></i></button>
+        <sc-if value="{{ servicesOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position: absolute; top: 100%; left: -14px; margin-top: 14px; width: 306px; background: #fff; border: 1px solid rgba(20,19,31,.1); border-radius: 14px; box-shadow: 0 26px 60px rgba(20,19,31,.16); padding: 8px; display: grid; gap: 2px; animation: acPop .3s cubic-bezier(.16,1,.3,1) both;">
+            <sc-for list="{{ serviceLinks }}" as="s" hint-placeholder-count="8">
+              <a href="#expertises" onClick="{{ s.go }}" style="display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 9px; color: #14131F; font-size: 14px; font-weight: 600;" style-hover="background: #F7F7FA; color: #464195;">
+                <i class="ti {{ s.icon }}" style="font-size: 18px; color: #464195; flex-shrink: 0;"></i> {{ s.label }}
+              </a>
+            </sc-for>
+          </div>
+        </sc-if>
+      </span>
+      <a href="Equipe.dc.html" style="color: rgba(20,19,31,.72);" style-hover="color: #464195;">Équipe</a>
+      <a href="Blog.dc.html" style="color: rgba(20,19,31,.72);" style-hover="color: #464195;">Blog</a>
+      <a href="#contact" style="color: rgba(20,19,31,.72);" style-hover="color: #464195;">Contact</a>
+    </nav>
+    <div style="flex: 1;"></div>
+    <a href="tel:+237691538495" class="ac-tel" style="align-items: center; gap: 8px; color: #14131F; font-weight: 600; font-size: 14.5px; white-space: nowrap;" style-hover="color: #464195;"><i class="ti ti-phone" style="font-size: 17px;"></i> 691 53 84 95</a>
+    <a href="#contact" data-ac-mag="1" class="ac-cta-short" style="background: #464195; color: #fff; font-weight: 700; font-size: 14.5px; padding: 11px 22px; border-radius: 8px; box-shadow: 0 10px 26px rgba(70,65,149,.3); white-space: nowrap;" style-hover="background: #C9A227;">Prendre rendez-vous</a>
+    <button onClick="{{ toggleMenu }}" aria-label="Menu" class="ac-mob" style="background: transparent; border: 1px solid rgba(20,19,31,.14); color: #14131F; width: 40px; height: 40px; border-radius: 8px; cursor: pointer; align-items: center; justify-content: center;"><i class="ti ti-menu-2" style="font-size: 20px;"></i></button>
+  </div>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div class="ac-drawer" style="border-top: 1px solid rgba(20,19,31,.08); padding: 14px 20px 22px; display: grid; gap: 13px; background: #fff;">
+      <a href="#accueil" onClick="{{ closeMenu }}" style="color: #14131F; font-weight: 600;">Accueil</a>
+      <a href="A propos.dc.html" style="color: #14131F; font-weight: 600;">À propos</a>
+      <a href="#expertises" onClick="{{ closeMenu }}" style="color: #14131F; font-weight: 600;">Services</a>
+      <div style="display: grid; gap: 2px; padding-left: 6px; border-left: 2px solid rgba(70,65,149,.2);">
+        <sc-for list="{{ serviceLinks }}" as="s" hint-placeholder-count="8">
+          <a href="#expertises" onClick="{{ s.goMobile }}" style="display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 8px; color: rgba(20,19,31,.7); font-size: 14px; font-weight: 600;" style-hover="background: #F7F7FA; color: #464195;">
+            <i class="ti {{ s.icon }}" style="font-size: 17px; color: #464195;"></i> {{ s.label }}
+          </a>
+        </sc-for>
+      </div>
+      <a href="Equipe.dc.html" style="color: #14131F; font-weight: 600;">Équipe</a>
+      <a href="Blog.dc.html" style="color: #14131F; font-weight: 600;">Blog</a>
+      <a href="#contact" onClick="{{ closeMenu }}" style="color: #14131F; font-weight: 600;">Contact</a>
+      <a href="tel:+237691538495" style="display: flex; align-items: center; gap: 9px; color: #14131F; font-weight: 600; font-size: 14.5px;"><i class="ti ti-phone" style="font-size: 17px; color: #464195;"></i> 691 53 84 95 / 694 96 04 73</a>
+      <a href="#contact" onClick="{{ closeMenu }}" style="background: #464195; color: #fff; font-weight: 700; text-align: center; padding: 13px; border-radius: 8px;">Prendre rendez-vous</a>
+    </div>
+  </sc-if>
+</header>
+
+<section id="accueil" style="position: relative; overflow: hidden; background: #14131F; padding: 78px 20px 90px; margin: 10px; border-radius: 22px;">
+  <sc-for list="{{ heroSlides }}" as="sl" hint-placeholder-count="3">
+    <div style="{{ sl.style }}">
+      <image-slot id="{{ sl.slot }}" style="color: rgba(255,255,255,.8)" shape="rect" fit="cover" placeholder="{{ sl.hint }}"></image-slot>
+    </div>
+  </sc-for>
+  <div style="position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen; background: radial-gradient(56% 86% at 2% 0%, rgba(70,65,149,.7), transparent 62%), radial-gradient(52% 80% at 98% 4%, rgba(201,162,39,.4), transparent 62%);"></div>
+  <div style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(20,19,31,.45) 0%, rgba(20,19,31,.7) 45%, rgba(20,19,31,.92) 100%);"></div>
+  <div style="position: absolute; inset: 0; pointer-events: none; background: radial-gradient(72% 62% at 50% 34%, rgba(20,19,31,.35), transparent 72%);"></div>
+  <div style="position: absolute; inset: 0; pointer-events: none; opacity: .1; background-image: repeating-linear-gradient(0deg, rgba(255,255,255,.35) 0 1px, transparent 1px 3px), repeating-linear-gradient(90deg, rgba(255,255,255,.28) 0 1px, transparent 1px 3px);"></div>
+  <div style="position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 140px 40px rgba(20,19,31,.5);"></div>
+  <div style="position: absolute; top: 6%; left: 6%; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(201,162,39,.42), transparent 66%); filter: blur(30px); animation: acGlow 10s ease-in-out infinite;"></div>
+  <div style="position: absolute; top: 24%; right: 4%; width: 380px; height: 380px; border-radius: 50%; background: radial-gradient(circle, rgba(70,65,149,.6), transparent 66%); filter: blur(30px); animation: acGlow 13s ease-in-out infinite;"></div>
+
+  <div style="position: relative; max-width: 940px; margin: 0 auto; text-align: center; color: #fff;">
+    <div class="ac-eye" style="display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 11.5px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #E3C766;">
+      <span style="width: 26px; height: 2px; background: currentColor;"></span>
+      Fiscalité · Comptabilité · Audit · Finance
+      <span style="width: 26px; height: 2px; background: currentColor;"></span>
+    </div>
+    <h1 class="ac-rise" style="font-family: Sora, sans-serif; font-weight: 700; font-size: clamp(34px, 6.2vw, 68px); line-height: 1.04; letter-spacing: -.035em; margin: 24px 0 0; text-wrap: balance;">
+      Le partenaire stratégique de votre entreprise, de sa
+      <span style="display: inline-block; background: #464195; padding: 0 12px; border-radius: 8px;">création</span>
+      à son développement
+    </h1>
+    <p class="ac-rise" style="font-size: clamp(16px, 1.9vw, 19px); line-height: 1.6; color: rgba(255,255,255,.72); max-width: 660px; margin: 22px auto 0;">
+      Un cabinet unique pour vos obligations fiscales, votre comptabilité, vos financements, vos audits, vos formalités douanières et vos ressources humaines. Vous décidez, nous sécurisons.
+    </p>
+    <div class="ac-rise" style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 30px;">
+      <a href="#contact" data-ac-mag="1" style="background: #C9A227; color: #14131F; font-weight: 800; font-size: 15.5px; padding: 15px 30px; border-radius: 8px; box-shadow: 0 14px 34px rgba(201,162,39,.32);" style-hover="background: #E3C766;">Diagnostic gratuit</a>
+      <a href="#expertises" style="border: 1px solid rgba(255,255,255,.26); color: #fff; font-weight: 700; font-size: 15.5px; padding: 15px 28px; border-radius: 8px;" style-hover="border-color: #E3C766; color: #E3C766;">Nos 8 domaines d'intervention</a>
+    </div>
+    <div style="display: flex; gap: 8px; justify-content: center; margin-top: 34px;">
+      <sc-for list="{{ heroDots }}" as="d" hint-placeholder-count="3">
+        <button onClick="{{ d.go }}" aria-label="Image suivante" style="{{ d.style }}"></button>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="position: relative; max-width: 1040px; margin: 54px auto 0; animation: acScale .9s cubic-bezier(.16,1,.3,1) both;">
+    <div style="border: 1px solid rgba(255,255,255,.13); border-radius: 18px; overflow: hidden; background: rgba(255,255,255,.04); backdrop-filter: blur(6px); box-shadow: 0 40px 90px rgba(0,0,0,.5);">
+      <div class="ac-hero-card" style="display: grid; grid-template-columns: 1fr;">
+        <div style="padding: 26px; display: grid; gap: 16px;">
+          <div style="font-size: 11px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.45);">Domaines d'intervention</div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px;">
+            <sc-for list="{{ heroChips }}" as="c" hint-placeholder-count="8">
+              <div style="display: flex; align-items: center; gap: 9px; border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.04); border-radius: 9px; padding: 11px 12px; color: #fff;">
+                <i class="ti {{ c.icon }}" style="font-size: 18px; color: #E3C766; flex-shrink: 0;"></i>
+                <span style="font-size: 13.5px; font-weight: 600;">{{ c.label }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="padding: 26px; border-top: 1px solid rgba(255,255,255,.1); display: grid; gap: 18px; align-content: center;">
+          <div>
+            <div style="font-family: Sora, sans-serif; font-size: 34px; font-weight: 700; color: #E3C766; letter-spacing: -.03em;">120</div>
+            <div style="font-size: 13.5px; color: rgba(255,255,255,.6); line-height: 1.5;">prestations couvertes par le cabinet</div>
+          </div>
+          <div style="height: 1px; background: rgba(255,255,255,.1);"></div>
+          <div>
+            <div style="font-family: Sora, sans-serif; font-size: 34px; font-weight: 700; color: #fff; letter-spacing: -.03em;">48 h</div>
+            <div style="font-size: 13.5px; color: rgba(255,255,255,.6); line-height: 1.5;">pour votre premier diagnostic</div>
+          </div>
+          <div style="height: 1px; background: rgba(255,255,255,.1);"></div>
+          <div>
+            <div style="font-family: Sora, sans-serif; font-size: 34px; font-weight: 700; color: #fff; letter-spacing: -.03em;">1 seul</div>
+            <div style="font-size: 13.5px; color: rgba(255,255,255,.6); line-height: 1.5;">interlocuteur dédié à votre dossier</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ac-marquee" style="background: #14131F; margin: 0 10px 10px; border-radius: 14px; overflow: hidden; padding: 13px 0;">
+  <div style="display: flex; width: max-content; animation: acMarquee 30s linear infinite;">
+    <sc-for list="{{ marquee }}" as="m" hint-placeholder-count="2">
+      <div style="display: flex; gap: 38px; flex-shrink: 0; align-items: center; padding-left: 38px;">
+        <sc-for list="{{ m.items }}" as="w" hint-placeholder-count="8">
+          <span style="display: flex; align-items: center; gap: 22px; white-space: nowrap; flex-shrink: 0;">
+            <span style="color: rgba(255,255,255,.55); font-weight: 800; font-size: 12.5px; letter-spacing: .18em; text-transform: uppercase;">{{ w }}</span>
+            <i class="ti ti-diamond-filled" style="color: #C9A227; font-size: 9px;"></i>
+          </span>
+        </sc-for>
+      </div>
+    </sc-for>
+  </div>
+</div>
+
+<section id="expertises" style="background: #ffffff; padding: 86px 20px;">
+  <div style="max-width: 1180px; margin: 0 auto;">
+    <div style="max-width: 680px; margin: 0 auto 46px; text-align: center; display: grid; gap: 16px;">
+      <div class="ac-eye" style="display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 11.5px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #464195;"><span style="width: 26px; height: 2px; background: currentColor;"></span>01 — Expertises</div>
+      <h2 style="font-family: Sora, sans-serif; font-weight: 700; font-size: clamp(28px, 4.2vw, 48px); line-height: 1.06; letter-spacing: -.035em; margin: 0; text-wrap: balance;">Huit domaines, un seul cabinet</h2>
+      <p style="font-size: 16.5px; line-height: 1.65; color: rgba(20,19,31,.66); margin: 0;">Ouvrez un domaine pour voir le détail des prestations que nous prenons en charge.</p>
+    </div>
+
+    <div style="display: grid; gap: 10px;">
+      <sc-for list="{{ domains }}" as="d" hint-placeholder-count="8">
+        <div style="{{ d.wrapStyle }}">
+          <button onClick="{{ d.toggle }}" style="display: flex; align-items: center; gap: 16px; width: 100%; text-align: left; background: transparent; border: none; cursor: pointer; padding: 22px 24px;">
+            <span style="{{ d.iconStyle }}"><i class="ti {{ d.icon }}" style="font-size: 23px;"></i></span>
+            <span style="display: grid; gap: 4px; flex: 1; min-width: 0;">
+              <span style="display: flex; align-items: baseline; gap: 10px;">
+                <span style="font-family: Sora, sans-serif; font-size: 12px; font-weight: 700; color: rgba(20,19,31,.35);">{{ d.num }}</span>
+                <span style="font-family: Sora, sans-serif; font-size: clamp(17px, 2.2vw, 22px); font-weight: 700; letter-spacing: -.02em; color: #14131F;">{{ d.title }}</span>
+              </span>
+              <span style="font-size: 14.5px; line-height: 1.5; color: rgba(20,19,31,.6);">{{ d.intro }}</span>
+            </span>
+            <span style="{{ d.chevStyle }}"><i class="ti ti-plus" style="font-size: 18px;"></i></span>
+          </button>
+          <sc-if value="{{ d.open }}" hint-placeholder-val="{{ false }}">
+            <div style="padding: 0 24px 24px; animation: acPop .4s cubic-bezier(.16,1,.3,1) both;">
+              <div style="height: 1px; background: rgba(20,19,31,.09); margin-bottom: 18px;"></div>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px 24px;">
+                <sc-for list="{{ d.items }}" as="it" hint-placeholder-count="8">
+                  <div style="display: flex; gap: 10px; align-items: flex-start; font-size: 14.5px; line-height: 1.5; color: rgba(20,19,31,.75);">
+                    <i class="ti ti-check" style="color: #C9A227; font-size: 17px; flex-shrink: 0; margin-top: 2px;"></i> {{ it }}
+                  </div>
+                </sc-for>
+              </div>
+              <sc-if value="{{ d.hasNote }}" hint-placeholder-val="{{ false }}">
+                <p style="margin: 18px 0 0; font-size: 13.5px; line-height: 1.6; color: rgba(20,19,31,.55); border-left: 2px solid #C9A227; padding-left: 14px;">{{ d.note }}</p>
+              </sc-if>
+            </div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="methode" style="background: #F7F7FA; padding: 84px 20px; border-top: 1px solid rgba(20,19,31,.06);">
+  <div style="max-width: 1180px; margin: 0 auto;">
+    <div style="max-width: 640px; margin: 0 auto 44px; text-align: center; display: grid; gap: 16px;">
+      <div class="ac-eye" style="display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 11.5px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #464195;"><span style="width: 26px; height: 2px; background: currentColor;"></span>02 — Méthode</div>
+      <h2 style="font-family: Sora, sans-serif; font-weight: 700; font-size: clamp(26px, 3.8vw, 42px); margin: 0; letter-spacing: -.035em; text-wrap: balance;">Quatre étapes, un accompagnement continu</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px;">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+        <div style="background: #fff; border: 1px solid rgba(20,19,31,.08); border-radius: 16px; padding: 26px; display: grid; gap: 10px; align-content: start;">
+          <div style="font-family: Sora, sans-serif; font-size: 32px; font-weight: 700; color: rgba(70,65,149,.26); line-height: 1; letter-spacing: -.04em;">{{ s.num }}</div>
+          <h3 style="font-family: Sora, sans-serif; font-size: 18px; font-weight: 700; margin: 0; letter-spacing: -.02em;">{{ s.title }}</h3>
+          <p style="font-size: 14.5px; line-height: 1.6; color: rgba(20,19,31,.65); margin: 0;">{{ s.desc }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section style="padding: 30px 20px 20px; background: #fff;">
+  <div style="max-width: 1240px; margin: 0 auto; background: #14131F; border-radius: 24px; padding: 62px 26px; color: #fff; position: relative; overflow: hidden;">
+    <div style="position: absolute; top: -90px; left: 50%; width: 540px; height: 320px; background: radial-gradient(circle, rgba(70,65,149,.6), transparent 66%); filter: blur(24px); transform: translateX(-50%);"></div>
+    <div style="position: relative; max-width: 720px; margin: 0 auto 48px; text-align: center; display: grid; gap: 18px;">
+      <div class="ac-eye" style="display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 11.5px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #E3C766;"><span style="width: 26px; height: 2px; background: currentColor;"></span>03 — Pourquoi Allianz Consulting</div>
+      <h2 style="font-family: Sora, sans-serif; font-weight: 700; font-size: clamp(26px, 4vw, 44px); line-height: 1.1; margin: 0; letter-spacing: -.035em; text-wrap: balance;">La conformité n'est pas une contrainte, c'est un levier</h2>
+    </div>
+    <div style="position: relative; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 38px 26px; max-width: 1000px; margin: 0 auto;">
+      <sc-for list="{{ stats }}" as="s" hint-placeholder-count="6">
+        <div style="text-align: center; display: grid; gap: 8px; justify-items: center;">
+          <div style="width: 46px; height: 46px; border-radius: 11px; background: rgba(255,255,255,.07); display: flex; align-items: center; justify-content: center;"><i class="ti {{ s.icon }}" style="font-size: 23px; color: #E3C766;"></i></div>
+          <div style="font-family: Sora, sans-serif; font-size: 27px; font-weight: 700; letter-spacing: -.03em;">{{ s.value }}</div>
+          <div style="font-size: 14px; line-height: 1.5; color: rgba(255,255,255,.6);">{{ s.label }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="formules" style="background: #ffffff; padding: 76px 20px;">
+  <div style="max-width: 1180px; margin: 0 auto;">
+    <div style="max-width: 660px; margin: 0 auto 46px; text-align: center; display: grid; gap: 16px;">
+      <div class="ac-eye" style="display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 11.5px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #464195;"><span style="width: 26px; height: 2px; background: currentColor;"></span>04 — Formules</div>
+      <h2 style="font-family: Sora, sans-serif; font-weight: 700; font-size: clamp(26px, 4vw, 44px); margin: 0; letter-spacing: -.035em; text-wrap: balance;">Un accompagnement calibré sur votre taille</h2>
+      <p style="font-size: 16.5px; line-height: 1.65; color: rgba(20,19,31,.65); margin: 0;">Trois régimes d'intervention, ajustables à tout moment selon votre activité.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; align-items: start;">
+      <sc-for list="{{ plans }}" as="p" hint-placeholder-count="3">
+        <div style="{{ p.style }}">
+          <sc-if value="{{ p.featured }}" hint-placeholder-val="{{ false }}">
+            <span style="display: inline-block; width: fit-content; background: #C9A227; color: #14131F; font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; padding: 6px 13px; border-radius: 6px;">Le plus choisi</span>
+          </sc-if>
+          <h3 style="font-family: Sora, sans-serif; font-size: 21px; font-weight: 700; margin: 0; letter-spacing: -.02em;">{{ p.title }}</h3>
+          <p style="{{ p.descStyle }}">{{ p.desc }}</p>
+          <div style="{{ p.ruleStyle }}"></div>
+          <div style="display: grid; gap: 11px;">
+            <sc-for list="{{ p.items }}" as="it" hint-placeholder-count="5">
+              <div style="{{ p.itemStyle }}"><i class="ti ti-check" style="color: #C9A227; font-size: 17px; flex-shrink: 0; margin-top: 2px;"></i> {{ it }}</div>
+            </sc-for>
+          </div>
+          <a href="#contact" style="{{ p.ctaStyle }}">{{ p.cta }}</a>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="clients" style="background: #F7F7FA; padding: 84px 20px; border-top: 1px solid rgba(20,19,31,.06);">
+  <div class="ac-2col-mid" style="max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center;">
+    <div style="display: grid; gap: 18px; align-content: start;">
+      <div class="ac-eye" style="display: flex; align-items: center; gap: 12px; font-size: 11.5px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #464195;"><span style="width: 26px; height: 2px; background: currentColor;"></span>05 — Clientèle</div>
+      <h2 style="font-family: Sora, sans-serif; font-weight: 700; font-size: clamp(26px, 3.8vw, 42px); line-height: 1.08; letter-spacing: -.035em; margin: 0; text-wrap: balance;">Nous travaillons avec ceux qui construisent</h2>
+      <p style="font-size: 16.5px; line-height: 1.7; color: rgba(20,19,31,.7); margin: 0;">Du porteur de projet qui dépose ses statuts à la PME qui restructure son financement : nos méthodes s'adaptent à votre stade de maturité, jamais l'inverse.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+        <sc-for list="{{ clients }}" as="c" hint-placeholder-count="11">
+          <span style="border: 1px solid rgba(20,19,31,.12); background: #fff; border-radius: 999px; padding: 9px 16px; font-size: 13.5px; font-weight: 600; color: rgba(20,19,31,.78);" style-hover="border-color: #464195; color: #464195;">{{ c }}</span>
+        </sc-for>
+      </div>
+    </div>
+    <div style="position: relative; border-radius: 20px; overflow: hidden; min-height: 420px; border: 1px solid rgba(20,19,31,.08);">
+      <image-slot id="ac-clients" shape="rect" fit="cover" placeholder="Photo — dirigeant en entretien avec un consultant (860×1000)"></image-slot>
+    </div>
+  </div>
+</section>
+
+<section id="cabinet" style="background: #ffffff; padding: 84px 20px;">
+  <div class="ac-2col-mid" style="max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center;">
+    <div style="position: relative; border-radius: 20px; overflow: hidden; min-height: 420px; border: 1px solid rgba(20,19,31,.08);">
+      <image-slot id="ac-team" shape="rect" fit="cover" placeholder="Photo de l'équipe du cabinet (860×1000)"></image-slot>
+    </div>
+    <div style="display: grid; gap: 18px;">
+      <div class="ac-eye" style="display: flex; align-items: center; gap: 12px; font-size: 11.5px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #464195;"><span style="width: 26px; height: 2px; background: currentColor;"></span>06 — À propos</div>
+      <h2 style="font-family: Sora, sans-serif; font-weight: 700; font-size: clamp(26px, 3.8vw, 42px); line-height: 1.08; letter-spacing: -.035em; margin: 0; text-wrap: balance;">Un partenaire, pas un prestataire</h2>
+      <p style="font-size: 16.5px; line-height: 1.7; color: rgba(20,19,31,.7); margin: 0;">Dans un environnement où les obligations fiscales, comptables, douanières et sociales se complexifient, les entreprises ont besoin d'un accompagnement permanent — pas d'une intervention ponctuelle. Allianz Consulting réunit sous un même toit les huit expertises qui décident de la santé d'une entreprise.</p>
+      <div style="display: grid; gap: 12px;">
+        <sc-for list="{{ values }}" as="v" hint-placeholder-count="3">
+          <div style="background: #F7F7FA; border: 1px solid rgba(20,19,31,.07); border-radius: 14px; padding: 17px 19px; display: flex; gap: 14px; align-items: flex-start;">
+            <i class="ti {{ v.icon }}" style="font-size: 21px; color: #464195; flex-shrink: 0; margin-top: 1px;"></i>
+            <span style="display: grid; gap: 3px;">
+              <b style="font-family: Sora, sans-serif; font-size: 15.5px; font-weight: 700;">{{ v.title }}</b>
+              <span style="font-size: 14px; line-height: 1.6; color: rgba(20,19,31,.65);">{{ v.desc }}</span>
+            </span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="equipe" style="background: #F7F7FA; padding: 84px 20px; border-top: 1px solid rgba(20,19,31,.06);">
+  <div style="max-width: 1180px; margin: 0 auto;">
+    <div style="max-width: 660px; margin: 0 auto 44px; text-align: center; display: grid; gap: 16px;">
+      <div class="ac-eye" style="display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 11.5px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #464195;"><span style="width: 26px; height: 2px; background: currentColor;"></span>07 — Équipe</div>
+      <h2 style="font-family: Sora, sans-serif; font-weight: 700; font-size: clamp(26px, 4vw, 44px); margin: 0; letter-spacing: -.035em; text-wrap: balance;">Les consultants qui suivront votre dossier</h2>
+      <p style="font-size: 16.5px; line-height: 1.65; color: rgba(20,19,31,.65); margin: 0;">Un interlocuteur unique par mission, épaulé par les spécialistes du cabinet.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px;">
+      <sc-for list="{{ team }}" as="t" hint-placeholder-count="4">
+        <div style="background: #fff; border: 1px solid rgba(20,19,31,.08); border-radius: 16px; overflow: hidden; display: grid; align-content: start;">
+          <div style="position: relative; height: 250px;">
+            <image-slot id="{{ t.slot }}" shape="rect" fit="cover" placeholder="Portrait du consultant (600×760)"></image-slot>
+          </div>
+          <div style="padding: 20px; display: grid; gap: 7px;">
+            <b style="font-family: Sora, sans-serif; font-size: 16.5px; font-weight: 700; letter-spacing: -.02em;">{{ t.name }}</b>
+            <span style="font-size: 13px; font-weight: 700; color: #464195;">{{ t.role }}</span>
+            <span style="font-size: 13.5px; line-height: 1.55; color: rgba(20,19,31,.62);">{{ t.desc }}</span>
+            <div style="display: flex; gap: 8px; margin-top: 4px;">
+              <a href="#contact" aria-label="LinkedIn" style="width: 32px; height: 32px; border-radius: 8px; background: #F7F7FA; display: flex; align-items: center; justify-content: center; color: #464195;" style-hover="background: #464195; color: #fff;"><i class="ti ti-brand-linkedin" style="font-size: 16px;"></i></a>
+              <a href="#contact" aria-label="E-mail" style="width: 32px; height: 32px; border-radius: 8px; background: #F7F7FA; display: flex; align-items: center; justify-content: center; color: #464195;" style-hover="background: #464195; color: #fff;"><i class="ti ti-mail" style="font-size: 16px;"></i></a>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="blog" style="background: #ffffff; padding: 84px 20px;">
+  <div style="max-width: 1180px; margin: 0 auto;">
+    <div class="ac-row-auto" style="display: grid; grid-template-columns: 1fr; gap: 20px; align-items: end; margin-bottom: 40px;">
+      <div style="display: grid; gap: 16px;">
+        <div class="ac-eye" style="display: flex; align-items: center; gap: 12px; font-size: 11.5px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #464195;"><span style="width: 26px; height: 2px; background: currentColor;"></span>08 — Blog</div>
+        <h2 style="font-family: Sora, sans-serif; font-weight: 700; font-size: clamp(26px, 4vw, 44px); margin: 0; letter-spacing: -.035em; text-wrap: balance;">Veille fiscale, sociale et douanière</h2>
+        <p style="font-size: 16.5px; line-height: 1.65; color: rgba(20,19,31,.65); margin: 0; max-width: 560px;">Les échéances, réformes et décisions qui touchent directement les TPE et PME.</p>
+      </div>
+      <a href="#blog" style="border: 1px solid rgba(70,65,149,.24); color: #464195; font-weight: 700; font-size: 14.5px; padding: 13px 24px; border-radius: 9px; white-space: nowrap; display: flex; align-items: center; gap: 9px; justify-content: center;" style-hover="background: #464195; color: #fff;">Tous les articles <i class="ti ti-arrow-right" style="font-size: 17px;"></i></a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 18px;">
+      <sc-for list="{{ posts }}" as="p" hint-placeholder-count="3">
+        <a href="#blog" style="background: #fff; border: 1px solid rgba(20,19,31,.08); border-radius: 16px; overflow: hidden; display: grid; align-content: start; color: #14131F;" style-hover="border-color: #464195;">
+          <div style="position: relative; height: 200px;">
+            <image-slot id="{{ p.slot }}" shape="rect" fit="cover" placeholder="Visuel de l'article (800×500)"></image-slot>
+          </div>
+          <div style="padding: 22px; display: grid; gap: 10px;">
+            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+              <span style="background: rgba(70,65,149,.09); color: #464195; font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 5px 10px; border-radius: 6px;">{{ p.tag }}</span>
+              <span style="font-size: 12.5px; color: rgba(20,19,31,.5);">{{ p.date }} · {{ p.read }}</span>
+            </div>
+            <h3 style="font-family: Sora, sans-serif; font-size: 18px; font-weight: 700; margin: 0; letter-spacing: -.02em; line-height: 1.3;">{{ p.title }}</h3>
+            <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: rgba(20,19,31,.62);">{{ p.excerpt }}</p>
+            <span style="display: flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 700; color: #464195; margin-top: 2px;">Lire l'article <i class="ti ti-arrow-right" style="font-size: 16px;"></i></span>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section style="background: #F7F7FA; padding: 80px 20px; border-top: 1px solid rgba(20,19,31,.06);">
+  <div style="max-width: 1180px; margin: 0 auto;">
+    <div style="display: grid; gap: 16px; text-align: center; margin: 0 auto 40px; max-width: 620px;">
+      <div class="ac-eye" style="display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 11.5px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #464195;"><span style="width: 26px; height: 2px; background: currentColor;"></span>09 — Témoignages</div>
+      <h2 style="font-family: Sora, sans-serif; font-weight: 700; font-size: clamp(24px, 3.2vw, 36px); margin: 0; letter-spacing: -.035em;">Ce que disent nos clients</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+      <sc-for list="{{ quotes }}" as="q" hint-placeholder-count="3">
+        <div style="background: #fff; border: 1px solid rgba(20,19,31,.08); border-radius: 16px; padding: 26px; display: grid; gap: 18px; align-content: space-between;">
+          <div style="display: grid; gap: 14px;">
+            <i class="ti ti-quote" style="font-size: 24px; color: #C9A227;"></i>
+            <p style="font-size: 15.5px; line-height: 1.65; color: rgba(20,19,31,.78); margin: 0;">{{ q.text }}</p>
+          </div>
+          <div>
+            <div style="font-family: Sora, sans-serif; font-weight: 700; font-size: 15px;">{{ q.name }}</div>
+            <div style="font-size: 13px; color: rgba(20,19,31,.55);">{{ q.role }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="background: #fff; padding: 84px 20px;">
+  <div class="ac-2col" style="max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 40px; align-items: start;">
+    <div style="display: grid; gap: 18px; align-content: start;">
+      <div class="ac-eye" style="display: flex; align-items: center; gap: 12px; font-size: 11.5px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #464195;"><span style="width: 26px; height: 2px; background: currentColor;"></span>10 — Contact</div>
+      <h2 style="font-family: Sora, sans-serif; font-weight: 700; font-size: clamp(26px, 3.8vw, 42px); line-height: 1.08; letter-spacing: -.035em; margin: 0; text-wrap: balance;">Premier diagnostic offert, sans engagement</h2>
+      <p style="font-size: 16.5px; line-height: 1.7; color: rgba(20,19,31,.7); margin: 0;">Décrivez votre situation en quelques lignes. Nous revenons vers vous sous 48 h avec une lecture claire de vos obligations et des priorités à traiter.</p>
+      <div style="display: grid; gap: 12px; margin-top: 4px;">
+        <div style="display: flex; gap: 13px; align-items: center; font-size: 15.5px;"><span style="width: 40px; height: 40px; border-radius: 10px; background: #F7F7FA; display: flex; align-items: center; justify-content: center;"><i class="ti ti-mail" style="font-size: 19px; color: #464195;"></i></span> allianzconsulting@yahoo.com</div>
+        <div style="display: flex; gap: 13px; align-items: center; font-size: 15.5px;"><span style="width: 40px; height: 40px; border-radius: 10px; background: #F7F7FA; display: flex; align-items: center; justify-content: center;"><i class="ti ti-phone" style="font-size: 19px; color: #464195;"></i></span> 691 53 84 95 / 694 96 04 73</div>
+        <div style="display: flex; gap: 13px; align-items: flex-start; font-size: 15.5px;"><span style="width: 40px; height: 40px; border-radius: 10px; background: #F7F7FA; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="ti ti-map-pin" style="font-size: 19px; color: #464195;"></i></span> <span style="line-height: 1.5; padding-top: 9px;">2<sup>e</sup> étage, porte 304 — immeuble en face de la Maison du Bois, Akwa rue Bernabé, Douala</span></div>
+        <div style="display: flex; gap: 13px; align-items: center; font-size: 15.5px;"><span style="width: 40px; height: 40px; border-radius: 10px; background: #F7F7FA; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="ti ti-clock-hour-4" style="font-size: 19px; color: #464195;"></i></span> Lundi – vendredi · 08 h – 18 h</div>
+      </div>
+    </div>
+
+    <div style="border: 1px solid rgba(20,19,31,.1); border-radius: 20px; padding: 28px; background: #F7F7FA; box-shadow: 0 26px 60px rgba(20,19,31,.06);">
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="display: grid; gap: 15px; text-align: center; padding: 24px 0; animation: acPop .45s cubic-bezier(.16,1,.3,1) both;">
+          <span style="width: 64px; height: 64px; border-radius: 50%; background: rgba(70,65,149,.1); color: #464195; display: flex; align-items: center; justify-content: center; margin: 0 auto;"><i class="ti ti-check" style="font-size: 30px;"></i></span>
+          <h3 style="font-family: Sora, sans-serif; font-size: 21px; font-weight: 700; margin: 0;">Demande reçue</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: rgba(20,19,31,.65);">Un consultant vous contacte sous 48 h ouvrées pour votre diagnostic.</p>
+          <button onClick="{{ reset }}" style="background: transparent; border: none; color: #464195; font-weight: 700; font-size: 14.5px; cursor: pointer;">Envoyer une autre demande</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <div style="display: grid; gap: 14px;">
+          <h3 style="font-family: Sora, sans-serif; font-size: 20px; font-weight: 700; margin: 0; letter-spacing: -.02em;">Demander un diagnostic</h3>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <label style="display: grid; gap: 6px; font-size: 12.5px; font-weight: 700; color: rgba(20,19,31,.65);">Nom &amp; prénom
+              <input placeholder="Votre nom" style="{{ inputStyle }}" style-focus="border-color: #464195;" />
+            </label>
+            <label style="display: grid; gap: 6px; font-size: 12.5px; font-weight: 700; color: rgba(20,19,31,.65);">Entreprise
+              <input placeholder="Raison sociale" style="{{ inputStyle }}" style-focus="border-color: #464195;" />
+            </label>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <label style="display: grid; gap: 6px; font-size: 12.5px; font-weight: 700; color: rgba(20,19,31,.65);">E-mail
+              <input placeholder="vous@entreprise.com" style="{{ inputStyle }}" style-focus="border-color: #464195;" />
+            </label>
+            <label style="display: grid; gap: 6px; font-size: 12.5px; font-weight: 700; color: rgba(20,19,31,.65);">Téléphone
+              <input placeholder="691 53 84 95 / 694 96 04 73" style="{{ inputStyle }}" style-focus="border-color: #464195;" />
+            </label>
+          </div>
+          <div style="display: grid; gap: 8px;">
+            <span style="font-size: 12.5px; font-weight: 700; color: rgba(20,19,31,.65);">Besoin principal</span>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+              <sc-for list="{{ needs }}" as="n" hint-placeholder-count="8">
+                <button onClick="{{ n.pick }}" style="{{ n.style }}">{{ n.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+          <label style="display: grid; gap: 6px; font-size: 12.5px; font-weight: 700; color: rgba(20,19,31,.65);">Votre situation
+            <textarea rows="5" placeholder="Décrivez brièvement votre activité et ce que vous souhaitez sécuriser…" style="border: 1px solid rgba(20,19,31,.16); border-radius: 9px; padding: 12px 13px; font-size: 15px; outline: none; resize: vertical; background: #fff;" style-focus="border-color: #464195;"></textarea>
+          </label>
+          <button onClick="{{ send }}" data-ac-mag="1" style="background: #464195; color: #fff; border: none; font-weight: 800; font-size: 15.5px; padding: 15px; border-radius: 9px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 9px;" style-hover="background: #C9A227; color: #14131F;">
+            <i class="ti ti-send" style="font-size: 18px;"></i> Envoyer ma demande
+          </button>
+          <p style="margin: 0; text-align: center; font-size: 12px; color: rgba(20,19,31,.5);">Vos informations restent strictement confidentielles.</p>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</section>
+
+<footer style="background: #14131F; color: #fff; margin: 10px; border-radius: 22px; overflow: hidden;">
+  <div style="max-width: 1240px; margin: 0 auto; padding: 60px 26px 0;">
+    <div style="display: grid; gap: 16px; max-width: 600px;">
+      <a href="#accueil" style="display: flex; align-items: center; gap: 13px; color: #fff;">
+        <img src="assets/logo-ac.png" alt="Allianz Consulting Sarl" style="height: 52px; width: auto;" />
+        <span style="font-family: Sora, sans-serif; font-size: 22px; font-weight: 700; letter-spacing: -.03em;">Allianz Consulting<span style="color: #C9A227;">.</span></span>
+      </a>
+      <p style="margin: 0; font-size: 15.5px; line-height: 1.7; color: rgba(255,255,255,.6);">Conseil et accompagnement des entreprises : fiscalité, comptabilité, management, ingénierie financière, audit, douane et transit, ressources humaines, création d'entreprise.</p>
+    </div>
+    <div style="height: 1px; background: rgba(255,255,255,.1); margin: 38px 0;"></div>
+    <div class="ac-foot" style="display: grid; grid-template-columns: 1fr; gap: 32px;">
+      <div></div>
+      <div style="display: grid; gap: 13px; align-content: start;">
+        <div style="font-size: 12.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.45);">Expertises</div>
+        <a href="#expertises" style="color: rgba(255,255,255,.62); font-size: 14.5px;" style-hover="color: #C9A227;">Fiscalité</a>
+        <a href="#expertises" style="color: rgba(255,255,255,.62); font-size: 14.5px;" style-hover="color: #C9A227;">Comptabilité</a>
+        <a href="#expertises" style="color: rgba(255,255,255,.62); font-size: 14.5px;" style-hover="color: #C9A227;">Ingénierie financière</a>
+        <a href="#expertises" style="color: rgba(255,255,255,.62); font-size: 14.5px;" style-hover="color: #C9A227;">Audit</a>
+      </div>
+      <div style="display: grid; gap: 13px; align-content: start;">
+        <div style="font-size: 12.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.45);">Services</div>
+        <a href="#expertises" style="color: rgba(255,255,255,.62); font-size: 14.5px;" style-hover="color: #C9A227;">Douane &amp; transit</a>
+        <a href="#expertises" style="color: rgba(255,255,255,.62); font-size: 14.5px;" style-hover="color: #C9A227;">Ressources humaines</a>
+        <a href="#expertises" style="color: rgba(255,255,255,.62); font-size: 14.5px;" style-hover="color: #C9A227;">Création d'entreprise</a>
+        <a href="#formules" style="color: rgba(255,255,255,.62); font-size: 14.5px;" style-hover="color: #C9A227;">Formules</a>
+      </div>
+      <div style="display: grid; gap: 13px; align-content: start;">
+        <div style="font-size: 12.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.45);">Le cabinet</div>
+        <a href="#cabinet" style="color: rgba(255,255,255,.62); font-size: 14.5px;" style-hover="color: #C9A227;">Qui sommes-nous</a>
+        <a href="#methode" style="color: rgba(255,255,255,.62); font-size: 14.5px;" style-hover="color: #C9A227;">Notre méthode</a>
+        <a href="#clients" style="color: rgba(255,255,255,.62); font-size: 14.5px;" style-hover="color: #C9A227;">Clientèle</a>
+        <a href="#contact" style="color: rgba(255,255,255,.62); font-size: 14.5px;" style-hover="color: #C9A227;">Contact</a>
+      </div>
+    </div>
+    <div style="height: 1px; background: rgba(255,255,255,.1); margin: 38px 0 20px;"></div>
+    <div style="display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: space-between;">
+      <span style="font-size: 13.5px; color: rgba(255,255,255,.5);">© 2026 Allianz Consulting Sarl · RCCM RC/DLA/2021/B/3203 · NIU M062116251729J</span>
+      <div style="display: flex; gap: 10px;">
+        <a href="#contact" aria-label="LinkedIn" style="width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,.07); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.75);" style-hover="background: #464195; color: #fff;"><i class="ti ti-brand-linkedin" style="font-size: 18px;"></i></a>
+        <a href="#contact" aria-label="WhatsApp" style="width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,.07); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.75);" style-hover="background: #464195; color: #fff;"><i class="ti ti-brand-whatsapp" style="font-size: 18px;"></i></a>
+        <a href="#contact" aria-label="E-mail" style="width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,.07); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.75);" style-hover="background: #464195; color: #fff;"><i class="ti ti-mail" style="font-size: 18px;"></i></a>
+      </div>
+      <button onClick="{{ toTop }}" style="display: flex; align-items: center; gap: 10px; background: transparent; border: none; color: #fff; font-weight: 700; font-size: 13.5px; cursor: pointer;" style-hover="color: #C9A227;">
+        Retour en haut
+        <span style="width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,.09); display: flex; align-items: center; justify-content: center;"><i class="ti ti-arrow-up" style="font-size: 17px;"></i></span>
+      </button>
+    </div>
+    <div style="overflow: hidden; margin-top: 32px;">
+      <div style="font-family: Sora, sans-serif; font-weight: 700; font-size: clamp(40px, 11.5vw, 158px); line-height: .86; letter-spacing: -.055em; color: rgba(255,255,255,.08); white-space: nowrap; transform: translateY(15%);">Allianz Consulting<span style="color: rgba(201,162,39,.45);">.</span></div>
+    </div>
+  </div>
+</footer>
+
+<div style="position: fixed; z-index: 80; right: 18px; bottom: 18px; display: grid; gap: 12px; justify-items: end;">
+  <sc-if value="{{ chatOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="width: 330px; max-width: calc(100vw - 36px); background: #fff; border: 1px solid rgba(20,19,31,.1); border-radius: 18px; overflow: hidden; box-shadow: 0 30px 70px rgba(20,19,31,.22); animation: acPop .42s cubic-bezier(.16,1,.3,1) both;">
+      <div style="background: #14131F; color: #fff; padding: 15px 18px; display: flex; align-items: center; gap: 12px;">
+        <img src="assets/logo-ac.png" alt="AC" style="height: 30px; width: auto;" />
+        <div style="display: grid; gap: 1px;">
+          <b style="font-family: Sora, sans-serif; font-size: 14.5px;">Allianz Consulting</b>
+          <span style="font-size: 11.5px; color: #C9A227; display: flex; align-items: center; gap: 5px;"><span style="width: 6px; height: 6px; border-radius: 50%; background: #C9A227;"></span>Un consultant vous répond</span>
+        </div>
+        <div style="flex: 1;"></div>
+        <button onClick="{{ closeChat }}" aria-label="Fermer" style="background: transparent; border: none; color: rgba(255,255,255,.7); cursor: pointer; display: flex;"><i class="ti ti-x" style="font-size: 20px;"></i></button>
+      </div>
+      <div style="padding: 16px; display: grid; gap: 10px; background: #F7F7FA; max-height: 290px; overflow-y: auto;">
+        <sc-for list="{{ chatMsgs }}" as="m" hint-placeholder-count="2">
+          <div style="{{ m.style }}">{{ m.text }}</div>
+        </sc-for>
+        <sc-if value="{{ chatTyping }}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; gap: 4px; padding: 10px 14px; background: #fff; border: 1px solid rgba(20,19,31,.08); border-radius: 12px 12px 12px 4px; width: fit-content;">
+            <span style="width: 6px; height: 6px; border-radius: 50%; background: #464195; animation: acTyping 1.1s ease-in-out infinite;"></span>
+            <span style="width: 6px; height: 6px; border-radius: 50%; background: #464195; animation: acTyping 1.1s ease-in-out .15s infinite;"></span>
+            <span style="width: 6px; height: 6px; border-radius: 50%; background: #464195; animation: acTyping 1.1s ease-in-out .3s infinite;"></span>
+          </div>
+        </sc-if>
+      </div>
+      <div style="padding: 12px; display: flex; flex-wrap: wrap; gap: 8px; border-top: 1px solid rgba(20,19,31,.07);">
+        <sc-for list="{{ chatChips }}" as="c" hint-placeholder-count="3">
+          <button onClick="{{ c.send }}" style="background: #fff; border: 1px solid rgba(70,65,149,.32); color: #464195; font-size: 12.5px; font-weight: 700; padding: 8px 13px; border-radius: 999px; cursor: pointer;" style-hover="background: #464195; color: #fff;">{{ c.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+  <button onClick="{{ toTop }}" aria-label="Retour en haut" style="width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid #464195; background: #fff; color: #464195; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 26px rgba(20,19,31,.14);" style-hover="background: #464195; color: #fff;">
+    <i class="ti ti-arrow-up" style="font-size: 20px;"></i>
+  </button>
+  <button onClick="{{ toggleChat }}" aria-label="Ouvrir le chat" style="{{ chatFabStyle }}">
+    <i class="ti {{ chatFabIcon }}" style="font-size: 23px;"></i>
+  </button>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#C9A227&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#C9A227&quot;,&quot;#1F7A5A&quot;,&quot;#B23A48&quot;,&quot;#2E86AB&quot;],&quot;section&quot;:&quot;Identité&quot;},&quot;shape&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Doux&quot;,&quot;options&quot;:[&quot;Angulaire&quot;,&quot;Doux&quot;,&quot;Arrondi&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Identité&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Équilibré&quot;,&quot;options&quot;:[&quot;Sobre&quot;,&quot;Équilibré&quot;,&quot;Cinématique&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Animation&quot;}}">
+const DOMAINS = [
+  {
+    num: '01', icon: 'ti-receipt-tax', title: 'Fiscalité',
+    intro: 'Diagnostic, déclarations, contrôles et optimisation dans le strict respect de la législation.',
+    items: ['Diagnostic de la situation fiscale', 'Identification du régime fiscal applicable', 'Conseil et assistance fiscale', 'Élaboration et suivi des déclarations fiscales', 'Calcul des impôts et taxes', 'Assistance lors des contrôles fiscaux', 'Analyse des risques fiscaux', 'Régularisation des situations fiscales', 'Optimisation fiscale conforme à la loi', 'Suivi des obligations sur les plateformes de l’administration', 'Demandes et réclamations fiscales', 'Veille fiscale']
+  },
+  {
+    num: '02', icon: 'ti-calculator', title: 'Comptabilité',
+    intro: 'Tenue, clôture et analyse de vos comptes, en formule complète, mensuelle, trimestrielle ou ponctuelle.',
+    items: ['Tenue de la comptabilité', 'Saisie et classement des pièces comptables', 'Enregistrement des opérations', 'Rapprochements bancaires', 'Suivi des comptes clients et fournisseurs', 'Suivi de la trésorerie', 'Établissement des états financiers', 'Préparation des déclarations comptables', 'Analyse des comptes', 'Mise en place de procédures comptables', 'Assistance à la clôture des comptes', 'Conseil en organisation comptable'],
+    note: 'Quatre formules d’accompagnement : comptabilité complète, mensuelle, trimestrielle ou assistance ponctuelle selon vos besoins.'
+  },
+  {
+    num: '03', icon: 'ti-target-arrow', title: 'Management & conseil en gestion',
+    intro: 'Organisation, pilotage et prise de décision : nous outillons les dirigeants.',
+    items: ['Diagnostic organisationnel', 'Conseil en management', 'Mise en place de procédures internes', 'Organisation des services', 'Élaboration de tableaux de bord', 'Contrôle de gestion', 'Gestion budgétaire', 'Élaboration et suivi des budgets', 'Analyse des coûts', 'Analyse de la rentabilité', 'Accompagnement à la restructuration', 'Conseil en stratégie', 'Indicateurs de performance', 'Aide à la décision']
+  },
+  {
+    num: '04', icon: 'ti-chart-arrows-vertical', title: 'Ingénierie financière',
+    intro: 'Business plans, financements et prévisions pour sécuriser vos projets d’investissement.',
+    items: ['Analyse financière', 'Diagnostic financier', 'Élaboration de plans de financement', 'Recherche et structuration de financements', 'Élaboration de business plans', 'Études de rentabilité des projets', 'Prévisions financières', 'Budgets de trésorerie', 'Analyse du besoin en fonds de roulement', 'Conseil en investissement', 'Évaluation financière des projets', 'Dossiers banques et investisseurs', 'Restructuration financière']
+  },
+  {
+    num: '05', icon: 'ti-shield-check', title: 'Audit',
+    intro: 'Identifier les risques et les anomalies, puis proposer des mesures correctives suivies dans le temps.',
+    items: ['Audit comptable', 'Audit financier', 'Audit fiscal', 'Audit organisationnel', 'Audit interne', 'Contrôle des procédures', 'Évaluation des risques', 'Vérification de la conformité des opérations', 'Analyse des anomalies', 'Recommandations d’amélioration', 'Suivi de la mise en œuvre des recommandations'],
+    note: 'Les missions d’audit sont réalisées dans la limite des qualifications, autorisations et dispositions réglementaires applicables.'
+  },
+  {
+    num: '06', icon: 'ti-ship', title: 'Douane & transit',
+    intro: 'Import, export, dédouanement : vos opérations de commerce extérieur sans blocage.',
+    items: ['Assistance import et export', 'Conseil en réglementation douanière', 'Préparation des dossiers douaniers', 'Procédures de dédouanement', 'Conseil sur les droits et taxes à l’importation', 'Classement tarifaire', 'Suivi des opérations de transit', 'Conseil sur les documents internationaux', 'Assistance auprès des intervenants', 'Suivi des marchandises et formalités'],
+    note: 'Les opérations exigeant une qualité professionnelle ou une autorisation spécifique sont réalisées conformément à la réglementation en vigueur.'
+  },
+  {
+    num: '07', icon: 'ti-users', title: 'Ressources humaines',
+    intro: 'Contrats, dossiers du personnel, recrutement et politiques RH conformes au droit du travail.',
+    items: ['Élaboration des contrats de travail', 'Gestion administrative du personnel', 'Dossiers du personnel', 'Conseil et assistance au recrutement', 'Élaboration des fiches de poste', 'Organisation du personnel', 'Évaluation des performances', 'Conseil en formation', 'Élaboration des politiques RH', 'Gestion des conflits professionnels', 'Conseil en droit du travail', 'Procédures internes']
+  },
+  {
+    num: '08', icon: 'ti-building-store', title: 'Création d’entreprise',
+    intro: 'De l’étude du projet à l’immatriculation, puis un suivi durant vos premiers mois d’activité.',
+    items: ['Étude du projet', 'Choix de la forme juridique', 'Conseil sur le régime fiscal', 'Élaboration du business plan', 'Plan de financement', 'Préparation des documents administratifs', 'Assistance aux formalités de création', 'Accompagnement à l’immatriculation', 'Conseil sur les obligations fiscales et sociales', 'Mise en place de la comptabilité', 'Procédures administratives', 'Accompagnement après création'],
+    note: 'Un service d’accompagnement post-création permet au nouvel entrepreneur d’être suivi durant ses premiers mois d’activité.'
+  }
+];
+
+class Component extends DCLogic {
+  state = {
+    menuOpen: false, servicesOpen: false, open: 0, sent: false, need: 'Fiscalité', slide: 0,
+    chatOpen: false, chatTyping: false,
+    chatMsgs: [{ me: false, text: 'Bonjour, Allianz Consulting Sarl. Sur quel volet souhaitez-vous être accompagné : fiscalité, comptabilité, financement ou création d’entreprise ?' }]
+  };
+
+  componentDidMount() {
+    this.applyTheme();
+    this.initMotion();
+    this._slideT = setInterval(() => this.setState(s => ({ slide: (s.slide + 1) % 3 })), 5600);
+  }
+  componentDidUpdate(prev) {
+    this.applyTheme();
+    if (prev && (prev.motion !== this.props.motion)) { this._motionReady = false; this.initMotion(); }
+  }
+
+  /* ——— Tweaks : recolore et re-sculpte les styles inline sans écraser le runtime ——— */
+  applyTheme() {
+    if (typeof document === 'undefined') return;
+    const accent = this.props.accent || '#C9A227';
+    const shape = this.props.shape || 'Doux';
+    const motion = this.props.motion || 'Équilibré';
+    document.body.dataset.acMotion = motion === 'Sobre' ? 'sobre' : (motion === 'Cinématique' ? 'cine' : 'std');
+
+    const hex = h => parseInt(h.slice(1), 16);
+    const mix = (h, amt) => {
+      const n = hex(h), r = (n >> 16) & 255, g = (n >> 8) & 255, b = n & 255;
+      const f = v => Math.round(v + (255 - v) * amt).toString(16).padStart(2, '0');
+      return '#' + f(r) + f(g) + f(b);
+    };
+    const triplet = h => { const n = hex(h); return ((n >> 16) & 255) + ',' + ((n >> 8) & 255) + ',' + (n & 255); };
+    const lum = h => { const n = hex(h); return (0.299 * ((n >> 16) & 255) + 0.587 * ((n >> 8) & 255) + 0.114 * (n & 255)) / 255; };
+    const soft = mix(accent, 0.42);
+    const onAccent = lum(accent) > 0.6 ? '#14131F' : '#ffffff';
+    const radiusFactor = shape === 'Angulaire' ? 0.16 : (shape === 'Arrondi' ? 2 : 1);
+    const pill = shape === 'Angulaire' ? '7px' : null;
+
+    const root = this.el || document;
+    root.querySelectorAll('[style]').forEach(el => {
+      if (!el._acBase) {
+        const base = {};
+        for (let i = 0; i < el.style.length; i++) {
+          const p = el.style[i];
+          base[p] = el.style.getPropertyValue(p);
+        }
+        el._acBase = base;
+      }
+      const base = el._acBase;
+      let touchedAccent = false;
+      Object.keys(base).forEach(p => {
+        let v = base[p];
+        if (/#C9A227|#E3C766|201\s*,\s*162\s*,\s*39/i.test(v)) {
+          touchedAccent = true;
+          v = v.replace(/#C9A227/gi, accent).replace(/#E3C766/gi, soft).replace(/201\s*,\s*162\s*,\s*39/g, triplet(accent));
+        }
+        if (p === 'border-radius' && (radiusFactor !== 1 || pill)) {
+          v = v.replace(/([\d.]+)px/g, (m, n) => {
+            const px = parseFloat(n);
+            if (px >= 900) return pill || m;
+            return Math.max(shape === 'Angulaire' ? 2 : 0, Math.round(px * radiusFactor)) + 'px';
+          });
+        }
+        if (v !== base[p]) el.style.setProperty(p, v, 'important');
+      });
+      if (touchedAccent && onAccent === '#ffffff' && /rgb\(20,\s*19,\s*31\)|#14131F/i.test(base['color'] || '')) {
+        el.style.setProperty('color', onAccent, 'important');
+      }
+    });
+  }
+  componentWillUnmount() {
+    clearTimeout(this._motionT); clearTimeout(this._safety); clearTimeout(this._chatT); clearInterval(this._slideT);
+    if (this._io) this._io.disconnect();
+    if (this._scroll) window.removeEventListener('scroll', this._scroll);
+    if (this._sweep) { window.removeEventListener('scroll', this._sweep); window.removeEventListener('resize', this._sweep); }
+  }
+
+  initMotion() {
+    if (typeof window === 'undefined') return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const mo = this.props.motion || 'Équilibré';
+    const M = mo === 'Sobre'
+      ? { stagger: 40, split: false, parallax: 0, mag: 0 }
+      : mo === 'Cinématique'
+        ? { stagger: 135, split: true, wordDelay: 0.085, wordDur: 1.25, parallax: 1.9, mag: 15 }
+        : { stagger: 90, split: true, wordDelay: 0.05, wordDur: 0.95, parallax: 1, mag: 8 };
+    clearTimeout(this._motionT);
+    this._motionT = setTimeout(() => {
+      const root = this.el || document;
+      const dirs = ['up', 'left', 'right'];
+      Array.from(root.querySelectorAll('section, footer')).forEach((sec, si) => {
+        Array.from(sec.children).forEach((child, ci) => {
+          if (child.hasAttribute('data-ac-reveal') || child.tagName === 'STYLE') return;
+          const cs = getComputedStyle(child);
+          if (cs.position === 'absolute' || cs.position === 'fixed') return;
+          child.setAttribute('data-ac-reveal', si === 0 ? 'scale' : (dirs[ci % 3] === 'up' ? '' : dirs[ci % 3]));
+          child.style.transitionDelay = (ci * M.stagger) + 'ms';
+        });
+        Array.from(sec.querySelectorAll('[style*="border-radius: 16px"], [style*="border-radius: 14px"]')).slice(0, 40)
+          .forEach(c => c.setAttribute('data-ac-lift', ''));
+      });
+
+      const h1 = root.querySelector('#accueil h1');
+      if (h1 && M.split && !h1.dataset.acSplit) {
+        h1.dataset.acSplit = '1';
+        h1.classList.remove('ac-rise');
+        const units = [];
+        Array.from(h1.childNodes).forEach(node => {
+          if (node.nodeType === 3) {
+            const frag = document.createDocumentFragment();
+            node.textContent.split(/(\s+)/).forEach(tok => {
+              if (!tok.trim()) { frag.appendChild(document.createTextNode(tok)); return; }
+              const s = document.createElement('span');
+              s.textContent = tok; s.style.display = 'inline-block';
+              units.push(s); frag.appendChild(s);
+            });
+            h1.replaceChild(frag, node);
+          } else if (node.nodeType === 1) {
+            const w = document.createElement('span');
+            w.style.display = 'inline-block';
+            h1.replaceChild(w, node); w.appendChild(node); units.push(w);
+          }
+        });
+        units.forEach((u, i) => {
+          u.style.animation = 'acWord ' + M.wordDur + 's cubic-bezier(.16,1,.3,1) both';
+          u.style.animationDelay = (0.12 + i * M.wordDelay) + 's';
+        });
+      }
+
+      root.querySelectorAll('[data-ac-mag]').forEach(btn => {
+        if (btn.dataset.acMagOn) return;
+        btn.dataset.acMagOn = '1';
+        btn.addEventListener('mousemove', ev => {
+          const amp = (this.props.motion === 'Sobre') ? 0 : (this.props.motion === 'Cinématique' ? 15 : 8);
+          if (!amp) return;
+          const r = btn.getBoundingClientRect();
+          const dx = (ev.clientX - r.left - r.width / 2) / r.width;
+          const dy = (ev.clientY - r.top - r.height / 2) / r.height;
+          btn.style.transform = 'translate(' + (dx * amp).toFixed(1) + 'px,' + (dy * amp * 0.75).toFixed(1) + 'px) scale(' + (1 + amp / 500).toFixed(3) + ')';
+        });
+        btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+      });
+
+      const nodes = () => Array.from(root.querySelectorAll('[data-ac-reveal]:not(.ac-on)'));
+      const sweep = () => {
+        const vh = window.innerHeight || 800;
+        nodes().forEach(n => {
+          const r = n.getBoundingClientRect();
+          if (r.top < vh * 0.92 && r.bottom > -80) n.classList.add('ac-on');
+        });
+      };
+      this._sweep = sweep;
+      requestAnimationFrame(sweep);
+      window.addEventListener('scroll', sweep, { passive: true });
+      window.addEventListener('resize', sweep);
+      this._safety = setTimeout(() => root.querySelectorAll('[data-ac-reveal]').forEach(n => n.classList.add('ac-on')), 2500);
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(es => es.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('ac-on'); io.unobserve(e.target); }
+        }), { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+        nodes().forEach(n => io.observe(n));
+        this._io = io;
+      }
+
+      const glows = Array.from(root.querySelectorAll('[style*="acGlow"]'));
+      const hero = root.querySelector('#accueil');
+      this._scroll = () => {
+        const k = (this.props.motion === 'Sobre') ? 0 : (this.props.motion === 'Cinématique' ? 1.9 : 1);
+        const y = window.scrollY || 0;
+        glows.forEach((g, i) => { g.style.translate = '0 ' + (y * k * (i % 2 ? 0.13 : -0.09)).toFixed(1) + 'px'; });
+        if (hero && k) {
+          const p = Math.min(1, y / 700);
+          hero.style.transform = 'scale(' + (1 - p * 0.032 * k).toFixed(3) + ')';
+        }
+      };
+      window.addEventListener('scroll', this._scroll, { passive: true });
+      this._scroll();
+    }, 120);
+  }
+
+  chatSend = (q, a) => {
+    this.setState(s => ({ chatMsgs: s.chatMsgs.concat([{ me: true, text: q }]), chatTyping: true }));
+    clearTimeout(this._chatT);
+    this._chatT = setTimeout(() => this.setState(s => ({
+      chatTyping: false, chatMsgs: s.chatMsgs.concat([{ me: false, text: a }])
+    })), 1100);
+  };
+
+  bubble(me) {
+    return me
+      ? 'background:#464195;color:#fff;font-size:14px;line-height:1.5;padding:11px 14px;border-radius:12px 12px 4px 12px;justify-self:end;max-width:85%;animation:acPop .35s cubic-bezier(.16,1,.3,1) both;'
+      : 'background:#fff;border:1px solid rgba(20,19,31,.08);color:#14131F;font-size:14px;line-height:1.5;padding:11px 14px;border-radius:12px 12px 12px 4px;max-width:88%;animation:acPop .35s cubic-bezier(.16,1,.3,1) both;';
+  }
+
+  renderVals() {
+    const st = this.state;
+    const marqueeWords = ['Fiscalité', 'Comptabilité', 'Management', 'Ingénierie financière', 'Audit', 'Douane & transit', 'Ressources humaines', 'Création d’entreprise'];
+    const planCard = f => 'background:' + (f ? '#14131F' : '#fff') + ';color:' + (f ? '#fff' : '#14131F') +
+      ';border:1px solid ' + (f ? '#14131F' : 'rgba(20,19,31,.1)') + ';border-radius:18px;padding:28px;display:grid;gap:16px;align-content:start;' +
+      (f ? 'box-shadow:0 26px 60px rgba(20,19,31,.18);' : '');
+
+    return {
+      menuOpen: st.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      inputStyle: 'border:1px solid rgba(20,19,31,.16);border-radius:9px;padding:12px 13px;font-size:15px;outline:none;background:#fff;width:100%;',
+
+      heroSlides: [
+        { slot: 'ac-hero-1', hint: 'Image 1 — Réunion de conseil : trois consultants et un dirigeant autour d’une table, documents comptables et ordinateur ouverts, lumière naturelle latérale, cadrage large, sujets à droite, centre haut dégagé (2400×1000)' },
+        { slot: 'ac-hero-2', hint: 'Image 2 — Détail de travail : mains sur un tableau financier imprimé, stylo, calculatrice et écran de tableau de bord flou en arrière-plan, teintes indigo et or, faible profondeur de champ (2400×1000)' },
+        { slot: 'ac-hero-3', hint: 'Image 3 — Le cabinet : façade ou salle de réunion vitrée d’immeuble de bureaux à Douala, en fin de journée, lumière chaude, perspective large et centre dégagé (2400×1000)' }
+      ].map((s, i) => ({
+        slot: s.slot, hint: s.hint,
+        style: 'position:absolute;inset:0;z-index:0;pointer-events:none;transition:opacity 1.4s cubic-bezier(.4,0,.2,1), transform 7s linear;opacity:' +
+          (st.slide === i ? '1' : '0') + ';transform:scale(' + (st.slide === i ? '1.06' : '1') + ');'
+      })),
+      heroDots: [0, 1, 2].map(i => ({
+        go: () => this.setState({ slide: i }),
+        style: 'width:' + (st.slide === i ? '26px' : '9px') + ';height:9px;border-radius:999px;border:none;cursor:pointer;padding:0;transition:.45s cubic-bezier(.16,1,.3,1);background:' +
+          (st.slide === i ? '#C9A227' : 'rgba(255,255,255,.35)') + ';'
+      })),
+      servicesOpen: st.servicesOpen,
+      toggleServices: () => this.setState(s => ({ servicesOpen: !s.servicesOpen })),
+      servicesBtnStyle: 'display:flex;align-items:center;gap:6px;background:transparent;border:none;cursor:pointer;font-size:14.5px;font-weight:600;padding:0;color:' +
+        (st.servicesOpen ? '#464195' : 'rgba(20,19,31,.72)') + ';',
+      servicesChevStyle: 'font-size:16px;transition:transform .3s cubic-bezier(.16,1,.3,1);transform:rotate(' + (st.servicesOpen ? '180deg' : '0deg') + ');',
+      serviceLinks: DOMAINS.map((d, i) => ({
+        label: d.title, icon: d.icon,
+        go: () => this.setState({ servicesOpen: false, open: i }),
+        goMobile: () => this.setState({ menuOpen: false, servicesOpen: false, open: i })
+      })),
+      team: [
+        { slot: 'ac-team-1', name: 'Expert-comptable associé', role: 'Comptabilité & audit', desc: 'Supervise la tenue comptable, les clôtures et les missions d’audit du cabinet.' },
+        { slot: 'ac-team-2', name: 'Conseil fiscal', role: 'Fiscalité & contentieux', desc: 'Déclarations, contrôles fiscaux, régularisations et veille réglementaire.' },
+        { slot: 'ac-team-3', name: 'Analyste financier', role: 'Ingénierie financière', desc: 'Business plans, plans de financement et dossiers bancaires.' },
+        { slot: 'ac-team-4', name: 'Consultant douane & RH', role: 'Transit & ressources humaines', desc: 'Dédouanement, classement tarifaire, contrats et dossiers du personnel.' }
+      ],
+      posts: [
+        { slot: 'ac-post-1', tag: 'Fiscalité', date: '18 août 2026', read: '5 min', title: 'Calendrier fiscal : les échéances à ne pas manquer ce trimestre', excerpt: 'Déclarations, acomptes et obligations déclaratives : la liste des dates qui exposent votre entreprise à des pénalités.' },
+        { slot: 'ac-post-2', tag: 'Financement', date: '04 août 2026', read: '7 min', title: 'Ce que votre banque lit vraiment dans un business plan', excerpt: 'Les quatre pages qui décident de l’accord, et les erreurs de prévisionnel qui font échouer un dossier solide.' },
+        { slot: 'ac-post-3', tag: 'Douane', date: '21 juillet 2026', read: '6 min', title: 'Classement tarifaire : l’erreur qui coûte le plus cher à l’importation', excerpt: 'Une position tarifaire mal choisie se paie en droits, en amendes et en immobilisation de marchandises.' }
+      ],
+      heroChips: [
+        { icon: 'ti-receipt-tax', label: 'Fiscalité' }, { icon: 'ti-calculator', label: 'Comptabilité' },
+        { icon: 'ti-target-arrow', label: 'Management' }, { icon: 'ti-chart-arrows-vertical', label: 'Ingénierie financière' },
+        { icon: 'ti-shield-check', label: 'Audit' }, { icon: 'ti-ship', label: 'Douane & transit' },
+        { icon: 'ti-users', label: 'Ressources humaines' }, { icon: 'ti-building-store', label: 'Création d’entreprise' }
+      ],
+      marquee: [{ items: marqueeWords }, { items: marqueeWords }],
+
+      domains: DOMAINS.map((d, i) => {
+        const open = st.open === i;
+        return {
+          num: d.num, icon: d.icon, title: d.title, intro: d.intro, items: d.items,
+          note: d.note || '', hasNote: !!d.note && open, open,
+          toggle: () => this.setState(s => ({ open: s.open === i ? -1 : i })),
+          wrapStyle: 'border:1px solid ' + (open ? 'rgba(70,65,149,.4)' : 'rgba(20,19,31,.09)') +
+            ';border-radius:16px;overflow:hidden;background:' + (open ? '#fff' : '#fff') +
+            ';transition:border-color .3s ease, box-shadow .4s ease;' + (open ? 'box-shadow:0 20px 48px rgba(20,19,31,.09);' : ''),
+          iconStyle: 'width:48px;height:48px;border-radius:12px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:.3s;background:' +
+            (open ? '#464195' : '#F7F7FA') + ';color:' + (open ? '#fff' : '#464195') + ';',
+          chevStyle: 'width:34px;height:34px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:transform .35s cubic-bezier(.16,1,.3,1), background .3s;background:' +
+            (open ? '#C9A227' : 'rgba(20,19,31,.06)') + ';color:' + (open ? '#14131F' : 'rgba(20,19,31,.6)') +
+            ';transform:rotate(' + (open ? '135deg' : '0deg') + ');'
+        };
+      }),
+
+      steps: [
+        { num: '01', title: 'Diagnostic', desc: 'Nous auditons votre situation fiscale, comptable et organisationnelle. Sans engagement.' },
+        { num: '02', title: 'Plan d’action', desc: 'Priorités, calendrier des obligations et formule d’accompagnement adaptée à votre taille.' },
+        { num: '03', title: 'Mise en œuvre', desc: 'Déclarations, tenue comptable, dossiers de financement, formalités : nous exécutons.' },
+        { num: '04', title: 'Suivi continu', desc: 'Tableaux de bord, veille réglementaire et point périodique avec votre consultant dédié.' }
+      ],
+      stats: [
+        { icon: 'ti-list-check', value: '120 prestations', label: 'sur huit domaines d’intervention' },
+        { icon: 'ti-user-check', value: '1 interlocuteur', label: 'dédié, qui connaît votre dossier' },
+        { icon: 'ti-clock-hour-4', value: '48 h', label: 'pour votre premier diagnostic' },
+        { icon: 'ti-scale', value: 'Conformité', label: 'obligations fiscales, sociales et douanières' },
+        { icon: 'ti-trending-up', value: 'Performance', label: 'rentabilité et pilotage par tableaux de bord' },
+        { icon: 'ti-lock', value: 'Confidentialité', label: 'vos données ne quittent jamais le cabinet' }
+      ],
+      plans: [
+        {
+          title: 'Assistance ponctuelle', featured: false,
+          desc: 'Pour une opération précise : contrôle fiscal, dossier bancaire, dédouanement, création de société.',
+          items: ['Intervention à la demande', 'Diagnostic du besoin', 'Traitement du dossier', 'Compte rendu écrit', 'Facturation à la mission'],
+          cta: 'Décrire mon besoin'
+        },
+        {
+          title: 'Accompagnement mensuel', featured: true,
+          desc: 'La formule de référence pour les TPE et PME qui veulent dormir tranquilles.',
+          items: ['Tenue comptable mensuelle', 'Déclarations fiscales suivies', 'Tableau de bord de gestion', 'Assistance en cas de contrôle', 'Consultant dédié joignable', 'Veille fiscale et sociale'],
+          cta: 'Demander un devis'
+        },
+        {
+          title: 'Direction financière externalisée', featured: false,
+          desc: 'Pour les structures en croissance ou en restructuration qui ont besoin d’un bras droit financier.',
+          items: ['Comptabilité complète et clôture', 'Contrôle de gestion et budgets', 'Ingénierie financière et financements', 'Missions d’audit interne', 'Accompagnement RH et organisation', 'Comité de pilotage trimestriel'],
+          cta: 'Planifier un entretien'
+        }
+      ].map(p => ({
+        title: p.title, desc: p.desc, items: p.items, cta: p.cta, featured: p.featured,
+        style: planCard(p.featured),
+        descStyle: 'margin:0;font-size:14.5px;line-height:1.6;color:' + (p.featured ? 'rgba(255,255,255,.66)' : 'rgba(20,19,31,.62)') + ';',
+        ruleStyle: 'height:1px;background:' + (p.featured ? 'rgba(255,255,255,.14)' : 'rgba(20,19,31,.09)') + ';',
+        itemStyle: 'display:flex;gap:10px;align-items:flex-start;font-size:14.5px;line-height:1.5;color:' + (p.featured ? 'rgba(255,255,255,.82)' : 'rgba(20,19,31,.75)') + ';',
+        ctaStyle: 'margin-top:6px;text-align:center;font-weight:800;font-size:15px;padding:14px;border-radius:9px;' +
+          (p.featured ? 'background:#C9A227;color:#14131F;' : 'background:#F7F7FA;color:#464195;border:1px solid rgba(70,65,149,.22);')
+      })),
+      clients: ['Porteurs de projets', 'TPE', 'PME', 'Sociétés commerciales', 'Commerçants', 'Professions libérales', 'Associations', 'Investisseurs', 'Import / export', 'Entreprises nouvelles', 'Restructuration'],
+      values: [
+        { icon: 'ti-scale', title: 'Rigueur réglementaire', desc: 'Chaque recommandation s’inscrit dans le cadre légal en vigueur. Aucune zone grise.' },
+        { icon: 'ti-eye', title: 'Lisibilité', desc: 'Des restitutions écrites, chiffrées et compréhensibles par un dirigeant non financier.' },
+        { icon: 'ti-hand-stop', title: 'Engagement de suivi', desc: 'Les recommandations sont suivies dans le temps, pas livrées puis abandonnées.' }
+      ],
+      quotes: [
+        { text: 'Notre premier contrôle fiscal s’est réglé sans redressement. Le diagnostic initial avait déjà identifié les deux points sensibles.', name: 'Direction générale', role: 'PME de distribution · 34 salariés' },
+        { text: 'Le business plan produit par le cabinet nous a ouvert la ligne de financement que deux banques avaient refusée.', name: 'Fondateur', role: 'Société de transport' },
+        { text: 'Comptabilité, déclarations et dossiers du personnel sur un seul interlocuteur : nous avons arrêté de courir après trois prestataires.', name: 'Gérante', role: 'Cabinet de services · Douala' }
+      ],
+      needs: ['Fiscalité', 'Comptabilité', 'Management', 'Ingénierie financière', 'Audit', 'Douane & transit', 'Ressources humaines', 'Création d’entreprise'].map(label => ({
+        label,
+        pick: () => this.setState({ need: label }),
+        style: 'cursor:pointer;font-size:12.5px;font-weight:700;padding:9px 14px;border-radius:999px;transition:.25s;background:' +
+          (st.need === label ? '#464195' : '#fff') + ';color:' + (st.need === label ? '#fff' : '#14131F') +
+          ';border:1px solid ' + (st.need === label ? '#464195' : 'rgba(20,19,31,.14)') + ';'
+      })),
+      sent: st.sent, notSent: !st.sent,
+      send: () => this.setState({ sent: true }),
+      reset: () => this.setState({ sent: false }),
+
+      chatOpen: st.chatOpen,
+      toggleChat: () => this.setState(s => ({ chatOpen: !s.chatOpen })),
+      closeChat: () => this.setState({ chatOpen: false }),
+      chatFabIcon: st.chatOpen ? 'ti-x' : 'ti-message-circle-2',
+      chatFabStyle: 'width:56px;height:56px;border-radius:50%;border:none;cursor:pointer;color:#fff;background:' +
+        (st.chatOpen ? '#14131F' : '#464195') + ';box-shadow:0 16px 34px rgba(70,65,149,.35);display:flex;align-items:center;justify-content:center;animation:acRing 2.6s ease-out infinite;',
+      chatTyping: st.chatTyping,
+      chatMsgs: st.chatMsgs.map(m => ({ text: m.text, style: this.bubble(m.me) })),
+      chatChips: [
+        { label: 'Créer mon entreprise', send: () => this.chatSend('Créer mon entreprise', 'Nous prenons en charge l’étude du projet, la forme juridique, le business plan, les formalités et l’immatriculation — puis un suivi post-création durant vos premiers mois.') },
+        { label: 'Tarif comptabilité', send: () => this.chatSend('Tarif comptabilité', 'Le tarif dépend du volume de pièces et du régime fiscal. Quatre formules existent : complète, mensuelle, trimestrielle ou ponctuelle. Le diagnostic initial est offert.') },
+        { label: 'Contrôle fiscal en cours', send: () => this.chatSend('Contrôle fiscal en cours', 'Nous intervenons en assistance dès la notification : analyse du dossier, préparation des réponses et accompagnement pendant les échanges avec l’administration.') },
+        { label: 'Dossier de financement', send: () => this.chatSend('Dossier de financement', 'Nous produisons business plan, plan de financement, prévisions et budget de trésorerie, puis nous structurons le dossier destiné aux banques et investisseurs.') }
+      ],
+
+      toTop: () => {
+        const start = window.scrollY || document.documentElement.scrollTop || 0;
+        if (!start) return;
+        let t0 = null;
+        const step = now => {
+          if (t0 === null) t0 = now;
+          const p = Math.min(1, Math.max(0, (now - t0) / 620));
+          const e = 1 - Math.pow(1 - p, 3);
+          const y = Math.round(start * (1 - e));
+          window.scrollTo(0, y);
+          if (document.scrollingElement) document.scrollingElement.scrollTop = y;
+          if (p < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
