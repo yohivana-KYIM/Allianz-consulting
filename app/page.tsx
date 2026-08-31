@@ -8,12 +8,12 @@ import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
 import HeroCarousel from "@/components/home/HeroCarousel";
 import DomainsAccordion from "@/components/home/DomainsAccordion";
+import PartnersSection from "@/components/home/PartnersSection";
 import { HOME_TEAM } from "@/lib/data/team";
 import { POSTS, iconForTag } from "@/lib/data/blog";
 import {
   CLIENTS,
   CONTACT_INFO,
-  PARTNERS,
   PLANS,
   STATS,
   STEPS,
