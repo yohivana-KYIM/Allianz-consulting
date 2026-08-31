@@ -56,29 +56,31 @@
   100% { box-shadow: 0 0 0 18px rgba(70, 65, 149, 0); }
 }
 
-* {
-  box-sizing: border-box;
-}
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
 
-body {
-  margin: 0;
-  background: #ffffff;
-  color: #14131f;
-  font-family: var(--font-manrope), system-ui, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
+  body {
+    margin: 0;
+    background: #ffffff;
+    color: #14131f;
+    font-family: var(--font-manrope), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
 
-a {
-  color: #464195;
-  text-decoration: none;
-}
-a:hover {
-  color: #c9a227;
-}
+  a {
+    color: #464195;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #c9a227;
+  }
 
-input, select, textarea, button {
-  font-family: inherit;
+  input, select, textarea, button {
+    font-family: inherit;
+  }
 }
 
 .ac-eye > span:first-child {

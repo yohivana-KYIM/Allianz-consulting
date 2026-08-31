@@ -8,7 +8,6 @@ import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
 import HeroCarousel from "@/components/home/HeroCarousel";
 import DomainsAccordion from "@/components/home/DomainsAccordion";
-import { SERVICES } from "@/lib/data/services";
 import { HOME_TEAM } from "@/lib/data/team";
 import { POSTS, iconForTag } from "@/lib/data/blog";
 import {
@@ -22,7 +21,6 @@ import {
   VALUES,
 } from "@/lib/data/site";
 
-const MARQUEE_WORDS = SERVICES.map((s) => s.label);
 const HOME_POSTS = POSTS.slice(0, 3);
 const HOME_VALUES = VALUES.slice(0, 3);
 
@@ -31,23 +29,6 @@ export default function HomePage() {
     <>
       <SiteHeader variant="home" current="home" />
       <HeroCarousel />
-
-      <div className="ac-marquee mx-2.5 mb-2.5 overflow-hidden rounded-2xl bg-ac-ink py-3.5">
-        <div className="flex w-max animate-ac-marquee">
-          {[0, 1].map((rep) => (
-            <div key={rep} className="flex flex-shrink-0 items-center gap-[38px] pl-[38px]">
-              {MARQUEE_WORDS.map((w) => (
-                <span key={w} className="flex flex-shrink-0 items-center gap-[22px] whitespace-nowrap">
-                  <span className="text-[12.5px] font-extrabold uppercase tracking-[0.18em] text-white/55">
-                    {w}
-                  </span>
-                  <i className="ti ti-diamond-filled text-[9px] text-ac-gold" />
-                </span>
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
 
       <section id="expertises" className="bg-white px-5 py-[86px]">
         <div className="mx-auto max-w-[1180px]">
