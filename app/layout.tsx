@@ -28,10 +28,7 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${sora.variable} ${manrope.variable}`}>
       <head>
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css"
-        />
+        <link rel="stylesheet" href="/tabler-icons/tabler-icons.min.css" />
       </head>
       <body>{children}</body>
     </html>
