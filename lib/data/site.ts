@@ -1,3 +1,5 @@
+export const PARTNERS = [{ name: "Sotraplast", logo: "/partners/sotraplast.png" }];
+
 export const NAV_LINKS = [
   { href: "/", label: "Accueil", key: "home" },
   { href: "/a-propos", label: "À propos", key: "about" },

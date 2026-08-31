@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
@@ -13,6 +14,7 @@ import { POSTS } from "@/lib/data/blog";
 import {
   CLIENTS,
   CONTACT_INFO,
+  PARTNERS,
   PLANS,
   STATS,
   STEPS,
@@ -208,6 +210,28 @@ export default function HomePage() {
           <Reveal variant="right" className="relative min-h-[420px] overflow-hidden rounded-[20px] border border-ac-ink/[0.08]">
             <ImageSlot hint="Photo — dirigeant en entretien avec un consultant (860×1000)" />
           </Reveal>
+        </div>
+      </section>
+
+      <section className="bg-white px-5 py-[52px]">
+        <div className="mx-auto flex max-w-[1180px] flex-wrap items-center justify-center gap-x-10 gap-y-5">
+          <span className="text-[12.5px] font-extrabold uppercase tracking-[0.18em] text-ac-ink/40">
+            Nos partenaires
+          </span>
+          {PARTNERS.map((p) => (
+            <div
+              key={p.name}
+              className="flex h-16 items-center justify-center rounded-xl border border-ac-ink/[0.08] bg-ac-mist px-6"
+            >
+              <Image
+                src={p.logo}
+                alt={p.name}
+                width={160}
+                height={48}
+                className="h-8 w-auto object-contain"
+              />
+            </div>
+          ))}
         </div>
       </section>
 
