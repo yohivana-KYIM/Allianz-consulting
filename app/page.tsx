@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
@@ -29,6 +28,7 @@ export default function HomePage() {
     <>
       <SiteHeader variant="home" current="home" />
       <HeroCarousel />
+      <PartnersSection />
 
       <section id="expertises" className="bg-white px-5 py-[86px]">
         <div className="mx-auto max-w-[1180px]">
