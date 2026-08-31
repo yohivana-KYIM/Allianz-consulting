@@ -17,7 +17,7 @@ export default function ImageSlot({
     <div
       role="img"
       aria-label={hint}
-      className={`relative flex h-full w-full items-center justify-center overflow-hidden ${
+      className={`absolute inset-0 flex items-center justify-center overflow-hidden ${
         isDark
           ? "bg-[linear-gradient(155deg,#1c1a33_0%,#14131f_55%,#232052_100%)]"
           : "bg-[linear-gradient(155deg,#f7f7fa_0%,#ece9f5_100%)]"

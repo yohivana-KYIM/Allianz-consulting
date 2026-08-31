@@ -55,7 +55,7 @@ export default function HeroCarousel() {
             transform: `scale(${slide === i ? 1.06 : 1})`,
           }}
         >
-          <ImageSlot hint={s.hint} icon={s.icon} tone="dark" className="h-full w-full" />
+          <ImageSlot hint={s.hint} icon={s.icon} tone="dark" />
         </div>
       ))}
       <div className="pointer-events-none absolute inset-0 mix-blend-screen [background:radial-gradient(56%_86%_at_2%_0%,rgba(70,65,149,0.7),transparent_62%),radial-gradient(52%_80%_at_98%_4%,rgba(201,162,39,0.4),transparent_62%)]" />
