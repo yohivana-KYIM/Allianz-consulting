@@ -194,28 +194,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-white px-5 py-[52px]">
-        <div className="mx-auto flex max-w-[1180px] flex-wrap items-center justify-center gap-x-10 gap-y-5">
-          <span className="text-[12.5px] font-extrabold uppercase tracking-[0.18em] text-ac-ink/40">
-            Nos partenaires
-          </span>
-          {PARTNERS.map((p) => (
-            <div
-              key={p.name}
-              className="flex h-16 items-center justify-center rounded-xl border border-ac-ink/[0.08] bg-ac-mist px-6"
-            >
-              <Image
-                src={p.logo}
-                alt={p.name}
-                width={160}
-                height={48}
-                className="h-8 w-auto object-contain"
-              />
-            </div>
-          ))}
-        </div>
-      </section>
-
       <section id="cabinet" className="bg-white px-5 py-[84px]">
         <div className="mx-auto grid max-w-[1180px] grid-cols-1 items-center gap-10 nav:grid-cols-2">
           <Reveal variant="left" className="relative min-h-[420px] overflow-hidden rounded-[20px] border border-ac-ink/[0.08]">
