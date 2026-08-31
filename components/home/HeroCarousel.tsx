@@ -8,14 +8,17 @@ const SLIDES = [
   {
     slot: "ac-hero-1",
     hint: "Réunion de conseil : trois consultants et un dirigeant autour d’une table, documents comptables et ordinateur ouverts (2400×1000)",
+    icon: "ti-users",
   },
   {
     slot: "ac-hero-2",
     hint: "Détail de travail : mains sur un tableau financier imprimé, stylo, calculatrice (2400×1000)",
+    icon: "ti-report-money",
   },
   {
     slot: "ac-hero-3",
     hint: "Le cabinet : façade ou salle de réunion vitrée d’immeuble de bureaux à Douala, en fin de journée (2400×1000)",
+    icon: "ti-building-skyscraper",
   },
 ];
 
@@ -52,7 +55,7 @@ export default function HeroCarousel() {
             transform: `scale(${slide === i ? 1.06 : 1})`,
           }}
         >
-          <ImageSlot hint={s.hint} className="h-full w-full" />
+          <ImageSlot hint={s.hint} icon={s.icon} tone="dark" className="h-full w-full" />
         </div>
       ))}
       <div className="pointer-events-none absolute inset-0 mix-blend-screen [background:radial-gradient(56%_86%_at_2%_0%,rgba(70,65,149,0.7),transparent_62%),radial-gradient(52%_80%_at_98%_4%,rgba(201,162,39,0.4),transparent_62%)]" />

@@ -29,13 +29,13 @@ export default function SiteHeader({ variant, current }: SiteHeaderProps) {
   return (
     <header className="sticky top-0 z-[60] border-b border-ac-ink/[0.07] bg-white/94 backdrop-blur-md">
       <div
-        className={`mx-auto flex items-center gap-[22px] px-5 py-[11px] ${
+        className={`mx-auto flex items-center gap-3 px-4 py-[11px] sm:gap-[22px] sm:px-5 ${
           variant === "home" ? "max-w-[1280px]" : "max-w-[1240px]"
         }`}
       >
         <Link
           href={variant === "home" ? "#accueil" : "/"}
-          className="flex items-center gap-[11px] text-ac-ink"
+          className="flex min-w-0 flex-shrink items-center gap-[11px] text-ac-ink"
           onClick={closeAll}
         >
           <Image
@@ -43,11 +43,11 @@ export default function SiteHeader({ variant, current }: SiteHeaderProps) {
             alt="Allianz Consulting Sarl"
             width={200}
             height={60}
-            className={variant === "home" ? "h-11 w-auto" : "h-[42px] w-auto"}
+            className={`flex-shrink-0 ${variant === "home" ? "h-11 w-auto" : "h-[42px] w-auto"}`}
             priority
           />
           <span
-            className={`whitespace-nowrap font-sora font-bold tracking-[-0.02em] ${
+            className={`min-w-0 truncate font-sora font-bold tracking-[-0.02em] ${
               variant === "home" ? "text-base" : "text-[15.5px]"
             }`}
           >
@@ -135,9 +135,7 @@ export default function SiteHeader({ variant, current }: SiteHeaderProps) {
 
         <Link
           href={variant === "home" ? "#contact" : "/contact"}
-          className={`whitespace-nowrap rounded-lg bg-ac-indigo px-4 py-[11px] text-[14.5px] font-bold text-white shadow-[0_10px_26px_rgba(70,65,149,0.3)] hover:bg-ac-gold sm:px-[22px] ${
-            variant === "home" ? "" : ""
-          }`}
+          className="flex-shrink-0 whitespace-nowrap rounded-lg bg-ac-indigo px-3.5 py-[11px] text-[13.5px] font-bold text-white shadow-[0_10px_26px_rgba(70,65,149,0.3)] hover:bg-ac-gold sm:px-[22px] sm:text-[14.5px]"
         >
           <span className="hidden sm:inline">
             {variant === "home" ? "Prendre rendez-vous" : "Rendez-vous"}
@@ -149,7 +147,7 @@ export default function SiteHeader({ variant, current }: SiteHeaderProps) {
           type="button"
           onClick={() => setMenuOpen((v) => !v)}
           aria-label="Menu"
-          className={`flex h-10 w-10 items-center justify-center rounded-lg border border-ac-ink/[0.14] bg-transparent text-ac-ink ${
+          className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg border border-ac-ink/[0.14] bg-transparent text-ac-ink ${
             deskBp === "nav-lg" ? "nav-lg:hidden" : "nav:hidden"
           }`}
         >
@@ -158,7 +156,7 @@ export default function SiteHeader({ variant, current }: SiteHeaderProps) {
       </div>
 
       {menuOpen && (
-        <div className="grid max-h-[calc(100vh-68px)] gap-[13px] overflow-y-auto border-t border-ac-ink/[0.08] bg-white px-5 pb-[22px] pt-[14px]">
+        <div className="grid max-h-[calc(100vh-68px)] gap-[13px] overflow-y-auto border-t border-ac-ink/[0.08] bg-white px-4 pb-[22px] pt-[14px] sm:px-5">
           <Link href={variant === "home" ? "#accueil" : "/"} onClick={closeAll} className="font-semibold text-ac-ink">
             Accueil
           </Link>

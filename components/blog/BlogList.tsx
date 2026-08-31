@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import ImageSlot from "@/components/ImageSlot";
-import { POSTS, BLOG_TAGS } from "@/lib/data/blog";
+import { POSTS, BLOG_TAGS, iconForTag } from "@/lib/data/blog";
 
 export default function BlogList() {
   const [tag, setTag] = useState("Tous");
@@ -40,7 +40,7 @@ export default function BlogList() {
             className="grid content-start overflow-hidden rounded-2xl border border-ac-ink/[0.08] bg-white text-ac-ink hover:border-ac-indigo"
           >
             <div className="relative h-[190px]">
-              <ImageSlot hint={p.hint} />
+              <ImageSlot hint={p.hint} icon={iconForTag(p.tag)} />
             </div>
             <div className="grid gap-2.5 p-5">
               <div className="flex flex-wrap items-center gap-2.5">

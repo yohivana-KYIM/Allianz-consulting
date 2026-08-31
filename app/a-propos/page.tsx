@@ -20,7 +20,11 @@ export default function AboutPage() {
 
       <section className="relative m-2.5 overflow-hidden rounded-[22px] bg-ac-ink px-[22px] py-14">
         <div className="absolute inset-0">
-          <ImageSlot hint="Bannière — façade ou salle de réunion du cabinet à Akwa, plan large en fin de journée (2400×760)" />
+          <ImageSlot
+            hint="Bannière — façade ou salle de réunion du cabinet à Akwa, plan large en fin de journée (2400×760)"
+            icon="ti-building-skyscraper"
+            tone="dark"
+          />
         </div>
         <div className="pointer-events-none absolute inset-0 mix-blend-screen [background:radial-gradient(56%_100%_at_2%_0%,rgba(70,65,149,0.62),transparent_62%),radial-gradient(50%_90%_at_98%_6%,rgba(201,162,39,0.32),transparent_62%)]" />
         <div className="pointer-events-none absolute inset-0 [background:linear-gradient(180deg,rgba(20,19,31,0.84)_0%,rgba(20,19,31,0.94)_100%)]" />
@@ -76,7 +80,10 @@ export default function AboutPage() {
             </div>
           </Reveal>
           <Reveal variant="right" className="relative min-h-[460px] overflow-hidden rounded-[20px] border border-ac-ink/[0.08]">
-            <ImageSlot hint="Photo — dirigeant et consultant en entretien autour de documents, cadrage vertical (900×1100)" />
+            <ImageSlot
+              hint="Photo — dirigeant et consultant en entretien autour de documents, cadrage vertical (900×1100)"
+              icon="ti-users"
+            />
           </Reveal>
         </div>
 
@@ -108,7 +115,10 @@ export default function AboutPage() {
 
         <div className="grid grid-cols-1 items-center gap-[34px] nav:grid-cols-[0.95fr_1.05fr]">
           <Reveal variant="left" className="relative min-h-[440px] overflow-hidden rounded-[20px] border border-ac-ink/[0.08]">
-            <ImageSlot hint="Photo — équipe du cabinet au travail, dossiers et écrans (900×1100)" />
+            <ImageSlot
+              hint="Photo — équipe du cabinet au travail, dossiers et écrans (900×1100)"
+              icon="ti-clipboard-list"
+            />
           </Reveal>
           <Reveal variant="right" className="grid gap-[18px]">
             <div className="ac-eye flex items-center gap-3 text-[11.5px] font-extrabold uppercase tracking-[0.18em] text-ac-indigo">

@@ -55,7 +55,11 @@ export default function ServiceExplorer() {
     <>
       <section className="relative m-2.5 overflow-hidden rounded-[22px] bg-ac-ink px-[22px] py-14">
         <div className="absolute inset-0">
-          <ImageSlot hint="Bannière — plan large de bureaux du cabinet ou réunion de travail (2400×760)" />
+          <ImageSlot
+            hint="Bannière — plan large de bureaux du cabinet ou réunion de travail (2400×760)"
+            icon="ti-briefcase"
+            tone="dark"
+          />
         </div>
         <div className="pointer-events-none absolute inset-0 mix-blend-screen [background:radial-gradient(56%_100%_at_2%_0%,rgba(70,65,149,0.62),transparent_62%),radial-gradient(50%_90%_at_98%_6%,rgba(201,162,39,0.32),transparent_62%)]" />
         <div className="pointer-events-none absolute inset-0 [background:linear-gradient(180deg,rgba(20,19,31,0.84)_0%,rgba(20,19,31,0.94)_100%)]" />
@@ -136,7 +140,7 @@ export default function ServiceExplorer() {
               )}
             </div>
             <div className="relative min-h-[300px] overflow-hidden rounded-[18px] border border-ac-ink/[0.08]">
-              <ImageSlot hint={s.imgHint} />
+              <ImageSlot hint={s.imgHint} icon={s.icon} />
             </div>
           </div>
 

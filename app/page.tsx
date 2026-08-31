@@ -10,7 +10,7 @@ import HeroCarousel from "@/components/home/HeroCarousel";
 import DomainsAccordion from "@/components/home/DomainsAccordion";
 import { SERVICES } from "@/lib/data/services";
 import { HOME_TEAM } from "@/lib/data/team";
-import { POSTS } from "@/lib/data/blog";
+import { POSTS, iconForTag } from "@/lib/data/blog";
 import {
   CLIENTS,
   CONTACT_INFO,
@@ -208,7 +208,7 @@ export default function HomePage() {
             </div>
           </Reveal>
           <Reveal variant="right" className="relative min-h-[420px] overflow-hidden rounded-[20px] border border-ac-ink/[0.08]">
-            <ImageSlot hint="Photo — dirigeant en entretien avec un consultant (860×1000)" />
+            <ImageSlot hint="Photo — dirigeant en entretien avec un consultant (860×1000)" icon="ti-handshake" />
           </Reveal>
         </div>
       </section>
@@ -238,7 +238,7 @@ export default function HomePage() {
       <section id="cabinet" className="bg-white px-5 py-[84px]">
         <div className="mx-auto grid max-w-[1180px] grid-cols-1 items-center gap-10 nav:grid-cols-2">
           <Reveal variant="left" className="relative min-h-[420px] overflow-hidden rounded-[20px] border border-ac-ink/[0.08]">
-            <ImageSlot hint="Photo de l'équipe du cabinet (860×1000)" />
+            <ImageSlot hint="Photo de l'équipe du cabinet (860×1000)" icon="ti-users" />
           </Reveal>
           <Reveal variant="right" className="grid gap-[18px]">
             <div className="ac-eye flex items-center gap-3 text-[11.5px] font-extrabold uppercase tracking-[0.18em] text-ac-indigo">
@@ -287,7 +287,7 @@ export default function HomePage() {
             {HOME_TEAM.map((t) => (
               <div key={t.slot} data-lift className="grid content-start overflow-hidden rounded-2xl border border-ac-ink/[0.08] bg-white">
                 <div className="relative h-[250px]">
-                  <ImageSlot hint={t.hint} />
+                  <ImageSlot hint={t.hint} icon="ti-user-circle" />
                 </div>
                 <div className="grid gap-1.5 p-5">
                   <b className="font-sora text-[16.5px] font-bold tracking-[-0.02em]">{t.name}</b>
@@ -339,7 +339,7 @@ export default function HomePage() {
                 className="grid content-start overflow-hidden rounded-2xl border border-ac-ink/[0.08] bg-white text-ac-ink hover:border-ac-indigo"
               >
                 <div className="relative h-[200px]">
-                  <ImageSlot hint="Visuel de l'article (800×500)" />
+                  <ImageSlot hint="Visuel de l'article (800×500)" icon={iconForTag(p.tag)} />
                 </div>
                 <div className="grid gap-2.5 p-[22px]">
                   <div className="flex flex-wrap items-center gap-2.5">

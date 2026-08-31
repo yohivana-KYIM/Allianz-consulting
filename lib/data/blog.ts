@@ -101,3 +101,17 @@ export const BLOG_TAGS = [
   "Gestion",
   "Création",
 ];
+
+const TAG_ICONS: Record<string, string> = {
+  Fiscalité: "ti-receipt-tax",
+  Comptabilité: "ti-calculator",
+  Financement: "ti-chart-arrows-vertical",
+  Douane: "ti-ship",
+  RH: "ti-users",
+  Gestion: "ti-target-arrow",
+  Création: "ti-building-store",
+};
+
+export function iconForTag(tag: string): string {
+  return TAG_ICONS[tag] ?? "ti-news";
+}

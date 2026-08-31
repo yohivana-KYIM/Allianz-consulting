@@ -38,7 +38,11 @@ export default function TeamPage() {
 
       <section className="relative m-2.5 overflow-hidden rounded-[22px] bg-ac-ink px-[22px] py-14">
         <div className="absolute inset-0">
-          <ImageSlot hint="Bannière — photo de groupe de l'équipe du cabinet en salle de réunion, plan large (2400×760)" />
+          <ImageSlot
+            hint="Bannière — photo de groupe de l'équipe du cabinet en salle de réunion, plan large (2400×760)"
+            icon="ti-users"
+            tone="dark"
+          />
         </div>
         <div className="pointer-events-none absolute inset-0 mix-blend-screen [background:radial-gradient(56%_100%_at_2%_0%,rgba(70,65,149,0.62),transparent_62%),radial-gradient(50%_90%_at_98%_6%,rgba(201,162,39,0.32),transparent_62%)]" />
         <div className="pointer-events-none absolute inset-0 [background:linear-gradient(180deg,rgba(20,19,31,0.84)_0%,rgba(20,19,31,0.94)_100%)]" />
@@ -64,7 +68,7 @@ export default function TeamPage() {
           {FULL_TEAM.map((t) => (
             <div key={t.slot} data-lift className="grid content-start overflow-hidden rounded-[18px] border border-ac-ink/[0.09] bg-white">
               <div className="relative h-[280px]">
-                <ImageSlot hint={t.hint} />
+                <ImageSlot hint={t.hint} icon="ti-user-circle" />
               </div>
               <div className="grid gap-2 p-[22px]">
                 <b className="font-sora text-[17px] font-bold tracking-[-0.02em]">{t.name}</b>
@@ -132,7 +136,10 @@ export default function TeamPage() {
             </div>
           </Reveal>
           <Reveal variant="right" className="relative min-h-[440px] overflow-hidden rounded-[20px] border border-ac-ink/[0.08]">
-            <ImageSlot hint="Photo — réunion de travail interne du cabinet, dossiers ouverts et tableau (900×1100)" />
+            <ImageSlot
+              hint="Photo — réunion de travail interne du cabinet, dossiers ouverts et tableau (900×1100)"
+              icon="ti-presentation"
+            />
           </Reveal>
         </div>
 
