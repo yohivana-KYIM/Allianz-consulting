@@ -303,7 +303,11 @@ export default function HomePage() {
                 className="grid content-start overflow-hidden rounded-2xl border border-ac-ink/[0.08] bg-white text-ac-ink hover:border-ac-indigo"
               >
                 <div className="relative h-[200px]">
-                  <ImageSlot hint="Visuel de l'article (800×500)" icon={iconForTag(p.tag)} />
+                  {p.image ? (
+                    <Image src={p.image} alt={p.title} fill className="object-cover" />
+                  ) : (
+                    <ImageSlot hint="Visuel de l'article (800×500)" icon={iconForTag(p.tag)} />
+                  )}
                 </div>
                 <div className="grid gap-2.5 p-[22px]">
                   <div className="flex flex-wrap items-center gap-2.5">

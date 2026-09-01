@@ -6,6 +6,7 @@ export interface BlogPost {
   title: string;
   excerpt: string;
   hint: string;
+  image?: string;
 }
 
 export const POSTS: BlogPost[] = [
@@ -18,6 +19,7 @@ export const POSTS: BlogPost[] = [
     excerpt:
       "Déclarations, acomptes et obligations déclaratives : la liste des dates qui exposent votre entreprise à des pénalités.",
     hint: "Calendrier annoté et documents fiscaux sur un bureau (800×500)",
+    image: "/images/blog-1.jpg",
   },
   {
     slug: "business-plan-banque",
@@ -28,6 +30,7 @@ export const POSTS: BlogPost[] = [
     excerpt:
       "Les quatre pages qui décident de l’accord, et les erreurs de prévisionnel qui font échouer un dossier solide.",
     hint: "Dossier de financement ouvert avec graphiques, stylo et calculatrice (800×500)",
+    image: "/images/blog-2.jpg",
   },
   {
     slug: "classement-tarifaire",
@@ -38,6 +41,7 @@ export const POSTS: BlogPost[] = [
     excerpt:
       "Une position tarifaire mal choisie se paie en droits, en amendes et en immobilisation de marchandises.",
     hint: "Conteneurs et documents de dédouanement au port (800×500)",
+    image: "/images/blog-3.jpg",
   },
   {
     slug: "controle-fiscal",
@@ -48,6 +52,7 @@ export const POSTS: BlogPost[] = [
     excerpt:
       "Ce que vous devez rassembler, ce que vous n’êtes pas obligé de fournir, et à quel moment appeler votre conseil.",
     hint: "Deux personnes examinant des registres comptables (800×500)",
+    image: "/images/blog-4.jpg",
   },
   {
     slug: "contrats-travail",
@@ -58,6 +63,7 @@ export const POSTS: BlogPost[] = [
     excerpt:
       "Période d’essai, mobilité, confidentialité : rédiger utile plutôt que copier un modèle générique.",
     hint: "Signature d’un contrat de travail, gros plan sur les mains (800×500)",
+    image: "/images/blog-5.jpg",
   },
   {
     slug: "tableau-de-bord",
@@ -68,6 +74,7 @@ export const POSTS: BlogPost[] = [
     excerpt:
       "Cinq indicateurs suffisent pour piloter une TPE. Les vingt autres font perdre du temps.",
     hint: "Écran affichant un tableau de bord de gestion, ambiance bureau (800×500)",
+    image: "/images/blog-6.jpg",
   },
   {
     slug: "creation-entreprise",
@@ -78,6 +85,7 @@ export const POSTS: BlogPost[] = [
     excerpt:
       "SARL, SA, entreprise individuelle : l’impact réel du choix sur la fiscalité, la responsabilité et le financement.",
     hint: "Jeune entrepreneur devant des documents d’immatriculation (800×500)",
+    image: "/images/blog-7.jpg",
   },
   {
     slug: "tresorerie",
@@ -88,6 +96,7 @@ export const POSTS: BlogPost[] = [
     excerpt:
       "Un budget de trésorerie glissant, tenu chaque semaine, évite la majorité des crises de liquidité.",
     hint: "Graphique de flux de trésorerie sur écran et carnet (800×500)",
+    image: "/images/blog-8.jpg",
   },
 ];
 
