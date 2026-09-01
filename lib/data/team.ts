@@ -5,6 +5,7 @@ export interface TeamMember {
   desc: string;
   skills?: string[];
   hint: string;
+  image?: string;
 }
 
 // Bandeau "équipe" de l'accueil (4 profils).
@@ -15,6 +16,7 @@ export const HOME_TEAM: TeamMember[] = [
     role: "Comptabilité & audit",
     desc: "Supervise la tenue comptable, les clôtures et les missions d’audit du cabinet.",
     hint: "Portrait du consultant (600×760)",
+    image: "/images/team-1.jpg",
   },
   {
     slot: "ac-team-2",
@@ -22,6 +24,7 @@ export const HOME_TEAM: TeamMember[] = [
     role: "Fiscalité & contentieux",
     desc: "Déclarations, contrôles fiscaux, régularisations et veille réglementaire.",
     hint: "Portrait du consultant (600×760)",
+    image: "/images/team-2.jpg",
   },
   {
     slot: "ac-team-3",
@@ -29,6 +32,7 @@ export const HOME_TEAM: TeamMember[] = [
     role: "Ingénierie financière",
     desc: "Business plans, plans de financement et dossiers bancaires.",
     hint: "Portrait du consultant (600×760)",
+    image: "/images/team-3.jpg",
   },
   {
     slot: "ac-team-4",
@@ -36,6 +40,7 @@ export const HOME_TEAM: TeamMember[] = [
     role: "Transit & ressources humaines",
     desc: "Dédouanement, classement tarifaire, contrats et dossiers du personnel.",
     hint: "Portrait du consultant (600×760)",
+    image: "/images/team-4.jpg",
   },
 ];
 
@@ -48,6 +53,7 @@ export const FULL_TEAM: TeamMember[] = [
     desc: "Supervise la tenue comptable, les clôtures et les missions d’audit du cabinet.",
     skills: ["États financiers", "Audit interne", "Procédures"],
     hint: "Portrait professionnel — homme ou femme en tenue de bureau, fond neutre clair, regard caméra (600×760)",
+    image: "/images/team-1.jpg",
   },
   {
     slot: "ac-eq-2",
@@ -56,6 +62,7 @@ export const FULL_TEAM: TeamMember[] = [
     desc: "Déclarations, contrôles fiscaux, régularisations et veille réglementaire.",
     skills: ["Contrôle fiscal", "Régularisation", "Veille"],
     hint: "Portrait professionnel — même cadrage et même fond que les autres membres (600×760)",
+    image: "/images/team-2.jpg",
   },
   {
     slot: "ac-eq-3",
@@ -64,6 +71,7 @@ export const FULL_TEAM: TeamMember[] = [
     desc: "Business plans, plans de financement et dossiers bancaires.",
     skills: ["Business plan", "Trésorerie", "Financement"],
     hint: "Portrait professionnel — même cadrage et même fond que les autres membres (600×760)",
+    image: "/images/team-3.jpg",
   },
   {
     slot: "ac-eq-4",
@@ -72,6 +80,7 @@ export const FULL_TEAM: TeamMember[] = [
     desc: "Dédouanement, classement tarifaire et suivi des opérations de transit.",
     skills: ["Dédouanement", "Tarif douanier", "Import/export"],
     hint: "Portrait professionnel — même cadrage et même fond que les autres membres (600×760)",
+    image: "/images/team-4.jpg",
   },
   {
     slot: "ac-eq-5",
@@ -80,6 +89,7 @@ export const FULL_TEAM: TeamMember[] = [
     desc: "Contrats, dossiers du personnel, recrutement et politiques internes.",
     skills: ["Contrats", "Recrutement", "Droit du travail"],
     hint: "Portrait professionnel — même cadrage et même fond que les autres membres (600×760)",
+    image: "/images/team-5.jpg",
   },
   {
     slot: "ac-eq-6",
@@ -88,5 +98,6 @@ export const FULL_TEAM: TeamMember[] = [
     desc: "Point d’entrée du cabinet : formalités de création et suivi des dossiers.",
     skills: ["Formalités", "Immatriculation", "Suivi"],
     hint: "Portrait professionnel — même cadrage et même fond que les autres membres (600×760)",
+    image: "/images/team-6.jpg",
   },
 ];

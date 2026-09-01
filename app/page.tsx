@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
@@ -189,7 +190,7 @@ export default function HomePage() {
             </div>
           </Reveal>
           <Reveal variant="right" className="relative min-h-[420px] overflow-hidden rounded-[20px] border border-ac-ink/[0.08]">
-            <ImageSlot hint="Photo — dirigeant en entretien avec un consultant (860×1000)" icon="ti-handshake" />
+            <Image src="/images/home_clients.jpg" alt="Dirigeant en entretien avec un consultant" fill className="object-cover" />
           </Reveal>
         </div>
       </section>
@@ -197,7 +198,7 @@ export default function HomePage() {
       <section id="cabinet" className="bg-white px-5 py-[84px]">
         <div className="mx-auto grid max-w-[1180px] grid-cols-1 items-center gap-10 nav:grid-cols-2">
           <Reveal variant="left" className="relative min-h-[420px] overflow-hidden rounded-[20px] border border-ac-ink/[0.08]">
-            <ImageSlot hint="Photo de l'équipe du cabinet (860×1000)" icon="ti-users" />
+            <Image src="/images/home_team.jpg" alt="L'équipe du cabinet" fill className="object-cover" />
           </Reveal>
           <Reveal variant="right" className="grid gap-[18px]">
             <div className="ac-eye flex items-center gap-3 text-[11.5px] font-extrabold uppercase tracking-[0.18em] text-ac-indigo">
@@ -246,7 +247,11 @@ export default function HomePage() {
             {HOME_TEAM.map((t) => (
               <div key={t.slot} data-lift className="grid content-start overflow-hidden rounded-2xl border border-ac-ink/[0.08] bg-white">
                 <div className="relative h-[250px]">
-                  <ImageSlot hint={t.hint} icon="ti-user-circle" />
+                  {t.image ? (
+                    <Image src={t.image} alt={t.hint} fill className="object-cover" />
+                  ) : (
+                    <ImageSlot hint={t.hint} icon="ti-user-circle" />
+                  )}
                 </div>
                 <div className="grid gap-1.5 p-5">
                   <b className="font-sora text-[16.5px] font-bold tracking-[-0.02em]">{t.name}</b>
