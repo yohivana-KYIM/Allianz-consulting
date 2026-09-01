@@ -9,6 +9,7 @@ export interface ServiceDomain {
   body: string;
   note?: string;
   imgHint: string;
+  image?: string;
   outcomes: string[];
   items: string[];
 }
@@ -26,6 +27,7 @@ export const SERVICES: ServiceDomain[] = [
     body: "Nous prenons en charge l’intégralité du cycle fiscal : identification du régime applicable, calcul des impôts et taxes, dépôt des déclarations, suivi sur les plateformes de l’administration et assistance en cas de contrôle. Chaque dossier commence par un diagnostic qui cartographie vos risques et les régularisations à engager.",
     imgHint:
       "Photo — consultant expliquant une liasse fiscale à un dirigeant, documents et écran visibles (900×760)",
+    image: "/images/service-1.jpg",
     outcomes: [
       "Un calendrier fiscal tenu, sans pénalité de retard",
       "Une cartographie écrite de vos risques fiscaux",
@@ -59,6 +61,7 @@ export const SERVICES: ServiceDomain[] = [
     note: "Quatre formules d’accompagnement : comptabilité complète, mensuelle, trimestrielle ou assistance ponctuelle selon vos besoins.",
     imgHint:
       "Photo — pièces comptables classées, écran de logiciel comptable, mains en train de saisir (900×760)",
+    image: "/images/service-2.jpg",
     outcomes: [
       "Des comptes à jour chaque mois, pas seulement à la clôture",
       "Des états financiers conformes et exploitables",
@@ -91,6 +94,7 @@ export const SERVICES: ServiceDomain[] = [
     body: "Diagnostic organisationnel, procédures internes, tableaux de bord, contrôle de gestion, budgets, analyse des coûts et de la rentabilité. Nous intervenons aussi sur les phases sensibles : restructuration, réorganisation des services, redéfinition de la stratégie.",
     imgHint:
       "Photo — atelier de travail sur tableau blanc avec un dirigeant et un consultant (900×760)",
+    image: "/images/service-3.jpg",
     outcomes: [
       "Un tableau de bord de cinq indicateurs réellement suivis",
       "Des procédures internes écrites et appliquées",
@@ -125,6 +129,7 @@ export const SERVICES: ServiceDomain[] = [
     body: "Analyse et diagnostic financier, business plan, plan de financement, études de rentabilité, prévisions, budget de trésorerie et besoin en fonds de roulement. Nous structurons le dossier, nous en défendons les hypothèses et nous vous accompagnons jusqu’à la décision de financement.",
     imgHint:
       "Photo — présentation d’un plan de financement, graphiques imprimés et ordinateur (900×760)",
+    image: "/images/service-4.jpg",
     outcomes: [
       "Un business plan défendable, hypothèses documentées",
       "Un budget de trésorerie glissant",
@@ -159,6 +164,7 @@ export const SERVICES: ServiceDomain[] = [
     note: "Les missions d’audit sont réalisées dans la limite des qualifications, autorisations et dispositions réglementaires applicables.",
     imgHint:
       "Photo — deux auditeurs examinant des registres et un écran, ambiance sobre (900×760)",
+    image: "/images/service-5.jpg",
     outcomes: [
       "Un rapport d’audit hiérarchisé par niveau de risque",
       "Un plan de correction avec responsables et échéances",
@@ -191,6 +197,7 @@ export const SERVICES: ServiceDomain[] = [
     note: "Les opérations exigeant une qualité professionnelle ou une autorisation spécifique sont réalisées conformément à la réglementation en vigueur.",
     imgHint:
       "Photo — conteneurs au port de Douala ou documents de transit sur un bureau (900×760)",
+    image: "/images/service-6.jpg",
     outcomes: [
       "Un classement tarifaire vérifié avant expédition",
       "Des dossiers douaniers complets du premier coup",
@@ -221,6 +228,7 @@ export const SERVICES: ServiceDomain[] = [
     body: "Rédaction des contrats de travail, gestion administrative et dossiers du personnel, fiches de poste, assistance au recrutement, évaluation des performances, conseil en formation et en droit du travail. Nous intervenons aussi en prévention et en gestion des conflits professionnels.",
     imgHint:
       "Photo — entretien de recrutement ou signature de contrat, deux personnes en bureau (900×760)",
+    image: "/images/service-7.jpg",
     outcomes: [
       "Des contrats adaptés à votre activité, pas des modèles génériques",
       "Des dossiers du personnel complets et à jour",
@@ -254,6 +262,7 @@ export const SERVICES: ServiceDomain[] = [
     note: "Un service d’accompagnement post-création permet au nouvel entrepreneur d’être suivi durant ses premiers mois d’activité.",
     imgHint:
       "Photo — jeune entrepreneur recevant ses documents d’immatriculation, poignée de main (900×760)",
+    image: "/images/service-8.jpg",
     outcomes: [
       "Une structure juridique et fiscale choisie en connaissance",
       "Un dossier de création complet et déposé",
