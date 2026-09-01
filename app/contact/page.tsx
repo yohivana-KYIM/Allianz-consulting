@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import ImageSlot from "@/components/ImageSlot";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
@@ -18,11 +19,7 @@ export default function ContactPage() {
 
       <section className="relative m-2.5 overflow-hidden rounded-[22px] bg-ac-ink px-[22px] py-14">
         <div className="absolute inset-0">
-          <ImageSlot
-            hint="Bannière — bureaux du cabinet à Akwa, Douala, plan large (2400×760)"
-            icon="ti-map-pin"
-            tone="dark"
-          />
+          <Image src="/images/contact-banner.jpg" alt="Bureaux du cabinet à Akwa, Douala" fill className="object-cover opacity-60 mix-blend-overlay" />
         </div>
         <div className="pointer-events-none absolute inset-0 mix-blend-screen [background:radial-gradient(56%_100%_at_2%_0%,rgba(70,65,149,0.62),transparent_62%),radial-gradient(50%_90%_at_98%_6%,rgba(201,162,39,0.32),transparent_62%)]" />
         <div className="pointer-events-none absolute inset-0 [background:linear-gradient(180deg,rgba(20,19,31,0.84)_0%,rgba(20,19,31,0.94)_100%)]" />

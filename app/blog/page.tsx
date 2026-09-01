@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
@@ -45,10 +46,7 @@ export default function BlogPage() {
           className="mb-[34px] grid grid-cols-1 overflow-hidden rounded-[20px] border border-ac-ink/[0.09] text-ac-ink nav:grid-cols-[1.15fr_0.85fr]"
         >
           <div className="relative min-h-[300px]">
-            <ImageSlot
-              hint="Visuel de l'article à la une — plan large d'un bureau de travail ou d'une réunion (1400×900)"
-              icon={iconForTag(featured.tag)}
-            />
+            <Image src="/images/blog-banner.jpg" alt="Visuel de l'article à la une" fill className="object-cover" />
           </div>
           <div className="grid content-center gap-3.5 p-[34px]">
             <div className="flex flex-wrap items-center gap-2.5">
